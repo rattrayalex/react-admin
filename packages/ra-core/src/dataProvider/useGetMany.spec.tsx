@@ -179,6 +179,7 @@ describe('useGetMany', () => {
             loading: true,
             loaded: true,
             error: null,
+            refetch: expect.any(Function),
         });
     });
 
@@ -219,6 +220,7 @@ describe('useGetMany', () => {
                 loading: false,
                 loaded: true,
                 error: null,
+                refetch: expect.any(Function),
             });
         });
     });
@@ -272,6 +274,7 @@ describe('useGetMany', () => {
             loading: true,
             loaded: false,
             error: null,
+            refetch: expect.any(Function),
         });
     });
 

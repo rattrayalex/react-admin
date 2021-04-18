@@ -202,9 +202,9 @@ const EventList: FC<EventListProps> = ({ record, basePath }) => {
                         <StepLabel
                             StepIconComponent={() => {
                                 const Component =
-                                    event.type === 'order'
-                                        ? order.icon
-                                        : review.icon;
+                                    event.type === 'order' ?
+                                        order.icon :
+                                        review.icon;
                                 return (
                                     <Component
                                         fontSize="small"
@@ -258,21 +258,21 @@ const mixOrdersAndReviews = (
     reviewIds?: Identifier[]
 ): AsideEvent[] => {
     const eventsFromOrders =
-        orderIds && orders
-            ? orderIds.map<AsideEvent>(id => ({
-                  type: 'order',
-                  date: orders[id].date,
-                  data: orders[id],
-              }))
-            : [];
+        orderIds && orders ?
+            orderIds.map<AsideEvent>(id => ({
+                type: 'order',
+                date: orders[id].date,
+                data: orders[id],
+            })) :
+            [];
     const eventsFromReviews =
-        reviewIds && reviews
-            ? reviewIds.map<AsideEvent>(id => ({
-                  type: 'review',
-                  date: reviews[id].date,
-                  data: reviews[id],
-              }))
-            : [];
+        reviewIds && reviews ?
+            reviewIds.map<AsideEvent>(id => ({
+                type: 'review',
+                date: reviews[id].date,
+                data: reviews[id],
+            })) :
+            [];
     const events = eventsFromOrders.concat(eventsFromReviews);
     events.sort(
         (e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime()

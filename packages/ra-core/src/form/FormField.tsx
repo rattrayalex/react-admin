@@ -35,9 +35,9 @@ const FormField: FunctionComponent<Props> = ({
         console.log('FormField is deprecated, use the useInput hook instead.');
     }
 
-    const sanitizedValidate = Array.isArray(validate)
-        ? composeValidators(validate)
-        : validate;
+    const sanitizedValidate = Array.isArray(validate) ?
+        composeValidators(validate) :
+        validate;
 
     const finalId = id || props.source;
 

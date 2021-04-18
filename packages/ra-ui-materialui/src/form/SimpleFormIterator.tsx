@@ -120,11 +120,11 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
     // We need a unique id for each field for a proper enter/exit animation
     // so we keep an internal map between the field position and an auto-increment id
     const nextId = useRef(
-        fields && fields.length
-            ? fields.length
-            : defaultValue
-            ? defaultValue.length
-            : 0
+        fields && fields.length ?
+            fields.length :
+        defaultValue ?
+            defaultValue.length :
+            0
     );
 
     // We check whether we have a defaultValue (which must be an array) before checking
@@ -213,20 +213,20 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
                                                     basePath
                                                 }
                                                 input={cloneElement(input, {
-                                                    source: source
-                                                        ? `${member}.${source}`
-                                                        : member,
-                                                    index: source
-                                                        ? undefined
-                                                        : index2,
+                                                    source: source ?
+                                                        `${member}.${source}` :
+                                                        member,
+                                                    index: source ?
+                                                        undefined :
+                                                        index2,
                                                     label:
                                                         typeof input.props
                                                             .label ===
-                                                        'undefined'
-                                                            ? source
-                                                                ? `resources.${resource}.fields.${source}`
-                                                                : undefined
-                                                            : input.props.label,
+                                                        'undefined' ?
+                                                            source ?
+                                                                `resources.${resource}.fields.${source}` :
+                                                                undefined :
+                                                            input.props.label,
                                                     disabled,
                                                     ...inputProps,
                                                 })}

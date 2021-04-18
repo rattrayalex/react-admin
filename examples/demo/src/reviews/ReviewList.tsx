@@ -83,12 +83,12 @@ const ReviewList: FC<ListProps> = props => {
                                 ) : (
                                     <ReviewListDesktop
                                         selectedRow={
-                                            isMatch
-                                                ? parseInt(
-                                                      (match as any).params.id,
-                                                      10
-                                                  )
-                                                : undefined
+                                            isMatch ? (
+                                                parseInt(
+                                                    (match as any).params.id,
+                                                    10
+                                                )
+                                            ) : undefined
                                         }
                                     />
                                 )}

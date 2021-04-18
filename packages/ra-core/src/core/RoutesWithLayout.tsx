@@ -34,9 +34,9 @@ const RoutesWithLayout: FunctionComponent<Props> = ({
 }) => {
     const childrenAsArray = React.Children.toArray(children);
     const firstChild: React.ReactElement<any> | null =
-        childrenAsArray.length > 0
-            ? (childrenAsArray[0] as React.ReactElement<any>)
-            : null;
+        childrenAsArray.length > 0 ?
+            (childrenAsArray[0] as React.ReactElement<any>) :
+            null;
 
     return (
         <Switch>

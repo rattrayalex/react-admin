@@ -147,7 +147,9 @@ const CoreAdminRouter: FunctionComponent<AdminRouterProps> = props => {
     }
 
     const childrenToRender = (
-        typeof children === 'function' ? computedChildren : children
+        typeof children === 'function' ?
+            computedChildren :
+            children
     ) as Array<ReactElement<any, any>>;
 
     return (

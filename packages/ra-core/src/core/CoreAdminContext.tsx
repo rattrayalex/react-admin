@@ -58,14 +58,14 @@ React-admin requires a valid dataProvider function to work.`);
     }
 
     const finalAuthProvider =
-        authProvider instanceof Function
-            ? convertLegacyAuthProvider(authProvider)
-            : authProvider;
+        authProvider instanceof Function ?
+            convertLegacyAuthProvider(authProvider) :
+            authProvider;
 
     const finalDataProvider =
-        dataProvider instanceof Function
-            ? convertLegacyDataProvider(dataProvider)
-            : dataProvider;
+        dataProvider instanceof Function ?
+            convertLegacyDataProvider(dataProvider) :
+            dataProvider;
 
     const finalHistory = history || createHashHistory();
 
@@ -88,16 +88,16 @@ React-admin requires a valid dataProvider function to work.`);
     };
 
     const [store] = useState(() =>
-        !reduxIsAlreadyInitialized
-            ? createAdminStore({
-                  authProvider: finalAuthProvider,
-                  customReducers,
-                  customSagas,
-                  dataProvider: finalDataProvider,
-                  initialState,
-                  history: finalHistory,
-              })
-            : undefined
+        !reduxIsAlreadyInitialized ?
+            createAdminStore({
+                authProvider: finalAuthProvider,
+                customReducers,
+                customSagas,
+                dataProvider: finalDataProvider,
+                initialState,
+                history: finalHistory,
+            }) :
+            undefined
     );
 
     if (reduxIsAlreadyInitialized) {

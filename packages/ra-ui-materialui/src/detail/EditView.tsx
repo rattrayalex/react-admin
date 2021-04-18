@@ -84,14 +84,14 @@ export const EditView = (props: EditViewProps) => {
                             basePath,
                             record,
                             redirect:
-                                typeof children.props.redirect === 'undefined'
-                                    ? redirect
-                                    : children.props.redirect,
+                                typeof children.props.redirect === 'undefined' ?
+                                    redirect :
+                                    children.props.redirect,
                             resource,
                             save:
-                                typeof children.props.save === 'undefined'
-                                    ? save
-                                    : children.props.save,
+                                typeof children.props.save === 'undefined' ?
+                                    save :
+                                    children.props.save,
                             saving,
                             undoable,
                             mutationMode,
@@ -108,9 +108,9 @@ export const EditView = (props: EditViewProps) => {
                         resource,
                         version,
                         save:
-                            typeof children.props.save === 'undefined'
-                                ? save
-                                : children.props.save,
+                            typeof children.props.save === 'undefined' ?
+                                save :
+                                children.props.save,
                         saving,
                     })}
             </div>

@@ -377,9 +377,8 @@ export type InitialState = object | (() => object);
  * Misc types
  */
 
-export type Dispatch<T> = T extends (...args: infer A) => any
-    ? (...args: A) => void
-    : never;
+export type Dispatch<T> =
+    T extends (...args: infer A) => any ? (...args: A) => void : never;
 
 export type ResourceElement = ReactElement<ResourceProps>;
 export type RenderResourcesFunction = (

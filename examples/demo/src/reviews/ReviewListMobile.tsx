@@ -72,17 +72,15 @@ const ReviewListMobile = () => {
                                         >
                                             <FunctionField
                                                 render={(record?: Record) =>
-                                                    record
-                                                        ? `${
-                                                              (
-                                                                  record as Customer
-                                                              ).first_name
-                                                          } ${
-                                                              (
-                                                                  record as Customer
-                                                              ).last_name
-                                                          }`
-                                                        : ''
+                                                    record ?
+                                                        `${
+                                                            (record as Customer)
+                                                                .first_name
+                                                        } ${
+                                                            (record as Customer)
+                                                                .last_name
+                                                        }` :
+                                                        ''
                                                 }
                                                 variant="subtitle1"
                                                 className={classes.inline}

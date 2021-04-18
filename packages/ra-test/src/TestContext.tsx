@@ -71,25 +71,25 @@ export class TestContext extends Component<TestContextProps> {
         this.history = props.history || createMemoryHistory();
         const { initialState = {}, enableReducers = false } = props;
 
-        this.storeWithDefault = enableReducers
-            ? createAdminStore({
-                  initialState: merge({}, defaultStore, initialState),
-                  dataProvider: convertLegacyDataProvider(() =>
-                      Promise.resolve(dataProviderDefaultResponse)
-                  ),
-                  history: createMemoryHistory(),
-              })
-            : createStore(() => merge({}, defaultStore, initialState));
+        this.storeWithDefault = enableReducers ?
+            createAdminStore({
+                initialState: merge({}, defaultStore, initialState),
+                dataProvider: convertLegacyDataProvider(() =>
+                    Promise.resolve(dataProviderDefaultResponse)
+                ),
+                history: createMemoryHistory(),
+            }) :
+            createStore(() => merge({}, defaultStore, initialState));
     }
 
     renderChildren = () => {
         const { children } = this.props;
-        return typeof children === 'function'
-            ? (children as TextContextChildrenFunction)({
-                  store: this.storeWithDefault,
-                  history: this.history,
-              })
-            : children;
+        return typeof children === 'function' ?
+            (children as TextContextChildrenFunction)({
+                store: this.storeWithDefault,
+                history: this.history,
+            }) :
+            children;
     };
 
     render() {

@@ -54,17 +54,17 @@ const useDataProviderWithDeclarativeSideEffects = (): DataProviderProxy => {
                     try {
                         return target[name.toString()].apply(
                             target,
-                            typeof resource === 'string'
-                                ? [
-                                      resource,
-                                      payload,
-                                      {
-                                          ...finalOptions,
-                                          onSuccess,
-                                          onFailure,
-                                      },
-                                  ]
-                                : finalAllArguments
+                            typeof resource === 'string' ?
+                                [
+                                    resource,
+                                    payload,
+                                    {
+                                        ...finalOptions,
+                                        onSuccess,
+                                        onFailure,
+                                    },
+                                ] :
+                                finalAllArguments
                         );
                     } catch (e) {
                         // turn synchronous exceptions (e.g. in parameter preparation)

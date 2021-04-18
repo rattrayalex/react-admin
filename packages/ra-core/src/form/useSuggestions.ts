@@ -112,14 +112,14 @@ const defaultMatchSuggestion = getChoiceText => (filter, suggestion) => {
 
     const isReactElement = isValidElement(suggestionText);
 
-    return isReactElement
-        ? false
-        : suggestionText &&
-              suggestionText.match(
-                  // We must escape any RegExp reserved characters to avoid errors
-                  // For example, the filter might contains * which must be escaped as \*
-                  new RegExp(escapeRegExp(filter), 'i')
-              );
+    return isReactElement ?
+        false :
+        suggestionText &&
+            suggestionText.match(
+                // We must escape any RegExp reserved characters to avoid errors
+                // For example, the filter might contains * which must be escaped as \*
+                new RegExp(escapeRegExp(filter), 'i')
+            );
 };
 
 /**
@@ -233,9 +233,9 @@ const removeAlreadySelectedSuggestions = (
     if (!selectedItems) {
         return suggestions;
     }
-    const selectedValues = Array.isArray(selectedItems)
-        ? selectedItems.map(getChoiceValue)
-        : [getChoiceValue(selectedItems)];
+    const selectedValues = Array.isArray(selectedItems) ?
+        selectedItems.map(getChoiceValue) :
+        [getChoiceValue(selectedItems)];
 
     return suggestions.filter(
         suggestion => !selectedValues.includes(getChoiceValue(suggestion))
@@ -256,9 +256,9 @@ const removeAlreadySelectedSuggestions = (
  * @param limit
  */
 const limitSuggestions = (suggestions: any[], limit: any = 0) =>
-    Number.isInteger(limit) && limit > 0
-        ? suggestions.slice(0, limit)
-        : suggestions;
+    Number.isInteger(limit) && limit > 0 ?
+        suggestions.slice(0, limit) :
+        suggestions;
 
 /**
  * addEmptySuggestion(

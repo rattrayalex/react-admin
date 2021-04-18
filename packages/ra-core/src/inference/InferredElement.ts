@@ -12,17 +12,17 @@ class InferredElement {
         if (!this.isDefined()) {
             return;
         }
-        return this.children
-            ? createElement(
-                  this.type.component,
-                  { ...this.props, ...props },
-                  this.children.length > 0
-                      ? this.children.map((child, index) =>
-                            child.getElement({ key: index })
-                        )
-                      : this.children.getElement()
-              )
-            : createElement(this.type.component, { ...this.props, ...props });
+        return this.children ?
+            createElement(
+                this.type.component,
+                { ...this.props, ...props },
+                this.children.length > 0 ?
+                    this.children.map((child, index) =>
+                        child.getElement({ key: index })
+                    ) :
+                    this.children.getElement()
+            ) :
+            createElement(this.type.component, { ...this.props, ...props });
     }
 
     getProps() {

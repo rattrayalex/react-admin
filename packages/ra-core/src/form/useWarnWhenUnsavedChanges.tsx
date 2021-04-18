@@ -56,9 +56,9 @@ const useWarnWhenUnsavedChanges = (enable: boolean) => {
                         formState.dirtySinceLastSubmit))
             ) {
                 if (!window.confirm(translate('ra.message.unsaved_changes'))) {
-                    const dirtyFields = formState.submitSucceeded
-                        ? formState.dirtySinceLastSubmit
-                        : formState.dirtyFields;
+                    const dirtyFields = formState.submitSucceeded ?
+                        formState.dirtySinceLastSubmit :
+                        formState.dirtyFields;
                     const dirtyFieldValues = Object.keys(dirtyFields).reduce(
                         (acc, key) => {
                             acc[key] = formState.values[key];

@@ -89,23 +89,23 @@ export const TabbedFormView = (props: TabbedFormViewProps): ReactElement => {
                     return (
                         <Route exact path={escapePath(tabPath)}>
                             {routeProps =>
-                                isValidElement<any>(tab)
-                                    ? React.cloneElement(tab, {
-                                          intent: 'content',
-                                          classes,
-                                          resource,
-                                          record,
-                                          basePath,
-                                          hidden: syncWithLocation
-                                              ? !routeProps.match
-                                              : tabValue !== index,
-                                          variant: tab.props.variant || variant,
-                                          margin: tab.props.margin || margin,
-                                          value: syncWithLocation
-                                              ? tabPath
-                                              : index,
-                                      })
-                                    : null
+                                isValidElement<any>(tab) ?
+                                    React.cloneElement(tab, {
+                                        intent: 'content',
+                                        classes,
+                                        resource,
+                                        record,
+                                        basePath,
+                                        hidden: syncWithLocation ?
+                                            !routeProps.match :
+                                            tabValue !== index,
+                                        variant: tab.props.variant || variant,
+                                        margin: tab.props.margin || margin,
+                                        value: syncWithLocation ?
+                                            tabPath :
+                                            index,
+                                    }) :
+                                    null
                             }
                         </Route>
                     );

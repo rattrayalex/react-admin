@@ -84,12 +84,12 @@ export default async options => {
         );
 
         try {
-            const { parseResponse, ...query } = overriddenBuildQuery
-                ? {
-                      ...buildQuery(aorFetchType, resource, params),
-                      ...overriddenBuildQuery(params),
-                  }
-                : buildQuery(aorFetchType, resource, params);
+            const { parseResponse, ...query } = overriddenBuildQuery ?
+                {
+                    ...buildQuery(aorFetchType, resource, params),
+                    ...overriddenBuildQuery(params),
+                } :
+                buildQuery(aorFetchType, resource, params);
 
             const operation = getQueryOperation(query.query);
 

@@ -56,17 +56,17 @@ export default (previousState = initialState, action: ActionTypes) => {
             ...acc,
             [resource]:
                 action.type === REFRESH_VIEW ||
-                action.meta.resource === resource
-                    ? {
-                          props: previousState[resource].props,
-                          data: data(previousState[resource].data, action),
-                          list: list(previousState[resource].list, action),
-                          validity: validity(
-                              previousState[resource].validity,
-                              action
-                          ),
-                      }
-                    : previousState[resource],
+                action.meta.resource === resource ?
+                    {
+                        props: previousState[resource].props,
+                        data: data(previousState[resource].data, action),
+                        list: list(previousState[resource].list, action),
+                        validity: validity(
+                            previousState[resource].validity,
+                            action
+                        ),
+                    } :
+                    previousState[resource],
         }),
         {}
     );

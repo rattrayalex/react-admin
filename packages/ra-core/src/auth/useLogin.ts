@@ -41,10 +41,10 @@ const useLogin = (): Login => {
         (params: any = {}, pathName) =>
             authProvider.login(params).then(ret => {
                 dispatch(resetNotification());
-                const redirectUrl = pathName
-                    ? pathName
-                    : nextPathName + nextSearch ||
-                      defaultAuthParams.afterLoginUrl;
+                const redirectUrl = pathName ?
+                    pathName :
+                    nextPathName + nextSearch ||
+                    defaultAuthParams.afterLoginUrl;
                 history.push(redirectUrl);
                 return ret;
             }),

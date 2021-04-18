@@ -71,20 +71,20 @@ const useLogoutIfAccessDenied = (): LogoutIfAccessDenied => {
                             .catch(() => {});
                     }
                     const redirectTo =
-                        e && e.redirectTo
-                            ? e.redirectTo
-                            : error && error.redirectTo
-                            ? error.redirectTo
-                            : undefined;
+                        e && e.redirectTo ?
+                            e.redirectTo :
+                        error && error.redirectTo ?
+                            error.redirectTo :
+                            undefined;
                     logout({}, redirectTo);
 
                     return true;
                 }),
         [authProvider, logout, notify]
     );
-    return authProvider
-        ? logoutIfAccessDenied
-        : logoutIfAccessDeniedWithoutProvider;
+    return authProvider ?
+        logoutIfAccessDenied :
+        logoutIfAccessDeniedWithoutProvider;
 };
 
 const logoutIfAccessDeniedWithoutProvider = () => Promise.resolve(false);

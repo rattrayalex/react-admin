@@ -52,14 +52,14 @@ export default (
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         const options =
-            countHeader === 'Content-Range'
-                ? {
-                      // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
-                      headers: new Headers({
-                          Range: `${resource}=${rangeStart}-${rangeEnd}`,
-                      }),
-                  }
-                : {};
+            countHeader === 'Content-Range' ?
+                {
+                    // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
+                    headers: new Headers({
+                        Range: `${resource}=${rangeStart}-${rangeEnd}`,
+                    }),
+                } :
+                {};
 
         return httpClient(url, options).then(({ headers, json }) => {
             if (!headers.has(countHeader)) {
@@ -70,12 +70,12 @@ export default (
             return {
                 data: json,
                 total:
-                    countHeader === 'Content-Range'
-                        ? parseInt(
-                              headers.get('content-range').split('/').pop(),
-                              10
-                          )
-                        : parseInt(headers.get(countHeader.toLowerCase())),
+                    countHeader === 'Content-Range' ?
+                        parseInt(
+                            headers.get('content-range').split('/').pop(),
+                            10
+                        ) :
+                        parseInt(headers.get(countHeader.toLowerCase())),
             };
         });
     },
@@ -110,14 +110,14 @@ export default (
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         const options =
-            countHeader === 'Content-Range'
-                ? {
-                      // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
-                      headers: new Headers({
-                          Range: `${resource}=${rangeStart}-${rangeEnd}`,
-                      }),
-                  }
-                : {};
+            countHeader === 'Content-Range' ?
+                {
+                    // Chrome doesn't return `Content-Range` header if no `Range` is provided in the request.
+                    headers: new Headers({
+                        Range: `${resource}=${rangeStart}-${rangeEnd}`,
+                    }),
+                } :
+                {};
 
         return httpClient(url, options).then(({ headers, json }) => {
             if (!headers.has(countHeader)) {
@@ -128,12 +128,12 @@ export default (
             return {
                 data: json,
                 total:
-                    countHeader === 'Content-Range'
-                        ? parseInt(
-                              headers.get('content-range').split('/').pop(),
-                              10
-                          )
-                        : parseInt(headers.get(countHeader.toLowerCase())),
+                    countHeader === 'Content-Range' ?
+                        parseInt(
+                            headers.get('content-range').split('/').pop(),
+                            10
+                        ) :
+                        parseInt(headers.get(countHeader.toLowerCase())),
             };
         });
     },

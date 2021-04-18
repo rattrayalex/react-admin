@@ -81,19 +81,19 @@ const LoginForm: FunctionComponent<Props> = props => {
             .catch(error => {
                 setLoading(false);
                 notify(
-                    typeof error === 'string'
-                        ? error
-                        : typeof error === 'undefined' || !error.message
-                        ? 'ra.auth.sign_in_error'
-                        : error.message,
+                    typeof error === 'string' ?
+                        error :
+                    typeof error === 'undefined' || !error.message ?
+                        'ra.auth.sign_in_error' :
+                        error.message,
                     'warning',
                     {
                         _:
-                            typeof error === 'string'
-                                ? error
-                                : error && error.message
-                                ? error.message
-                                : undefined,
+                            typeof error === 'string' ?
+                                error :
+                            error && error.message ?
+                                error.message :
+                                undefined,
                     }
                 );
             });

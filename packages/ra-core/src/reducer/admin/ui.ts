@@ -38,9 +38,9 @@ const isDesktop = (): boolean =>
     // (min-width: 960px) => theme.breakpoints.up('md')
     typeof window !== 'undefined' &&
     window.matchMedia &&
-    typeof window.matchMedia === 'function'
-        ? window.matchMedia('(min-width:960px)').matches
-        : false;
+    typeof window.matchMedia === 'function' ?
+        window.matchMedia('(min-width:960px)').matches :
+        false;
 
 const defaultState: UIState = {
     automaticRefreshEnabled: true,

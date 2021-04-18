@@ -71,13 +71,14 @@ export const DateField: FC<DateFieldProps> = memo<DateFieldProps>(props => {
     }
 
     const date = value instanceof Date ? value : new Date(value);
-    const dateString = showTime
-        ? toLocaleStringSupportsLocales
-            ? date.toLocaleString(locales, options)
-            : date.toLocaleString()
-        : toLocaleStringSupportsLocales
-        ? date.toLocaleDateString(locales, options)
-        : date.toLocaleDateString();
+    const dateString =
+        showTime ?
+            toLocaleStringSupportsLocales ?
+                date.toLocaleString(locales, options) :
+                date.toLocaleString() :
+        toLocaleStringSupportsLocales ?
+            date.toLocaleDateString(locales, options) :
+            date.toLocaleDateString();
 
     return (
         <Typography

@@ -44,7 +44,11 @@ export const TabbedShowLayoutTabs = ({
 
 export const getTabFullPath = (tab, index, baseUrl) =>
     `${baseUrl}${
-        tab.props.path ? `/${tab.props.path}` : index > 0 ? `/${index}` : ''
+        tab.props.path ?
+            `/${tab.props.path}` :
+        index > 0 ?
+            `/${index}` :
+            ''
     }`.replace('//', '/'); // Because baseUrl can be a single / when on the first tab
 
 export interface TabbedShowLayoutTabsProps extends TabsProps {

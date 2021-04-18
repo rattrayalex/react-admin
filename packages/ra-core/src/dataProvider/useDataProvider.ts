@@ -221,9 +221,9 @@ const later = (delay = 100): Promise<void> =>
 // get a Promise that resolves once a condition is satisfied
 const waitFor = (condition: () => boolean): Promise<void> =>
     new Promise(resolve =>
-        condition()
-            ? resolve()
-            : later().then(() => waitFor(condition).then(() => resolve()))
+        condition() ?
+            resolve() :
+            later().then(() => waitFor(condition).then(() => resolve()))
     );
 
 export default useDataProvider;

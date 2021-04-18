@@ -240,9 +240,9 @@ export const useReferenceArrayInputController = (
         idsToFetch || []
     );
 
-    const referenceRecords = referenceRecordsFetched
-        ? referenceRecordsFetched.concat(referenceRecordsFromStore)
-        : referenceRecordsFromStore;
+    const referenceRecords = referenceRecordsFetched ?
+        referenceRecordsFetched.concat(referenceRecordsFromStore) :
+        referenceRecordsFromStore;
 
     // filter out not found references - happens when the dataProvider doesn't guarantee referential integrity
     const finalReferenceRecords = referenceRecords.filter(Boolean);
@@ -264,11 +264,11 @@ export const useReferenceArrayInputController = (
     // We merge the currently selected records with the matching ones, otherwise
     // the component displaying the currently selected records may fail
     const finalMatchingReferences =
-        matchingReferences && matchingReferences.length > 0
-            ? mergeReferences(matchingReferences, finalReferenceRecords)
-            : finalReferenceRecords.length > 0
-            ? finalReferenceRecords
-            : matchingReferences;
+        matchingReferences && matchingReferences.length > 0 ?
+            mergeReferences(matchingReferences, finalReferenceRecords) :
+        finalReferenceRecords.length > 0 ?
+            finalReferenceRecords :
+            matchingReferences;
 
     const dataStatus = getDataStatus({
         input,
@@ -284,9 +284,9 @@ export const useReferenceArrayInputController = (
         // For the ListContext, we don't want to always display the selected items first.
         // Indeed it wouldn't work well regarding sorting and pagination
         data:
-            matchingReferences && matchingReferences.length > 0
-                ? indexById(matchingReferences)
-                : {},
+            matchingReferences && matchingReferences.length > 0 ?
+                indexById(matchingReferences) :
+                {},
         displayedFilters,
         error: dataStatus.error,
         filterValues,

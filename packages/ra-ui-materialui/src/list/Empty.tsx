@@ -20,9 +20,9 @@ const useStyles = makeStyles(
             opacity: theme.palette.type === 'light' ? 0.5 : 0.8,
             margin: '0 1em',
             color:
-                theme.palette.type === 'light'
-                    ? 'inherit'
-                    : theme.palette.text.primary,
+                theme.palette.type === 'light' ?
+                    'inherit' :
+                    theme.palette.text.primary,
         },
         icon: {
             width: '9em',

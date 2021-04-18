@@ -99,13 +99,15 @@ const Labeled: FunctionComponent<LabeledProps> = props => {
                 />
             </InputLabel>
             <div className={classes.value}>
-                {children && typeof children.type !== 'string'
-                    ? React.cloneElement(children, {
-                          input,
-                          resource,
-                          ...restProps,
-                      })
-                    : children}
+                {children && typeof children.type !== 'string' ? (
+                    React.cloneElement(children, {
+                        input,
+                        resource,
+                        ...restProps,
+                    })
+                ) : (
+                    children
+                )}
             </div>
         </FormControl>
     );

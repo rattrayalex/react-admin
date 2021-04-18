@@ -73,9 +73,9 @@ const selectedIdsReducer: Reducer<State> = (
         }
     }
 
-    return action.meta && action.meta.unselectAll
-        ? initialState
-        : previousState;
+    return action.meta && action.meta.unselectAll ?
+        initialState :
+        previousState;
 };
 
 export default selectedIdsReducer;

@@ -141,13 +141,15 @@ class LayoutWithoutTheme extends Component<
                                 }),
                             })}
                             <div id="main-content" className={classes.content}>
-                                {hasError
-                                    ? createElement(error, {
-                                          error: errorMessage,
-                                          errorInfo,
-                                          title,
-                                      })
-                                    : children}
+                                {hasError ? (
+                                    createElement(error, {
+                                        error: errorMessage,
+                                        errorInfo,
+                                        title,
+                                    })
+                                ) : (
+                                    children
+                                )}
                             </div>
                         </main>
                     </div>

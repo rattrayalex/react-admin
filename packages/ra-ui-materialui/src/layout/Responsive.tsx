@@ -17,38 +17,38 @@ export const Responsive = ({
     switch (width) {
         case 'xs':
             element =
-                typeof xsmall !== 'undefined'
-                    ? xsmall
-                    : typeof small !== 'undefined'
-                    ? small
-                    : typeof medium !== 'undefined'
-                    ? medium
-                    : large;
+                typeof xsmall !== 'undefined' ?
+                    xsmall :
+                typeof small !== 'undefined' ?
+                    small :
+                typeof medium !== 'undefined' ?
+                    medium :
+                    large;
             break;
         case 'sm':
             element =
-                typeof small !== 'undefined'
-                    ? small
-                    : typeof medium !== 'undefined'
-                    ? medium
-                    : large;
+                typeof small !== 'undefined' ?
+                    small :
+                typeof medium !== 'undefined' ?
+                    medium :
+                    large;
             break;
         case 'md':
             element =
-                typeof medium !== 'undefined'
-                    ? medium
-                    : typeof large !== 'undefined'
-                    ? large
-                    : small;
+                typeof medium !== 'undefined' ?
+                    medium :
+                typeof large !== 'undefined' ?
+                    large :
+                    small;
             break;
         case 'lg':
         case 'xl':
             element =
-                typeof large !== 'undefined'
-                    ? large
-                    : typeof medium !== 'undefined'
-                    ? medium
-                    : small;
+                typeof large !== 'undefined' ?
+                    large :
+                typeof medium !== 'undefined' ?
+                    medium :
+                    small;
             break;
         default:
             throw new Error(`Unknown width ${width}`);

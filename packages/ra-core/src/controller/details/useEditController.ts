@@ -175,59 +175,66 @@ export const useEditController = <RecordType extends Record = Record>(
             } = {}
         ) =>
             Promise.resolve(
-                transformFromSave
-                    ? transformFromSave(data)
-                    : transformRef.current
-                    ? transformRef.current(data)
-                    : data
+                transformFromSave ?
+                    transformFromSave(data) :
+                transformRef.current ?
+                    transformRef.current(data) :
+                    data
             ).then(data =>
                 update(
                     { payload: { data } },
                     {
                         action: CRUD_UPDATE,
-                        onSuccess: onSuccessFromSave
-                            ? onSuccessFromSave
-                            : onSuccessRef.current
-                            ? onSuccessRef.current
-                            : () => {
-                                  notify(
-                                      successMessage ||
-                                          'ra.notification.updated',
-                                      'info',
-                                      {
-                                          smart_count: 1,
-                                      },
-                                      mutationMode === 'undoable'
-                                  );
-                                  redirect(redirectTo, basePath, data.id, data);
-                              },
-                        onFailure: onFailureFromSave
-                            ? onFailureFromSave
-                            : onFailureRef.current
-                            ? onFailureRef.current
-                            : error => {
-                                  notify(
-                                      typeof error === 'string'
-                                          ? error
-                                          : error.message ||
+                        onSuccess:
+                            onSuccessFromSave ?
+                                onSuccessFromSave :
+                            onSuccessRef.current ?
+                                onSuccessRef.current :
+                                () => {
+                                    notify(
+                                        successMessage ||
+                                            'ra.notification.updated',
+                                        'info',
+                                        {
+                                            smart_count: 1,
+                                        },
+                                        mutationMode === 'undoable'
+                                    );
+                                    redirect(
+                                        redirectTo,
+                                        basePath,
+                                        data.id,
+                                        data
+                                    );
+                                },
+                        onFailure:
+                            onFailureFromSave ?
+                                onFailureFromSave :
+                            onFailureRef.current ?
+                                onFailureRef.current :
+                                error => {
+                                    notify(
+                                        typeof error === 'string' ?
+                                            error :
+                                            error.message ||
                                                 'ra.notification.http_error',
-                                      'warning',
-                                      {
-                                          _:
-                                              typeof error === 'string'
-                                                  ? error
-                                                  : error && error.message
-                                                  ? error.message
-                                                  : undefined,
-                                      }
-                                  );
-                                  if (
-                                      mutationMode === 'undoable' ||
-                                      mutationMode === 'pessimistic'
-                                  ) {
-                                      refresh();
-                                  }
-                              },
+                                        'warning',
+                                        {
+                                            _:
+                                                typeof error === 'string' ?
+                                                    error :
+                                                error && error.message ?
+                                                    error.message :
+                                                    undefined,
+                                        }
+                                    );
+                                    if (
+                                        mutationMode === 'undoable' ||
+                                        mutationMode === 'pessimistic'
+                                    ) {
+                                        refresh();
+                                    }
+                                },
                         mutationMode,
                     }
                 )

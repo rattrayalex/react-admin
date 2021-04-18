@@ -31,9 +31,9 @@ const UserBulkActionButtons = props => (
 );
 
 const rowClick = memoize(permissions => (id, basePath, record) => {
-    return permissions === 'admin'
-        ? Promise.resolve('edit')
-        : Promise.resolve('show');
+    return permissions === 'admin' ?
+        Promise.resolve('edit') :
+        Promise.resolve('show');
 });
 
 const UserList = ({ permissions, ...props }) => (

@@ -105,13 +105,13 @@ const useStyles = makeStyles(
             height: '100%',
             overflowX: 'hidden',
             width: (props: { open?: boolean }) =>
-                props.open
-                    ? lodashGet(theme, 'sidebar.width', DRAWER_WIDTH)
-                    : lodashGet(
-                          theme,
-                          'sidebar.closedWidth',
-                          CLOSED_DRAWER_WIDTH
-                      ),
+                props.open ?
+                    lodashGet(theme, 'sidebar.width', DRAWER_WIDTH) :
+                    lodashGet(
+                        theme,
+                        'sidebar.closedWidth',
+                        CLOSED_DRAWER_WIDTH
+                    ),
             transition: theme.transitions.create('width', {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,

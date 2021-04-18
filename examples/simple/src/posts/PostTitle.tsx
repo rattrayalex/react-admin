@@ -5,9 +5,11 @@ export default ({ record }: { record?: Record }) => {
     const translate = useTranslate();
     return (
         <span>
-            {record
-                ? translate('post.edit.title', { title: record.title })
-                : ''}
+            {record ? (
+                translate('post.edit.title', { title: record.title })
+            ) : (
+                ''
+            )}
         </span>
     );
 };

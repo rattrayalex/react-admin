@@ -153,11 +153,11 @@ const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
             event.stopPropagation();
             const newField = event.currentTarget.dataset.field;
             const newOrder =
-                currentSort.field === newField
-                    ? currentSort.order === 'ASC'
-                        ? 'DESC'
-                        : 'ASC'
-                    : event.currentTarget.dataset.order;
+                currentSort.field === newField ?
+                    currentSort.order === 'ASC' ?
+                        'DESC' :
+                        'ASC' :
+                    event.currentTarget.dataset.order;
 
             setSort(newField, newOrder);
         },
@@ -173,9 +173,9 @@ const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
                     selectedIds.filter(id => !ids.includes(id))
                 );
                 onSelect(
-                    isRowSelectable
-                        ? all.filter(id => isRowSelectable(data[id]))
-                        : all
+                    isRowSelectable ?
+                        all.filter(id => isRowSelectable(data[id])) :
+                        all
                 );
             } else {
                 onSelect([]);
@@ -204,16 +204,16 @@ const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
                     Math.max(lastSelectedIndex, index) + 1
                 );
 
-                const newSelectedIds = event.target.checked
-                    ? union(selectedIds, idsBetweenSelections)
-                    : difference(selectedIds, idsBetweenSelections);
+                const newSelectedIds = event.target.checked ?
+                    union(selectedIds, idsBetweenSelections) :
+                    difference(selectedIds, idsBetweenSelections);
 
                 onSelect(
-                    isRowSelectable
-                        ? newSelectedIds.filter((id: Identifier) =>
-                              isRowSelectable(data[id])
-                          )
-                        : newSelectedIds
+                    isRowSelectable ?
+                        newSelectedIds.filter((id: Identifier) =>
+                            isRowSelectable(data[id])
+                        ) :
+                        newSelectedIds
                 );
             } else {
                 onToggleItem(id);
@@ -249,9 +249,9 @@ const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
         return null;
     }
 
-    const all = isRowSelectable
-        ? ids.filter(id => isRowSelectable(data[id]))
-        : ids;
+    const all = isRowSelectable ?
+        ids.filter(id => isRowSelectable(data[id])) :
+        ids;
 
     /**
      * After the initial load, if the data for the list isn't empty,

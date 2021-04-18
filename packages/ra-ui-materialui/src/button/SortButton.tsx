@@ -68,9 +68,9 @@ const SortButton: FC<SortButtonProps> = ({
         const field = event.currentTarget.dataset.sort;
         setSort(
             field,
-            field === currentSort.field
-                ? inverseOrder(currentSort.order)
-                : 'ASC'
+            field === currentSort.field ?
+                inverseOrder(currentSort.order) :
+                'ASC'
         );
         setAnchorEl(null);
     };
@@ -132,9 +132,9 @@ const SortButton: FC<SortButtonProps> = ({
                         )}{' '}
                         {translate(
                             `ra.sort.${
-                                currentSort.field === field
-                                    ? inverseOrder(currentSort.order)
-                                    : 'ASC'
+                                currentSort.field === field ?
+                                    inverseOrder(currentSort.order) :
+                                    'ASC'
                             }`
                         )}
                     </MenuItem>

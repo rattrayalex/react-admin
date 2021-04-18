@@ -56,9 +56,11 @@ const Button = ({ img, label, href }) => {
             <a
                 href={href}
                 style={
-                    hovered
-                        ? { ...styles.link, ...styles.linkHovered }
-                        : styles.link
+                    hovered ? (
+                        { ...styles.link, ...styles.linkHovered }
+                    ) : (
+                        styles.link
+                    )
                 }
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}

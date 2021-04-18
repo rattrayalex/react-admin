@@ -198,11 +198,11 @@ const SelectInput: FunctionComponent<SelectInputProps> = props => {
     const { touched, error, submitError } = meta;
 
     const renderEmptyItemOption = useCallback(() => {
-        return React.isValidElement(emptyText)
-            ? React.cloneElement(emptyText)
-            : emptyText === ''
-            ? ' ' // em space, forces the display of an empty line of normal height
-            : translate(emptyText, { _: emptyText });
+        return React.isValidElement(emptyText) ?
+            React.cloneElement(emptyText) :
+        emptyText === '' ?
+            ' ' : // em space, forces the display of an empty line of normal height
+            translate(emptyText, { _: emptyText });
     }, [emptyText, translate]);
 
     const renderMenuItemOption = useCallback(

@@ -73,9 +73,11 @@ const SubMenu: FC<Props> = ({
                     component="div"
                     disablePadding
                     className={
-                        sidebarIsOpen
-                            ? classes.sidebarIsOpen
-                            : classes.sidebarIsClosed
+                        sidebarIsOpen ? (
+                            classes.sidebarIsOpen
+                        ) : (
+                            classes.sidebarIsClosed
+                        )
                     }
                 >
                     {children}

@@ -78,9 +78,11 @@ export const NumberField: FC<NumberFieldProps> = memo<NumberFieldProps>(
                 className={className}
                 {...sanitizeFieldRestProps(rest)}
             >
-                {hasNumberFormat
-                    ? value.toLocaleString(locales, options)
-                    : value}
+                {hasNumberFormat ? (
+                    value.toLocaleString(locales, options)
+                ) : (
+                    value
+                )}
             </Typography>
         );
     }

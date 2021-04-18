@@ -480,9 +480,7 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
                                     handleFilterChange(event);
                                     setFilterValue(event.target.value);
                                     onChange!(
-                                        event as React.ChangeEvent<
-                                            HTMLInputElement
-                                        >
+                                        event as React.ChangeEvent<HTMLInputElement>
                                     );
                                 },
                                 onFocus,

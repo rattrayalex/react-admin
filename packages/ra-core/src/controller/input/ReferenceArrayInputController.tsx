@@ -149,6 +149,4 @@ interface ReferenceArrayInputControllerProps {
     source: string;
 }
 
-export default ReferenceArrayInputController as ComponentType<
-    ReferenceArrayInputControllerProps
->;
+export default ReferenceArrayInputController as ComponentType<ReferenceArrayInputControllerProps>;

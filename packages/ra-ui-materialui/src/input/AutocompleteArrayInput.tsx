@@ -419,9 +419,7 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
                                 onChange: event => {
                                     handleFilterChange(event);
                                     onChange!(
-                                        event as React.ChangeEvent<
-                                            HTMLInputElement
-                                        >
+                                        event as React.ChangeEvent<HTMLInputElement>
                                     );
                                 },
                                 onFocus,

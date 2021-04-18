@@ -147,9 +147,14 @@ const useListController = <RecordType extends Record = Record>(
      * We want the list of ids to be always available for optimistic rendering,
      * and therefore we need a custom action (CRUD_GET_LIST) that will be used.
      */
-    const { ids, data, total, error, loading, loaded } = useGetMainList<
-        RecordType
-    >(
+    const {
+        ids,
+        data,
+        total,
+        error,
+        loading,
+        loaded,
+    } = useGetMainList<RecordType>(
         resource,
         {
             page: query.page,

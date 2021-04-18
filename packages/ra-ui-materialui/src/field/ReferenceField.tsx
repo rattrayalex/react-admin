@@ -132,10 +132,9 @@ export interface ReferenceFieldProps<RecordType extends Record = Record>
  * This intermediate component is made necessary by the useReference hook,
  * which cannot be called conditionally when get(record, source) is empty.
  */
-export const NonEmptyReferenceField: FC<Omit<
-    ReferenceFieldProps,
-    'emptyText'
->> = ({ children, record, source, ...props }) => {
+export const NonEmptyReferenceField: FC<
+    Omit<ReferenceFieldProps, 'emptyText'>
+> = ({ children, record, source, ...props }) => {
     if (React.Children.count(children) !== 1) {
         throw new Error('<ReferenceField> only accepts a single child');
     }

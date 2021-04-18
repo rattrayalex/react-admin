@@ -63,18 +63,18 @@ export const useShowController = <RecordType extends Record = Record>(
     const redirect = useRedirect();
     const refresh = useRefresh();
     const version = useVersion();
-    const { data: record, loading, loaded } = useGetOne<RecordType>(
-        resource,
-        id,
-        {
-            action: CRUD_GET_ONE,
-            onFailure: () => {
-                notify('ra.notification.item_doesnt_exist', 'warning');
-                redirect('list', basePath);
-                refresh();
-            },
-        }
-    );
+    const {
+        data: record,
+        loading,
+        loaded,
+    } = useGetOne<RecordType>(resource, id, {
+        action: CRUD_GET_ONE,
+        onFailure: () => {
+            notify('ra.notification.item_doesnt_exist', 'warning');
+            redirect('list', basePath);
+            refresh();
+        },
+    });
 
     const getResourceLabel = useGetResourceLabel();
     const defaultTitle = translate('ra.page.show', {

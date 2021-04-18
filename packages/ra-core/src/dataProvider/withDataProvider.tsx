@@ -55,13 +55,16 @@ export interface DataProviderProps {
  *
  * export default withDataProvider(PostList);
  */
-const withDataProvider = <P extends object>(
-    Component: React.ComponentType<P>
-): React.FunctionComponent<P & DataProviderProps> => (props: P) => (
-    <Component
-        {...props}
-        dataProvider={useDataProviderWithDeclarativeSideEffects()}
-    />
-);
+const withDataProvider =
+    <P extends object>(
+        Component: React.ComponentType<P>
+    ): React.FunctionComponent<P & DataProviderProps> =>
+    (props: P) =>
+        (
+            <Component
+                {...props}
+                dataProvider={useDataProviderWithDeclarativeSideEffects()}
+            />
+        );
 
 export default withDataProvider;

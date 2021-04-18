@@ -144,21 +144,22 @@ ReferenceManyField.defaultProps = {
     addLabel: true,
 };
 
-export const ReferenceManyFieldView: FC<ReferenceManyFieldViewProps> = props => {
-    const { basePath, children, pagination, reference, ...rest } = props;
-    return (
-        <>
-            {cloneElement(Children.only(children), {
-                ...sanitizeFieldRestProps(rest),
-                basePath,
-                resource: reference,
-            })}
-            {pagination &&
-                props.total !== undefined &&
-                cloneElement(pagination)}
-        </>
-    );
-};
+export const ReferenceManyFieldView: FC<ReferenceManyFieldViewProps> =
+    props => {
+        const { basePath, children, pagination, reference, ...rest } = props;
+        return (
+            <>
+                {cloneElement(Children.only(children), {
+                    ...sanitizeFieldRestProps(rest),
+                    basePath,
+                    resource: reference,
+                })}
+                {pagination &&
+                    props.total !== undefined &&
+                    cloneElement(pagination)}
+            </>
+        );
+    };
 
 export interface ReferenceManyFieldViewProps
     extends Omit<

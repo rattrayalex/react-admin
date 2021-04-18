@@ -171,9 +171,8 @@ const EnhancedFilterForm = props => {
     const { classes: classesOverride, ...rest } = props;
     const classes = useStyles(props);
 
-    const mergedInitialValuesWithDefaultValues = mergeInitialValuesWithDefaultValues(
-        props
-    );
+    const mergedInitialValuesWithDefaultValues =
+        mergeInitialValuesWithDefaultValues(props);
 
     const { initialValues, ...rest2 } = rest;
 

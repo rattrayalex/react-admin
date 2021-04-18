@@ -62,9 +62,10 @@ const CoreAdminUI: FunctionComponent<AdminUIProps> = ({
     theme,
     title = 'React Admin',
 }) => {
-    const logoutElement = useMemo(() => logout && createElement(logout), [
-        logout,
-    ]);
+    const logoutElement = useMemo(
+        () => logout && createElement(logout),
+        [logout]
+    );
 
     useEffect(() => {
         if (

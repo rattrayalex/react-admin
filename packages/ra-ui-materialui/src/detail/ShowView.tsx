@@ -28,14 +28,8 @@ export const ShowView = (props: ShowViewProps) => {
 
     const classes = useStyles(props);
 
-    const {
-        basePath,
-        defaultTitle,
-        hasList,
-        record,
-        resource,
-        version,
-    } = useShowContext(props);
+    const { basePath, defaultTitle, hasList, record, resource, version } =
+        useShowContext(props);
     const { hasEdit } = useResourceDefinition(props);
 
     const finalActions =

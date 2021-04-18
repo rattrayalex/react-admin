@@ -143,26 +143,25 @@ const getRelatedReferences = (
     resource: string
 ) => Object.keys(previousState).filter(key => key.includes(resource));
 
-const removeDeletedReferences = (removedIds: Identifier[]) => (
-    previousState: OneToManyState,
-    key: string
-) => {
-    const idsToKeep = previousState[key].ids.filter(
-        id => !removedIds.includes(id)
-    );
+const removeDeletedReferences =
+    (removedIds: Identifier[]) =>
+    (previousState: OneToManyState, key: string) => {
+        const idsToKeep = previousState[key].ids.filter(
+            id => !removedIds.includes(id)
+        );
 
-    if (idsToKeep.length === previousState[key].ids.length) {
-        return previousState;
-    }
+        if (idsToKeep.length === previousState[key].ids.length) {
+            return previousState;
+        }
 
-    return {
-        ...previousState,
-        [key]: {
-            ids: idsToKeep,
-            total: idsToKeep.length,
-        },
+        return {
+            ...previousState,
+            [key]: {
+                ids: idsToKeep,
+                total: idsToKeep.length,
+            },
+        };
     };
-};
 
 export const nameRelatedTo = (
     reference: string,

@@ -22,14 +22,8 @@ const emptyArray = [];
 
 const Pagination: FC<PaginationProps> = props => {
     const { rowsPerPageOptions, actions, limit, ...rest } = props;
-    const {
-        loading,
-        page,
-        perPage,
-        total,
-        setPage,
-        setPerPage,
-    } = useListPaginationContext(props);
+    const { loading, page, perPage, total, setPage, setPerPage } =
+        useListPaginationContext(props);
     const translate = useTranslate();
     const isSmall = useMediaQuery((theme: Theme) =>
         theme.breakpoints.down('sm')

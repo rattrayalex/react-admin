@@ -127,16 +127,14 @@ const useQueryWithStore = <State extends ReduxState = ReduxState>(
     const requestSignatureRef = useRef(requestSignature);
     const data = useSelector(dataSelector);
     const total = useSelector(totalSelector);
-    const [state, setState]: [
-        StateResult,
-        (StateResult) => void
-    ] = useSafeSetState({
-        data,
-        total,
-        error: null,
-        loading: true,
-        loaded: isDataLoaded(data),
-    });
+    const [state, setState]: [StateResult, (StateResult) => void] =
+        useSafeSetState({
+            data,
+            total,
+            error: null,
+            loading: true,
+            loaded: isDataLoaded(data),
+        });
 
     useEffect(() => {
         if (requestSignatureRef.current !== requestSignature) {

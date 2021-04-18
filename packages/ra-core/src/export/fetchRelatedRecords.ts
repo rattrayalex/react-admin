@@ -12,19 +12,16 @@ import { Record, Identifier, DataProviderProxy } from '../types';
  *         }))
  *     );
  */
-const fetchRelatedRecords = (dataProvider: DataProviderProxy) => (
-    data,
-    field,
-    resource
-) =>
-    dataProvider
-        .getMany(resource, { ids: getRelatedIds(data, field) })
-        .then(({ data }) =>
-            data.reduce((acc, post) => {
-                acc[post.id] = post;
-                return acc;
-            }, {})
-        );
+const fetchRelatedRecords =
+    (dataProvider: DataProviderProxy) => (data, field, resource) =>
+        dataProvider
+            .getMany(resource, { ids: getRelatedIds(data, field) })
+            .then(({ data }) =>
+                data.reduce((acc, post) => {
+                    acc[post.id] = post;
+                    return acc;
+                }, {})
+            );
 
 /**
  * Extracts, aggregates and deduplicates the ids of related records

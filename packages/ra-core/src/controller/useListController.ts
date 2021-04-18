@@ -147,40 +147,34 @@ const useListController = <RecordType extends Record = Record>(
      * We want the list of ids to be always available for optimistic rendering,
      * and therefore we need a custom action (CRUD_GET_LIST) that will be used.
      */
-    const {
-        ids,
-        data,
-        total,
-        error,
-        loading,
-        loaded,
-    } = useGetMainList<RecordType>(
-        resource,
-        {
-            page: query.page,
-            perPage: query.perPage,
-        },
-        { field: query.sort, order: query.order },
-        { ...query.filter, ...filter },
-        {
-            action: CRUD_GET_LIST,
-            onFailure: error =>
-                notify(
-                    typeof error === 'string'
-                        ? error
-                        : error.message || 'ra.notification.http_error',
-                    'warning',
-                    {
-                        _:
-                            typeof error === 'string'
-                                ? error
-                                : error && error.message
-                                ? error.message
-                                : undefined,
-                    }
-                ),
-        }
-    );
+    const { ids, data, total, error, loading, loaded } =
+        useGetMainList<RecordType>(
+            resource,
+            {
+                page: query.page,
+                perPage: query.perPage,
+            },
+            { field: query.sort, order: query.order },
+            { ...query.filter, ...filter },
+            {
+                action: CRUD_GET_LIST,
+                onFailure: error =>
+                    notify(
+                        typeof error === 'string'
+                            ? error
+                            : error.message || 'ra.notification.http_error',
+                        'warning',
+                        {
+                            _:
+                                typeof error === 'string'
+                                    ? error
+                                    : error && error.message
+                                    ? error.message
+                                    : undefined,
+                        }
+                    ),
+            }
+        );
 
     const totalPages = Math.ceil(total / query.perPage) || 1;
 

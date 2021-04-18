@@ -20,9 +20,8 @@ import { Record } from '../types';
  *     );
  * };
  */
-export const RecordContext = createContext<Record | Omit<Record, 'id'>>(
-    undefined
-);
+export const RecordContext =
+    createContext<Record | Omit<Record, 'id'>>(undefined);
 
 export const RecordContextProvider = <
     RecordType extends Record | Omit<Record, 'id'> = Record

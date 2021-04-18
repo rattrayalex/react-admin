@@ -113,21 +113,18 @@ const useReferenceArrayFieldController = (
     );
 
     // selection logic
-    const {
-        selectedIds,
-        onSelect,
-        onToggleItem,
-        onUnselectItems,
-    } = useSelectionState();
+    const { selectedIds, onSelect, onToggleItem, onUnselectItems } =
+        useSelectionState();
 
     // filter logic
     const filterRef = useRef(filter);
     const [displayedFilters, setDisplayedFilters] = useSafeSetState<{
         [key: string]: boolean;
     }>({});
-    const [filterValues, setFilterValues] = useSafeSetState<{
-        [key: string]: any;
-    }>(filter);
+    const [filterValues, setFilterValues] =
+        useSafeSetState<{
+            [key: string]: any;
+        }>(filter);
     const hideFilter = useCallback(
         (filterName: string) => {
             setDisplayedFilters(previousState => {

@@ -74,11 +74,13 @@ const ReviewListMobile = () => {
                                                 render={(record?: Record) =>
                                                     record
                                                         ? `${
-                                                              (record as Customer)
-                                                                  .first_name
+                                                              (
+                                                                  record as Customer
+                                                              ).first_name
                                                           } ${
-                                                              (record as Customer)
-                                                                  .last_name
+                                                              (
+                                                                  record as Customer
+                                                              ).last_name
                                                           }`
                                                         : ''
                                                 }

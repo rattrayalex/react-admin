@@ -165,15 +165,13 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
     };
 
     // remove field and call the onClick event of the button passed as removeButton prop
-    const handleRemoveButtonClick = (
-        originalOnClickHandler,
-        index
-    ) => event => {
-        removeField(index)();
-        if (originalOnClickHandler) {
-            originalOnClickHandler(event);
-        }
-    };
+    const handleRemoveButtonClick =
+        (originalOnClickHandler, index) => event => {
+            removeField(index)();
+            if (originalOnClickHandler) {
+                originalOnClickHandler(event);
+            }
+        };
 
     const records = get(record, source);
     return fields ? (
@@ -206,10 +204,8 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
                                         if (!isValidElement<any>(input)) {
                                             return null;
                                         }
-                                        const {
-                                            source,
-                                            ...inputProps
-                                        } = input.props;
+                                        const { source, ...inputProps } =
+                                            input.props;
                                         return (
                                             <FormInput
                                                 basePath={

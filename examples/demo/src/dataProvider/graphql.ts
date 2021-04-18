@@ -85,11 +85,10 @@ export default () => {
         },
         buildQuery: customBuildQuery,
     }).then(
-        (dataProvider: LegacyDataProvider) => (
-            ...rest: Parameters<LegacyDataProvider>
-        ) => {
-            const [type, resource, params] = rest;
-            return dataProvider(type, getGqlResource(resource), params);
-        }
+        (dataProvider: LegacyDataProvider) =>
+            (...rest: Parameters<LegacyDataProvider>) => {
+                const [type, resource, params] = rest;
+                return dataProvider(type, getGqlResource(resource), params);
+            }
     );
 };

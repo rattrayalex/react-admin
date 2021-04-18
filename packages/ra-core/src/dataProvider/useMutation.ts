@@ -137,7 +137,8 @@ const useMutation = (
     });
 
     const dataProvider = useDataProvider();
-    const dataProviderWithDeclarativeSideEffects = useDataProviderWithDeclarativeSideEffects();
+    const dataProviderWithDeclarativeSideEffects =
+        useDataProviderWithDeclarativeSideEffects();
 
     /* eslint-disable react-hooks/exhaustive-deps */
     const mutate = useCallback(

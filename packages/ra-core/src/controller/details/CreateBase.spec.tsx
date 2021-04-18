@@ -23,11 +23,11 @@ describe('CreateBase', () => {
     };
 
     it('should give access to the current onSuccess function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
 
         const Child = () => {
@@ -56,11 +56,11 @@ describe('CreateBase', () => {
     });
 
     it('should allow to override the onSuccess function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const onSuccessOverride = jest.fn();
 
@@ -104,11 +104,11 @@ describe('CreateBase', () => {
     });
 
     it('should give access to the current onFailure function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
 
         const Child = () => {
@@ -137,11 +137,11 @@ describe('CreateBase', () => {
     });
 
     it('should allow to override the onFailure function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const onFailureOverride = jest.fn();
 
@@ -185,11 +185,11 @@ describe('CreateBase', () => {
     });
 
     it('should give access to the current transform function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn();
 
         const Child = () => {
@@ -218,11 +218,11 @@ describe('CreateBase', () => {
     });
 
     it('should allow to override the transform function', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn();
         const transformOverride = jest.fn();
 

@@ -44,12 +44,13 @@ export default {
         '.ql-editor > *': {
             cursor: 'text',
         },
-        '.ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6': {
-            margin: '0',
-            padding: '0',
-            counterReset:
-                'list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9',
-        },
+        '.ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6':
+            {
+                margin: '0',
+                padding: '0',
+                counterReset:
+                    'list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9',
+            },
         '.ql-editor ol, .ql-editor ul': {
             paddingLeft: '1.5em',
         },
@@ -62,14 +63,16 @@ export default {
         '.ql-editor ul[data-checked=true], .ql-editor ul[data-checked=false]': {
             pointerEvents: 'none',
         },
-        '.ql-editor ul[data-checked=true] > li *, .ql-editor ul[data-checked=false] > li *': {
-            pointerEvents: 'all',
-        },
-        '.ql-editor ul[data-checked=true] > li::before, .ql-editor ul[data-checked=false] > li::before': {
-            color: '#777',
-            cursor: 'pointer',
-            pointerEvents: 'all',
-        },
+        '.ql-editor ul[data-checked=true] > li *, .ql-editor ul[data-checked=false] > li *':
+            {
+                pointerEvents: 'all',
+            },
+        '.ql-editor ul[data-checked=true] > li::before, .ql-editor ul[data-checked=false] > li::before':
+            {
+                color: '#777',
+                cursor: 'pointer',
+                pointerEvents: 'all',
+            },
         '.ql-editor ul[data-checked=true] > li::before': {
             content: "'\\2611'",
         },
@@ -90,12 +93,14 @@ export default {
             marginLeft: '0.3em',
             marginRight: '-1.5em',
         },
-        '.ql-editor ol li:not(.ql-direction-rtl), .ql-editor ul li:not(.ql-direction-rtl)': {
-            paddingLeft: '1.5em',
-        },
-        '.ql-editor ol li.ql-direction-rtl, .ql-editor ul li.ql-direction-rtl': {
-            paddingRight: '1.5em',
-        },
+        '.ql-editor ol li:not(.ql-direction-rtl), .ql-editor ul li:not(.ql-direction-rtl)':
+            {
+                paddingLeft: '1.5em',
+            },
+        '.ql-editor ol li.ql-direction-rtl, .ql-editor ul li.ql-direction-rtl':
+            {
+                paddingRight: '1.5em',
+            },
         '.ql-editor ol li': {
             counterReset:
                 'list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9',
@@ -383,31 +388,39 @@ export default {
             float: 'left',
             height: '100%',
         },
-        '.ql-bubble.ql-toolbar button:active:hover, .ql-bubble .ql-toolbar button:active:hover': {
-            outline: 'none',
-        },
-        '.ql-bubble.ql-toolbar input.ql-image[type=file], .ql-bubble .ql-toolbar input.ql-image[type=file]': {
-            display: 'none',
-        },
-        '.ql-bubble.ql-toolbar button:hover, .ql-bubble .ql-toolbar button:hover, .ql-bubble.ql-toolbar button:focus, .ql-bubble .ql-toolbar button:focus, .ql-bubble.ql-toolbar button.ql-active, .ql-bubble .ql-toolbar button.ql-active, .ql-bubble.ql-toolbar .ql-picker-label:hover, .ql-bubble .ql-toolbar .ql-picker-label:hover, .ql-bubble.ql-toolbar .ql-picker-label.ql-active, .ql-bubble .ql-toolbar .ql-picker-label.ql-active, .ql-bubble.ql-toolbar .ql-picker-item:hover, .ql-bubble .ql-toolbar .ql-picker-item:hover, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected': {
-            color: '#fff',
-        },
-        '.ql-bubble.ql-toolbar button:hover .ql-fill, .ql-bubble .ql-toolbar button:hover .ql-fill, .ql-bubble.ql-toolbar button:focus .ql-fill, .ql-bubble .ql-toolbar button:focus .ql-fill, .ql-bubble.ql-toolbar button.ql-active .ql-fill, .ql-bubble .ql-toolbar button.ql-active .ql-fill, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-bubble.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-bubble.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill': {
-            fill: '#fff',
-        },
-        '.ql-bubble.ql-toolbar button:hover .ql-stroke, .ql-bubble .ql-toolbar button:hover .ql-stroke, .ql-bubble.ql-toolbar button:focus .ql-stroke, .ql-bubble .ql-toolbar button:focus .ql-stroke, .ql-bubble.ql-toolbar button.ql-active .ql-stroke, .ql-bubble .ql-toolbar button.ql-active .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-bubble.ql-toolbar button:hover .ql-stroke-miter, .ql-bubble .ql-toolbar button:hover .ql-stroke-miter, .ql-bubble.ql-toolbar button:focus .ql-stroke-miter, .ql-bubble .ql-toolbar button:focus .ql-stroke-miter, .ql-bubble.ql-toolbar button.ql-active .ql-stroke-miter, .ql-bubble .ql-toolbar button.ql-active .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter': {
-            stroke: '#fff',
-        },
+        '.ql-bubble.ql-toolbar button:active:hover, .ql-bubble .ql-toolbar button:active:hover':
+            {
+                outline: 'none',
+            },
+        '.ql-bubble.ql-toolbar input.ql-image[type=file], .ql-bubble .ql-toolbar input.ql-image[type=file]':
+            {
+                display: 'none',
+            },
+        '.ql-bubble.ql-toolbar button:hover, .ql-bubble .ql-toolbar button:hover, .ql-bubble.ql-toolbar button:focus, .ql-bubble .ql-toolbar button:focus, .ql-bubble.ql-toolbar button.ql-active, .ql-bubble .ql-toolbar button.ql-active, .ql-bubble.ql-toolbar .ql-picker-label:hover, .ql-bubble .ql-toolbar .ql-picker-label:hover, .ql-bubble.ql-toolbar .ql-picker-label.ql-active, .ql-bubble .ql-toolbar .ql-picker-label.ql-active, .ql-bubble.ql-toolbar .ql-picker-item:hover, .ql-bubble .ql-toolbar .ql-picker-item:hover, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected':
+            {
+                color: '#fff',
+            },
+        '.ql-bubble.ql-toolbar button:hover .ql-fill, .ql-bubble .ql-toolbar button:hover .ql-fill, .ql-bubble.ql-toolbar button:focus .ql-fill, .ql-bubble .ql-toolbar button:focus .ql-fill, .ql-bubble.ql-toolbar button.ql-active .ql-fill, .ql-bubble .ql-toolbar button.ql-active .ql-fill, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-bubble.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-bubble.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill':
+            {
+                fill: '#fff',
+            },
+        '.ql-bubble.ql-toolbar button:hover .ql-stroke, .ql-bubble .ql-toolbar button:hover .ql-stroke, .ql-bubble.ql-toolbar button:focus .ql-stroke, .ql-bubble .ql-toolbar button:focus .ql-stroke, .ql-bubble.ql-toolbar button.ql-active .ql-stroke, .ql-bubble .ql-toolbar button.ql-active .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-bubble.ql-toolbar button:hover .ql-stroke-miter, .ql-bubble .ql-toolbar button:hover .ql-stroke-miter, .ql-bubble.ql-toolbar button:focus .ql-stroke-miter, .ql-bubble .ql-toolbar button:focus .ql-stroke-miter, .ql-bubble.ql-toolbar button.ql-active .ql-stroke-miter, .ql-bubble .ql-toolbar button.ql-active .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-bubble.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-bubble .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter':
+            {
+                stroke: '#fff',
+            },
         '@media (pointer: coarse)': {
-            '.ql-bubble.ql-toolbar button:hover:not(.ql-active), .ql-bubble .ql-toolbar button:hover:not(.ql-active)': {
-                color: '#ccc',
-            },
-            '.ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill': {
-                fill: '#ccc',
-            },
-            '.ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter': {
-                stroke: '#ccc',
-            },
+            '.ql-bubble.ql-toolbar button:hover:not(.ql-active), .ql-bubble .ql-toolbar button:hover:not(.ql-active)':
+                {
+                    color: '#ccc',
+                },
+            '.ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-fill, .ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill':
+                {
+                    fill: '#ccc',
+                },
+            '.ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke, .ql-bubble.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter, .ql-bubble .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter':
+                {
+                    stroke: '#ccc',
+                },
         },
         '.ql-bubble': {
             boxSizing: 'border-box',
@@ -586,12 +599,14 @@ export default {
         '.ql-bubble .ql-color-picker, .ql-bubble .ql-icon-picker': {
             width: 28,
         },
-        '.ql-bubble .ql-color-picker .ql-picker-label, .ql-bubble .ql-icon-picker .ql-picker-label': {
-            padding: '2px 4px',
-        },
-        '.ql-bubble .ql-color-picker .ql-picker-label svg, .ql-bubble .ql-icon-picker .ql-picker-label svg': {
-            right: 4,
-        },
+        '.ql-bubble .ql-color-picker .ql-picker-label, .ql-bubble .ql-icon-picker .ql-picker-label':
+            {
+                padding: '2px 4px',
+            },
+        '.ql-bubble .ql-color-picker .ql-picker-label svg, .ql-bubble .ql-icon-picker .ql-picker-label svg':
+            {
+                right: 4,
+            },
         '.ql-bubble .ql-icon-picker .ql-picker-options': {
             padding: '4px 0px',
         },
@@ -612,100 +627,127 @@ export default {
             padding: 0,
             width: 16,
         },
-        '.ql-bubble .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg': {
-            position: 'absolute',
-            marginTop: -9,
-            right: '0',
-            top: '50%',
-            width: 18,
-        },
-        ".ql-bubble .ql-picker.ql-header .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-font .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-size .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-label]:not([data-label=''])::before": {
-            content: 'attr(data-label)',
-        },
+        '.ql-bubble .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg':
+            {
+                position: 'absolute',
+                marginTop: -9,
+                right: '0',
+                top: '50%',
+                width: 18,
+            },
+        ".ql-bubble .ql-picker.ql-header .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-font .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-size .ql-picker-label[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-label]:not([data-label=''])::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-label]:not([data-label=''])::before":
+            {
+                content: 'attr(data-label)',
+            },
         '.ql-bubble .ql-picker.ql-header': {
             width: 98,
         },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label::before, .ql-bubble .ql-picker.ql-header .ql-picker-item::before': {
-            content: "'Normal'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="1"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="1"]::before': {
-            content: "'Heading 1'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="2"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="2"]::before': {
-            content: "'Heading 2'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="3"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="3"]::before': {
-            content: "'Heading 3'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="4"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="4"]::before': {
-            content: "'Heading 4'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="5"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="5"]::before': {
-            content: "'Heading 5'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="6"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="6"]::before': {
-            content: "'Heading 6'",
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="1"]::before': {
-            fontSize: '2em',
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="2"]::before': {
-            fontSize: '1.5em',
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="3"]::before': {
-            fontSize: '1.17em',
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="4"]::before': {
-            fontSize: '1em',
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="5"]::before': {
-            fontSize: '0.83em',
-        },
-        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="6"]::before': {
-            fontSize: '0.67em',
-        },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label::before, .ql-bubble .ql-picker.ql-header .ql-picker-item::before':
+            {
+                content: "'Normal'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="1"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="1"]::before':
+            {
+                content: "'Heading 1'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="2"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="2"]::before':
+            {
+                content: "'Heading 2'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="3"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="3"]::before':
+            {
+                content: "'Heading 3'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="4"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="4"]::before':
+            {
+                content: "'Heading 4'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="5"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="5"]::before':
+            {
+                content: "'Heading 5'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-label[data-value="6"]::before, .ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="6"]::before':
+            {
+                content: "'Heading 6'",
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="1"]::before':
+            {
+                fontSize: '2em',
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="2"]::before':
+            {
+                fontSize: '1.5em',
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="3"]::before':
+            {
+                fontSize: '1.17em',
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="4"]::before':
+            {
+                fontSize: '1em',
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="5"]::before':
+            {
+                fontSize: '0.83em',
+            },
+        '.ql-bubble .ql-picker.ql-header .ql-picker-item[data-value="6"]::before':
+            {
+                fontSize: '0.67em',
+            },
         '.ql-bubble .ql-picker.ql-font': {
             width: 108,
         },
-        '.ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before': {
-            content: "'Sans Serif'",
-        },
-        '.ql-bubble .ql-picker.ql-font .ql-picker-label[data-value=serif]::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=serif]::before': {
-            content: "'Serif'",
-        },
-        '.ql-bubble .ql-picker.ql-font .ql-picker-label[data-value=monospace]::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before': {
-            content: "'Monospace'",
-        },
-        '.ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=serif]::before': {
-            fontFamily: 'Georgia, Times New Roman, serif',
-        },
-        '.ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before': {
-            fontFamily: 'Monaco, Courier New, monospace',
-        },
+        '.ql-bubble .ql-picker.ql-font .ql-picker-label::before, .ql-bubble .ql-picker.ql-font .ql-picker-item::before':
+            {
+                content: "'Sans Serif'",
+            },
+        '.ql-bubble .ql-picker.ql-font .ql-picker-label[data-value=serif]::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=serif]::before':
+            {
+                content: "'Serif'",
+            },
+        '.ql-bubble .ql-picker.ql-font .ql-picker-label[data-value=monospace]::before, .ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before':
+            {
+                content: "'Monospace'",
+            },
+        '.ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=serif]::before':
+            {
+                fontFamily: 'Georgia, Times New Roman, serif',
+            },
+        '.ql-bubble .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before':
+            {
+                fontFamily: 'Monaco, Courier New, monospace',
+            },
         '.ql-bubble .ql-picker.ql-size': {
             width: 98,
         },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-label::before, .ql-bubble .ql-picker.ql-size .ql-picker-item::before': {
-            content: "'Normal'",
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=small]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=small]::before': {
-            content: "'Small'",
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=large]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=large]::before': {
-            content: "'Large'",
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=huge]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=huge]::before': {
-            content: "'Huge'",
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=small]::before': {
-            fontSize: 10,
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=large]::before': {
-            fontSize: 18,
-        },
-        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=huge]::before': {
-            fontSize: 32,
-        },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-label::before, .ql-bubble .ql-picker.ql-size .ql-picker-item::before':
+            {
+                content: "'Normal'",
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=small]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=small]::before':
+            {
+                content: "'Small'",
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=large]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=large]::before':
+            {
+                content: "'Large'",
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-label[data-value=huge]::before, .ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=huge]::before':
+            {
+                content: "'Huge'",
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=small]::before':
+            {
+                fontSize: 10,
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=large]::before':
+            {
+                fontSize: 18,
+            },
+        '.ql-bubble .ql-picker.ql-size .ql-picker-item[data-value=huge]::before':
+            {
+                fontSize: 32,
+            },
         '.ql-bubble .ql-color-picker.ql-background .ql-picker-item': {
             backgroundColor: '#fff',
         },
@@ -721,9 +763,10 @@ export default {
         '.ql-bubble .ql-color-picker svg': {
             margin: 1,
         },
-        '.ql-bubble .ql-color-picker .ql-picker-item.ql-selected, .ql-bubble .ql-color-picker .ql-picker-item:hover': {
-            borderColor: '#fff',
-        },
+        '.ql-bubble .ql-color-picker .ql-picker-item.ql-selected, .ql-bubble .ql-color-picker .ql-picker-item:hover':
+            {
+                borderColor: '#fff',
+            },
         '.ql-bubble .ql-tooltip-arrow': {
             borderLeft: '6px solid transparent',
             borderRight: '6px solid transparent',
@@ -798,16 +841,18 @@ export default {
             height: '0',
             width: '0',
         },
-        '.ql-container.ql-bubble:not(.ql-disabled) a::before, .ql-container.ql-bubble:not(.ql-disabled) a::after': {
-            left: '0',
-            marginLeft: '50%',
-            position: 'absolute',
-            transform: 'translate(-50%, -100%)',
-            transition: 'visibility 0s ease 200ms',
-            visibility: 'hidden',
-        },
-        '.ql-container.ql-bubble:not(.ql-disabled) a:hover::before, .ql-container.ql-bubble:not(.ql-disabled) a:hover::after': {
-            visibility: 'visible',
-        },
+        '.ql-container.ql-bubble:not(.ql-disabled) a::before, .ql-container.ql-bubble:not(.ql-disabled) a::after':
+            {
+                left: '0',
+                marginLeft: '50%',
+                position: 'absolute',
+                transform: 'translate(-50%, -100%)',
+                transition: 'visibility 0s ease 200ms',
+                visibility: 'hidden',
+            },
+        '.ql-container.ql-bubble:not(.ql-disabled) a:hover::before, .ql-container.ql-bubble:not(.ql-disabled) a:hover::after':
+            {
+                visibility: 'visible',
+            },
     },
 } as StyleRules;

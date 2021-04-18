@@ -33,10 +33,8 @@ const validityReducer: Reducer<ValidityRegistry> = (
                 };
             } else {
                 // remove the validity date
-                const {
-                    [JSON.stringify(requestPayload)]: value,
-                    ...rest
-                } = previousState;
+                const { [JSON.stringify(requestPayload)]: value, ...rest } =
+                    previousState;
                 return rest;
             }
         }

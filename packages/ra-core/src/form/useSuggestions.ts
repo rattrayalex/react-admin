@@ -144,68 +144,72 @@ const defaultMatchSuggestion = getChoiceText => (filter, suggestion) => {
  *
  * // Will return [{ id: 2, name: 'publisher' }]
  */
-export const getSuggestionsFactory = ({
-    choices = [],
-    allowDuplicates,
-    allowEmpty,
-    emptyText,
-    emptyValue,
-    optionText,
-    optionValue,
-    getChoiceText,
-    getChoiceValue,
-    limitChoicesToValue = false,
-    matchSuggestion = defaultMatchSuggestion(getChoiceText),
-    selectedItem,
-    suggestionLimit = 0,
-}) => filter => {
-    let suggestions = [];
-    // if an item is selected and matches the filter
-    if (
-        selectedItem &&
-        !Array.isArray(selectedItem) &&
-        matchSuggestion(filter, selectedItem)
-    ) {
-        if (limitChoicesToValue) {
-            // display only the selected item
-            suggestions = choices.filter(
-                choice =>
-                    getChoiceValue(choice) === getChoiceValue(selectedItem)
-            );
-        } else if (!allowDuplicates) {
-            // ignore the filter to show more choices
-            suggestions = removeAlreadySelectedSuggestions(
-                choices,
-                selectedItem,
-                getChoiceValue
-            );
+export const getSuggestionsFactory =
+    ({
+        choices = [],
+        allowDuplicates,
+        allowEmpty,
+        emptyText,
+        emptyValue,
+        optionText,
+        optionValue,
+        getChoiceText,
+        getChoiceValue,
+        limitChoicesToValue = false,
+        matchSuggestion = defaultMatchSuggestion(getChoiceText),
+        selectedItem,
+        suggestionLimit = 0,
+    }) =>
+    filter => {
+        let suggestions = [];
+        // if an item is selected and matches the filter
+        if (
+            selectedItem &&
+            !Array.isArray(selectedItem) &&
+            matchSuggestion(filter, selectedItem)
+        ) {
+            if (limitChoicesToValue) {
+                // display only the selected item
+                suggestions = choices.filter(
+                    choice =>
+                        getChoiceValue(choice) === getChoiceValue(selectedItem)
+                );
+            } else if (!allowDuplicates) {
+                // ignore the filter to show more choices
+                suggestions = removeAlreadySelectedSuggestions(
+                    choices,
+                    selectedItem,
+                    getChoiceValue
+                );
+            } else {
+                suggestions = choices;
+            }
         } else {
-            suggestions = choices;
-        }
-    } else {
-        suggestions = choices.filter(choice => matchSuggestion(filter, choice));
-        if (!allowDuplicates) {
-            suggestions = removeAlreadySelectedSuggestions(
-                suggestions,
-                selectedItem,
-                getChoiceValue
+            suggestions = choices.filter(choice =>
+                matchSuggestion(filter, choice)
             );
+            if (!allowDuplicates) {
+                suggestions = removeAlreadySelectedSuggestions(
+                    suggestions,
+                    selectedItem,
+                    getChoiceValue
+                );
+            }
         }
-    }
 
-    suggestions = limitSuggestions(suggestions, suggestionLimit);
+        suggestions = limitSuggestions(suggestions, suggestionLimit);
 
-    if (allowEmpty) {
-        suggestions = addEmptySuggestion(suggestions, {
-            optionText,
-            optionValue,
-            emptyText,
-            emptyValue,
-        });
-    }
+        if (allowEmpty) {
+            suggestions = addEmptySuggestion(suggestions, {
+                optionText,
+                optionValue,
+                emptyText,
+                emptyValue,
+            });
+        }
 
-    return suggestions;
-};
+        return suggestions;
+    };
 
 /**
  * @example

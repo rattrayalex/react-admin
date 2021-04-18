@@ -120,12 +120,8 @@ const useDataProvider = (): DataProviderProxy => {
                     return;
                 }
                 return (...args) => {
-                    const {
-                        resource,
-                        payload,
-                        allArguments,
-                        options,
-                    } = getDataProviderCallArguments(args);
+                    const { resource, payload, allArguments, options } =
+                        getDataProviderCallArguments(args);
 
                     const type = name.toString();
                     const {

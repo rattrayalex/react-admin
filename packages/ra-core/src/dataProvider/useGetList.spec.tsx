@@ -109,10 +109,11 @@ describe('useGetList', () => {
                             data: { 1: { id: 1 }, 2: { id: 2 } },
                             list: {
                                 cachedRequests: {
-                                    '{"pagination":{"page":1,"perPage":10},"sort":{"field":"id","order":"DESC"},"filter":{}}': {
-                                        ids: [1, 2],
-                                        total: 2,
-                                    },
+                                    '{"pagination":{"page":1,"perPage":10},"sort":{"field":"id","order":"DESC"},"filter":{}}':
+                                        {
+                                            ids: [1, 2],
+                                            total: 2,
+                                        },
                                 },
                             },
                         },

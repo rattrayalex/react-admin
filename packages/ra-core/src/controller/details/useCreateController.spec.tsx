@@ -75,10 +75,10 @@ describe('useCreateController', () => {
             .mockImplementationOnce((_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         let saveCallback;
         renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -99,11 +99,11 @@ describe('useCreateController', () => {
 
     it('should execute default success side effects on success', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: (_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <CreateController {...defaultProps}>
@@ -134,10 +134,10 @@ describe('useCreateController', () => {
     it('should execute default failure side effects on failure', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <CreateController {...defaultProps}>
@@ -167,11 +167,11 @@ describe('useCreateController', () => {
 
     it('should allow onSuccess to override the default success side effects', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: (_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -194,11 +194,11 @@ describe('useCreateController', () => {
 
     it('should allow the save onSuccess option to override the success side effects override', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: (_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const onSuccessSave = jest.fn();
         const { dispatch } = renderWithRedux(
@@ -228,10 +228,10 @@ describe('useCreateController', () => {
     it('should allow onFailure to override the default failure side effects', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -255,10 +255,10 @@ describe('useCreateController', () => {
     it('should allow the save onFailure option to override the failure side effects override', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const onFailureSave = jest.fn();
         const { dispatch } = renderWithRedux(
@@ -292,10 +292,10 @@ describe('useCreateController', () => {
             .mockImplementationOnce((_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn().mockImplementationOnce(data => ({
             ...data,
             transformed: true,
@@ -325,10 +325,10 @@ describe('useCreateController', () => {
             .mockImplementationOnce((_, { data }) =>
                 Promise.resolve({ data: { id: 123, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             create,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn();
         const transformSave = jest.fn().mockImplementationOnce(data => ({
             ...data,

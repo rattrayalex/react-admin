@@ -163,35 +163,36 @@ export interface ReferenceArrayFieldViewProps
     classes?: ClassesOverride<typeof useStyles>;
 }
 
-export const ReferenceArrayFieldView: FC<ReferenceArrayFieldViewProps> = props => {
-    const {
-        children,
-        pagination,
-        className,
-        resource,
-        reference,
-        ...rest
-    } = props;
-    const classes = useStyles(props);
-    const { loaded } = useListContext(props);
+export const ReferenceArrayFieldView: FC<ReferenceArrayFieldViewProps> =
+    props => {
+        const {
+            children,
+            pagination,
+            className,
+            resource,
+            reference,
+            ...rest
+        } = props;
+        const classes = useStyles(props);
+        const { loaded } = useListContext(props);
 
-    if (!loaded) {
-        return <LinearProgress className={classes.progress} />;
-    }
+        if (!loaded) {
+            return <LinearProgress className={classes.progress} />;
+        }
 
-    return (
-        <>
-            {cloneElement(Children.only(children), {
-                ...sanitizeFieldRestProps(rest),
-                className,
-                resource,
-            })}{' '}
-            {pagination &&
-                props.total !== undefined &&
-                cloneElement(pagination, sanitizeFieldRestProps(rest))}
-        </>
-    );
-};
+        return (
+            <>
+                {cloneElement(Children.only(children), {
+                    ...sanitizeFieldRestProps(rest),
+                    className,
+                    resource,
+                })}{' '}
+                {pagination &&
+                    props.total !== undefined &&
+                    cloneElement(pagination, sanitizeFieldRestProps(rest))}
+            </>
+        );
+    };
 
 ReferenceArrayFieldView.propTypes = {
     basePath: PropTypes.string,

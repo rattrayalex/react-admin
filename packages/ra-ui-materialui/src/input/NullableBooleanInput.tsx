@@ -36,81 +36,82 @@ export type NullableBooleanInputProps = InputProps<TextFieldProps> &
         trueLabel?: string;
     };
 
-const NullableBooleanInput: FunctionComponent<NullableBooleanInputProps> = props => {
-    const {
-        className,
-        classes: classesOverride,
-        format = getStringFromBoolean,
-        helperText,
-        label,
-        margin = 'dense',
-        onBlur,
-        onChange,
-        onFocus,
-        options,
-        parse = getBooleanFromString,
-        resource,
-        source,
-        validate,
-        variant = 'filled',
-        nullLabel = 'ra.boolean.null',
-        falseLabel = 'ra.boolean.false',
-        trueLabel = 'ra.boolean.true',
-        ...rest
-    } = props;
-    const classes = useStyles(props);
-    const translate = useTranslate();
+const NullableBooleanInput: FunctionComponent<NullableBooleanInputProps> =
+    props => {
+        const {
+            className,
+            classes: classesOverride,
+            format = getStringFromBoolean,
+            helperText,
+            label,
+            margin = 'dense',
+            onBlur,
+            onChange,
+            onFocus,
+            options,
+            parse = getBooleanFromString,
+            resource,
+            source,
+            validate,
+            variant = 'filled',
+            nullLabel = 'ra.boolean.null',
+            falseLabel = 'ra.boolean.false',
+            trueLabel = 'ra.boolean.true',
+            ...rest
+        } = props;
+        const classes = useStyles(props);
+        const translate = useTranslate();
 
-    const {
-        id,
-        input,
-        isRequired,
-        meta: { error, submitError, touched },
-    } = useInput({
-        format,
-        onBlur,
-        onChange,
-        onFocus,
-        parse,
-        resource,
-        source,
-        validate,
-        ...rest,
-    });
+        const {
+            id,
+            input,
+            isRequired,
+            meta: { error, submitError, touched },
+        } = useInput({
+            format,
+            onBlur,
+            onChange,
+            onFocus,
+            parse,
+            resource,
+            source,
+            validate,
+            ...rest,
+        });
 
-    return (
-        <TextField
-            id={id}
-            {...input}
-            select
-            margin={margin}
-            label={
-                <FieldTitle
-                    label={label}
-                    source={source}
-                    resource={resource}
-                    isRequired={isRequired}
-                />
-            }
-            error={!!(touched && (error || submitError))}
-            helperText={
-                <InputHelperText
-                    touched={touched}
-                    error={error || submitError}
-                    helperText={helperText}
-                />
-            }
-            className={classnames(classes.input, className)}
-            variant={variant}
-            {...options}
-            {...sanitizeInputRestProps(rest)}
-        >
-            <MenuItem value="">{translate(nullLabel)}</MenuItem>
-            <MenuItem value="false">{translate(falseLabel)}</MenuItem>
-            <MenuItem value="true">{translate(trueLabel)}</MenuItem>
-        </TextField>
-    );
-};
+        return (
+            <TextField
+                id={id}
+                {...input}
+                select
+                margin={margin}
+                label={
+                    <FieldTitle
+                        label={label}
+                        source={source}
+                        resource={resource}
+                        isRequired={isRequired}
+                    />
+                }
+                error={!!(touched && (error || submitError))}
+                helperText={
+                    <InputHelperText
+                        touched={touched}
+                        error={error || submitError}
+                        helperText={helperText}
+                    />
+                }
+                className={classnames(classes.input, className)}
+                variant={variant}
+                {...options}
+                {...sanitizeInputRestProps(rest)}
+            >
+                <MenuItem value="">{translate(nullLabel)}</MenuItem>
+                <MenuItem value="false">{translate(falseLabel)}</MenuItem>
+                <MenuItem value="true">{translate(trueLabel)}</MenuItem>
+            </TextField>
+        );
+    };
 
 NullableBooleanInput.propTypes = {
     label: PropTypes.string,

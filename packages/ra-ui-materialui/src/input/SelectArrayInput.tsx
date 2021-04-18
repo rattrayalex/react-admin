@@ -197,9 +197,10 @@ const SelectArrayInput: FunctionComponent<SelectArrayInputProps> = props => {
         ...rest,
     });
 
-    const renderMenuItemOption = useCallback(choice => getChoiceText(choice), [
-        getChoiceText,
-    ]);
+    const renderMenuItemOption = useCallback(
+        choice => getChoiceText(choice),
+        [getChoiceText]
+    );
 
     const renderMenuItem = useCallback(
         choice => {

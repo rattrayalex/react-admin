@@ -22,12 +22,8 @@ const useDataProviderWithDeclarativeSideEffects = (): DataProviderProxy => {
                     return;
                 }
                 return (...args) => {
-                    const {
-                        resource,
-                        payload,
-                        allArguments,
-                        options,
-                    } = getDataProviderCallArguments(args);
+                    const { resource, payload, allArguments, options } =
+                        getDataProviderCallArguments(args);
 
                     let onSuccess;
                     let onFailure;

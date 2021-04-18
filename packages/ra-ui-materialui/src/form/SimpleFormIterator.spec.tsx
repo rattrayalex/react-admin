@@ -227,23 +227,20 @@ describe('<SimpleFormIterator />', () => {
     });
 
     it('should add children row on add button click', async () => {
-        const {
-            getByText,
-            queryAllByLabelText,
-            queryAllByText,
-        } = renderWithRedux(
-            <SaveContextProvider value={saveContextValue}>
-                <SideEffectContextProvider value={sideEffectValue}>
-                    <SimpleForm>
-                        <ArrayInput source="emails">
-                            <SimpleFormIterator>
-                                <TextInput source="email" />
-                            </SimpleFormIterator>
-                        </ArrayInput>
-                    </SimpleForm>
-                </SideEffectContextProvider>
-            </SaveContextProvider>
-        );
+        const { getByText, queryAllByLabelText, queryAllByText } =
+            renderWithRedux(
+                <SaveContextProvider value={saveContextValue}>
+                    <SideEffectContextProvider value={sideEffectValue}>
+                        <SimpleForm>
+                            <ArrayInput source="emails">
+                                <SimpleFormIterator>
+                                    <TextInput source="email" />
+                                </SimpleFormIterator>
+                            </ArrayInput>
+                        </SimpleForm>
+                    </SideEffectContextProvider>
+                </SaveContextProvider>
+            );
 
         const addItemElement = getByText('ra.action.add').closest('button');
 
@@ -279,23 +276,23 @@ describe('<SimpleFormIterator />', () => {
     });
 
     it('should add correct children on add button click without source', async () => {
-        const {
-            getByText,
-            queryAllByLabelText,
-            queryAllByText,
-        } = renderWithRedux(
-            <SaveContextProvider value={saveContextValue}>
-                <SideEffectContextProvider value={sideEffectValue}>
-                    <SimpleForm>
-                        <ArrayInput source="emails">
-                            <SimpleFormIterator>
-                                <TextInput source="email" label="CustomLabel" />
-                            </SimpleFormIterator>
-                        </ArrayInput>
-                    </SimpleForm>
-                </SideEffectContextProvider>
-            </SaveContextProvider>
-        );
+        const { getByText, queryAllByLabelText, queryAllByText } =
+            renderWithRedux(
+                <SaveContextProvider value={saveContextValue}>
+                    <SideEffectContextProvider value={sideEffectValue}>
+                        <SimpleForm>
+                            <ArrayInput source="emails">
+                                <SimpleFormIterator>
+                                    <TextInput
+                                        source="email"
+                                        label="CustomLabel"
+                                    />
+                                </SimpleFormIterator>
+                            </ArrayInput>
+                        </SimpleForm>
+                    </SideEffectContextProvider>
+                </SaveContextProvider>
+            );
 
         const addItemElement = getByText('ra.action.add').closest('button');
 
@@ -318,27 +315,24 @@ describe('<SimpleFormIterator />', () => {
     });
 
     it('should add correct children with default value on add button click without source', async () => {
-        const {
-            getByText,
-            queryAllByLabelText,
-            queryAllByText,
-        } = renderWithRedux(
-            <SaveContextProvider value={saveContextValue}>
-                <SideEffectContextProvider value={sideEffectValue}>
-                    <SimpleForm>
-                        <ArrayInput source="emails">
-                            <SimpleFormIterator>
-                                <TextInput
-                                    source="email"
-                                    label="CustomLabel"
-                                    defaultValue={5}
-                                />
-                            </SimpleFormIterator>
-                        </ArrayInput>
-                    </SimpleForm>
-                </SideEffectContextProvider>
-            </SaveContextProvider>
-        );
+        const { getByText, queryAllByLabelText, queryAllByText } =
+            renderWithRedux(
+                <SaveContextProvider value={saveContextValue}>
+                    <SideEffectContextProvider value={sideEffectValue}>
+                        <SimpleForm>
+                            <ArrayInput source="emails">
+                                <SimpleFormIterator>
+                                    <TextInput
+                                        source="email"
+                                        label="CustomLabel"
+                                        defaultValue={5}
+                                    />
+                                </SimpleFormIterator>
+                            </ArrayInput>
+                        </SimpleForm>
+                    </SideEffectContextProvider>
+                </SaveContextProvider>
+            );
 
         const addItemElement = getByText('ra.action.add').closest('button');
 

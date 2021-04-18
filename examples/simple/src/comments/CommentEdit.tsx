@@ -45,14 +45,8 @@ const inputText = record => `${record.title} - ${record.id}`;
 const CommentEdit = props => {
     const classes = useEditStyles();
     const controllerProps = useEditController(props);
-    const {
-        resource,
-        record,
-        redirect,
-        save,
-        basePath,
-        version,
-    } = controllerProps;
+    const { resource, record, redirect, save, basePath, version } =
+        controllerProps;
     return (
         <EditContextProvider value={controllerProps}>
             <div className="edit-page">

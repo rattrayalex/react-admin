@@ -41,14 +41,8 @@ export const ListView = (props: ListViewProps) => {
     const controllerProps = getListControllerProps(props); // deprecated, to be removed in v4
     const listContext = useListContext(props);
     const classes = useStyles(props);
-    const {
-        defaultTitle,
-        total,
-        loaded,
-        loading,
-        filterValues,
-        selectedIds,
-    } = listContext;
+    const { defaultTitle, total, loaded, loading, filterValues, selectedIds } =
+        listContext;
     const version = useVersion();
 
     const renderList = () => (

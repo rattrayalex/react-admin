@@ -28,9 +28,11 @@ const useStyles = makeStyles(
 const FilterButton = (props: FilterButtonProps): JSX.Element => {
     const { filters, classes: classesOverride, className, ...rest } = props;
     const resource = useResourceContext(props);
-    const { displayedFilters = {}, filterValues, showFilter } = useListContext(
-        props
-    );
+    const {
+        displayedFilters = {},
+        filterValues,
+        showFilter,
+    } = useListContext(props);
     const [open, setOpen] = useState(false);
     const anchorEl = useRef();
     const classes = useStyles(props);

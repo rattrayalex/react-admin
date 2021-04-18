@@ -80,136 +80,141 @@ import { ClassesOverride } from '../types';
  *
  * The object passed as `options` props is passed to the material-ui <Checkbox> components
  */
-const CheckboxGroupInput: FunctionComponent<CheckboxGroupInputProps> = props => {
-    const {
-        choices = [],
-        className,
-        classes: classesOverride,
-        format,
-        helperText,
-        label,
-        loaded,
-        loading,
-        margin = 'dense',
-        onBlur,
-        onChange,
-        onFocus,
-        optionText,
-        optionValue,
-        options,
-        parse,
-        resource,
-        row,
-        source,
-        translate,
-        translateChoice,
-        validate,
-        ...rest
-    } = props;
-    const classes = useStyles(props);
+const CheckboxGroupInput: FunctionComponent<CheckboxGroupInputProps> =
+    props => {
+        const {
+            choices = [],
+            className,
+            classes: classesOverride,
+            format,
+            helperText,
+            label,
+            loaded,
+            loading,
+            margin = 'dense',
+            onBlur,
+            onChange,
+            onFocus,
+            optionText,
+            optionValue,
+            options,
+            parse,
+            resource,
+            row,
+            source,
+            translate,
+            translateChoice,
+            validate,
+            ...rest
+        } = props;
+        const classes = useStyles(props);
 
-    warning(
-        source === undefined,
-        `If you're not wrapping the CheckboxGroupInput inside a ReferenceArrayInput, you must provide the source prop`
-    );
-
-    warning(
-        choices === undefined,
-        `If you're not wrapping the CheckboxGroupInput inside a ReferenceArrayInput, you must provide the choices prop`
-    );
-
-    const {
-        id,
-        input: { onChange: finalFormOnChange, onBlur: finalFormOnBlur, value },
-        isRequired,
-        meta: { error, submitError, touched },
-    } = useInput({
-        format,
-        onBlur,
-        onChange,
-        onFocus,
-        parse,
-        resource,
-        source,
-        validate,
-        ...rest,
-    });
-
-    const handleCheck = useCallback(
-        (event, isChecked) => {
-            let newValue;
-            try {
-                // try to convert string value to number, e.g. '123'
-                newValue = JSON.parse(event.target.value);
-            } catch (e) {
-                // impossible to convert value, e.g. 'abc'
-                newValue = event.target.value;
-            }
-            if (isChecked) {
-                finalFormOnChange([...(value || []), ...[newValue]]);
-            } else {
-                finalFormOnChange(value.filter(v => v != newValue)); // eslint-disable-line eqeqeq
-            }
-            finalFormOnBlur(); // HACK: See https://github.com/final-form/react-final-form/issues/365#issuecomment-515045503
-        },
-        [finalFormOnChange, finalFormOnBlur, value]
-    );
-
-    if (loading) {
-        return (
-            <Labeled
-                label={label}
-                source={source}
-                resource={resource}
-                className={className}
-                isRequired={isRequired}
-            >
-                <LinearProgress />
-            </Labeled>
+        warning(
+            source === undefined,
+            `If you're not wrapping the CheckboxGroupInput inside a ReferenceArrayInput, you must provide the source prop`
         );
-    }
 
-    return (
-        <FormControl
-            component="fieldset"
-            margin={margin}
-            error={touched && !!(error || submitError)}
-            className={classnames(classes.root, className)}
-            {...sanitizeRestProps(rest)}
-        >
-            <FormLabel component="legend" className={classes.label}>
-                <FieldTitle
+        warning(
+            choices === undefined,
+            `If you're not wrapping the CheckboxGroupInput inside a ReferenceArrayInput, you must provide the choices prop`
+        );
+
+        const {
+            id,
+            input: {
+                onChange: finalFormOnChange,
+                onBlur: finalFormOnBlur,
+                value,
+            },
+            isRequired,
+            meta: { error, submitError, touched },
+        } = useInput({
+            format,
+            onBlur,
+            onChange,
+            onFocus,
+            parse,
+            resource,
+            source,
+            validate,
+            ...rest,
+        });
+
+        const handleCheck = useCallback(
+            (event, isChecked) => {
+                let newValue;
+                try {
+                    // try to convert string value to number, e.g. '123'
+                    newValue = JSON.parse(event.target.value);
+                } catch (e) {
+                    // impossible to convert value, e.g. 'abc'
+                    newValue = event.target.value;
+                }
+                if (isChecked) {
+                    finalFormOnChange([...(value || []), ...[newValue]]);
+                } else {
+                    finalFormOnChange(value.filter(v => v != newValue)); // eslint-disable-line eqeqeq
+                }
+                finalFormOnBlur(); // HACK: See https://github.com/final-form/react-final-form/issues/365#issuecomment-515045503
+            },
+            [finalFormOnChange, finalFormOnBlur, value]
+        );
+
+        if (loading) {
+            return (
+                <Labeled
                     label={label}
                     source={source}
                     resource={resource}
+                    className={className}
                     isRequired={isRequired}
-                />
-            </FormLabel>
-            <FormGroup row={row}>
-                {choices.map(choice => (
-                    <CheckboxGroupInputItem
-                        key={get(choice, optionValue)}
-                        choice={choice}
-                        id={id}
-                        onChange={handleCheck}
-                        options={options}
-                        optionText={optionText}
-                        optionValue={optionValue}
-                        translateChoice={translateChoice}
-                        value={value}
+                >
+                    <LinearProgress />
+                </Labeled>
+            );
+        }
+
+        return (
+            <FormControl
+                component="fieldset"
+                margin={margin}
+                error={touched && !!(error || submitError)}
+                className={classnames(classes.root, className)}
+                {...sanitizeRestProps(rest)}
+            >
+                <FormLabel component="legend" className={classes.label}>
+                    <FieldTitle
+                        label={label}
+                        source={source}
+                        resource={resource}
+                        isRequired={isRequired}
                     />
-                ))}
-            </FormGroup>
-            <FormHelperText>
-                <InputHelperText
-                    touched={touched}
-                    error={error || submitError}
-                    helperText={helperText}
-                />
-            </FormHelperText>
-        </FormControl>
-    );
-};
+                </FormLabel>
+                <FormGroup row={row}>
+                    {choices.map(choice => (
+                        <CheckboxGroupInputItem
+                            key={get(choice, optionValue)}
+                            choice={choice}
+                            id={id}
+                            onChange={handleCheck}
+                            options={options}
+                            optionText={optionText}
+                            optionValue={optionValue}
+                            translateChoice={translateChoice}
+                            value={value}
+                        />
+                    ))}
+                </FormGroup>
+                <FormHelperText>
+                    <InputHelperText
+                        touched={touched}
+                        error={error || submitError}
+                        helperText={helperText}
+                    />
+                </FormHelperText>
+            </FormControl>
+        );
+    };
 
 const sanitizeRestProps = ({
     setFilter,

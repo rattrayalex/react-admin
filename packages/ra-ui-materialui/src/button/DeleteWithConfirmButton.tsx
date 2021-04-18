@@ -45,22 +45,17 @@ const DeleteWithConfirmButton: FC<DeleteWithConfirmButtonProps> = props => {
     const translate = useTranslate();
     const classes = useStyles(props);
     const resource = useResourceContext(props);
-    const {
-        open,
-        loading,
-        handleDialogOpen,
-        handleDialogClose,
-        handleDelete,
-    } = useDeleteWithConfirmController({
-        record,
-        redirect,
-        basePath,
-        mutationMode,
-        onClick,
-        onSuccess,
-        onFailure,
-        resource,
-    });
+    const { open, loading, handleDialogOpen, handleDialogClose, handleDelete } =
+        useDeleteWithConfirmController({
+            record,
+            redirect,
+            basePath,
+            mutationMode,
+            onClick,
+            onSuccess,
+            onFailure,
+            resource,
+        });
 
     return (
         <Fragment>

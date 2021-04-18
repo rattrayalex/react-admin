@@ -71,34 +71,31 @@ describe('<DeleteWithConfirmButton />', () => {
     };
 
     it('should allow to override the resource', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             delete: jest.fn().mockResolvedValueOnce({ data: { id: 123 } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const EditToolbar = props => (
             <Toolbar {...props}>
                 <DeleteWithConfirmButton resource="comments" />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <ThemeProvider theme={theme}>
-                <DataProviderContext.Provider value={dataProvider}>
-                    <Edit {...defaultEditProps}>
-                        <SimpleForm toolbar={<EditToolbar />}>
-                            <TextInput source="title" />
-                        </SimpleForm>
-                    </Edit>
-                </DataProviderContext.Provider>
-            </ThemeProvider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <ThemeProvider theme={theme}>
+                    <DataProviderContext.Provider value={dataProvider}>
+                        <Edit {...defaultEditProps}>
+                            <SimpleForm toolbar={<EditToolbar />}>
+                                <TextInput source="title" />
+                            </SimpleForm>
+                        </Edit>
+                    </DataProviderContext.Provider>
+                </ThemeProvider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).not.toBeNull();
@@ -114,35 +111,32 @@ describe('<DeleteWithConfirmButton />', () => {
     });
 
     it('should allow to override the onSuccess side effects', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             delete: jest.fn().mockResolvedValueOnce({ data: { id: 123 } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const EditToolbar = props => (
             <Toolbar {...props}>
                 <DeleteWithConfirmButton onSuccess={onSuccess} />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <ThemeProvider theme={theme}>
-                <DataProviderContext.Provider value={dataProvider}>
-                    <Edit {...defaultEditProps}>
-                        <SimpleForm toolbar={<EditToolbar />}>
-                            <TextInput source="title" />
-                        </SimpleForm>
-                    </Edit>
-                </DataProviderContext.Provider>
-            </ThemeProvider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <ThemeProvider theme={theme}>
+                    <DataProviderContext.Provider value={dataProvider}>
+                        <Edit {...defaultEditProps}>
+                            <SimpleForm toolbar={<EditToolbar />}>
+                                <TextInput source="title" />
+                            </SimpleForm>
+                        </Edit>
+                    </DataProviderContext.Provider>
+                </ThemeProvider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).not.toBeNull();
@@ -159,35 +153,32 @@ describe('<DeleteWithConfirmButton />', () => {
 
     it('should allow to override the onFailure side effects', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             delete: jest.fn().mockRejectedValueOnce({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const EditToolbar = props => (
             <Toolbar {...props}>
                 <DeleteWithConfirmButton onFailure={onFailure} />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <ThemeProvider theme={theme}>
-                <DataProviderContext.Provider value={dataProvider}>
-                    <Edit {...defaultEditProps}>
-                        <SimpleForm toolbar={<EditToolbar />}>
-                            <TextInput source="title" />
-                        </SimpleForm>
-                    </Edit>
-                </DataProviderContext.Provider>
-            </ThemeProvider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <ThemeProvider theme={theme}>
+                    <DataProviderContext.Provider value={dataProvider}>
+                        <Edit {...defaultEditProps}>
+                            <SimpleForm toolbar={<EditToolbar />}>
+                                <TextInput source="title" />
+                            </SimpleForm>
+                        </Edit>
+                    </DataProviderContext.Provider>
+                </ThemeProvider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).toBeDefined();

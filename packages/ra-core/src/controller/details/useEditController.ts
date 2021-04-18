@@ -137,18 +137,18 @@ export const useEditController = <RecordType extends Record = Record>(
         setTransform,
     } = useSaveModifiers({ onSuccess, onFailure, transform });
 
-    const { data: record, loading, loaded } = useGetOne<RecordType>(
-        resource,
-        id,
-        {
-            action: CRUD_GET_ONE,
-            onFailure: () => {
-                notify('ra.notification.item_doesnt_exist', 'warning');
-                redirect('list', basePath);
-                refresh();
-            },
-        }
-    );
+    const {
+        data: record,
+        loading,
+        loaded,
+    } = useGetOne<RecordType>(resource, id, {
+        action: CRUD_GET_ONE,
+        onFailure: () => {
+            notify('ra.notification.item_doesnt_exist', 'warning');
+            redirect('list', basePath);
+            refresh();
+        },
+    });
 
     const getResourceLabel = useGetResourceLabel();
     const defaultTitle = translate('ra.page.edit', {

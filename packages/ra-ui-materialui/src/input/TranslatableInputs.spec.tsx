@@ -29,23 +29,20 @@ const record = {
 describe('<TranslatableInputs />', () => {
     it('should display every input for every locale', () => {
         const save = jest.fn();
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <FormWithRedirect
-                record={record}
-                save={save}
-                render={() => (
-                    <TranslatableInputs locales={['en', 'fr']}>
-                        <TextInput source="name" />
-                        <TextInput source="description" />
-                        <TextInput source="nested.field" />
-                    </TranslatableInputs>
-                )}
-            />
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <FormWithRedirect
+                    record={record}
+                    save={save}
+                    render={() => (
+                        <TranslatableInputs locales={['en', 'fr']}>
+                            <TextInput source="name" />
+                            <TextInput source="description" />
+                            <TextInput source="nested.field" />
+                        </TranslatableInputs>
+                    )}
+                />
+            );
 
         expect(
             getByLabelText('ra.locales.en').getAttribute('hidden')
@@ -75,11 +72,8 @@ describe('<TranslatableInputs />', () => {
         const save = jest.fn();
 
         const Selector = () => {
-            const {
-                locales,
-                selectLocale,
-                selectedLocale,
-            } = useTranslatableContext();
+            const { locales, selectLocale, selectedLocale } =
+                useTranslatableContext();
 
             const handleChange = (event, newLocale): void => {
                 selectLocale(newLocale);
@@ -198,11 +192,8 @@ describe('<TranslatableInputs />', () => {
 
     it('should allow to customize the locale selector', () => {
         const Selector = () => {
-            const {
-                locales,
-                selectLocale,
-                selectedLocale,
-            } = useTranslatableContext();
+            const { locales, selectLocale, selectedLocale } =
+                useTranslatableContext();
 
             const handleChange = (event): void => {
                 selectLocale(event.target.value);

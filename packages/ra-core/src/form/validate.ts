@@ -2,7 +2,8 @@ import lodashMemoize from 'lodash/memoize';
 
 /* eslint-disable no-underscore-dangle */
 /* @link http://stackoverflow.com/questions/46155/validate-email-address-in-javascript */
-const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line no-useless-escape
+const EMAIL_REGEX =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line no-useless-escape
 
 const isEmpty = (value: any) =>
     typeof value === 'undefined' ||
@@ -77,55 +78,49 @@ const memoize: Memoize = (fn: any) =>
 const isFunction = value => typeof value === 'function';
 
 // Compose multiple validators into a single one for use with final-form
-export const composeValidators = (...validators) => async (
-    value,
-    values,
-    meta
-) => {
-    const allValidators = (Array.isArray(validators[0])
-        ? validators[0]
-        : validators
-    ).filter(isFunction) as Validator[];
+export const composeValidators =
+    (...validators) =>
+    async (value, values, meta) => {
+        const allValidators = (
+            Array.isArray(validators[0]) ? validators[0] : validators
+        ).filter(isFunction) as Validator[];
 
-    for (const validator of allValidators) {
-        const errorPromise = validator(value, values, meta);
+        for (const validator of allValidators) {
+            const errorPromise = validator(value, values, meta);
 
-        if (errorPromise) {
-            if (typeof errorPromise == 'string') {
-                return errorPromise;
+            if (errorPromise) {
+                if (typeof errorPromise == 'string') {
+                    return errorPromise;
+                }
+                if (isValidationErrorMessageWithArgs(errorPromise)) {
+                    return errorPromise;
+                }
+
+                const error = await errorPromise;
+
+                if (error) {
+                    return error;
+                }
             }
-            if (isValidationErrorMessageWithArgs(errorPromise)) {
-                return errorPromise;
-            }
+        }
+    };
 
-            const error = await errorPromise;
+// Compose multiple validators into a single one for use with final-form
+export const composeSyncValidators =
+    (...validators) =>
+    (value, values, meta) => {
+        const allValidators = (
+            Array.isArray(validators[0]) ? validators[0] : validators
+        ).filter(isFunction) as Validator[];
+
+        for (const validator of allValidators) {
+            const error = validator(value, values, meta);
 
             if (error) {
                 return error;
             }
         }
-    }
-};
-
-// Compose multiple validators into a single one for use with final-form
-export const composeSyncValidators = (...validators) => (
-    value,
-    values,
-    meta
-) => {
-    const allValidators = (Array.isArray(validators[0])
-        ? validators[0]
-        : validators
-    ).filter(isFunction) as Validator[];
-
-    for (const validator of allValidators) {
-        const error = validator(value, values, meta);
-
-        if (error) {
-            return error;
-        }
-    }
-};
+    };
 
 /**
  * Required validator
@@ -163,10 +158,11 @@ export const required = memoize((message = 'ra.validation.required') =>
  * <TextInput type="password" name="password" validate={passwordValidators} />
  */
 export const minLength = memoize(
-    (min, message = 'ra.validation.minLength') => (value, values) =>
-        !isEmpty(value) && value.length < min
-            ? getMessage(message, { min }, value, values)
-            : undefined
+    (min, message = 'ra.validation.minLength') =>
+        (value, values) =>
+            !isEmpty(value) && value.length < min
+                ? getMessage(message, { min }, value, values)
+                : undefined
 );
 
 /**
@@ -183,10 +179,11 @@ export const minLength = memoize(
  * <TextInput name="name" validate={nameValidators} />
  */
 export const maxLength = memoize(
-    (max, message = 'ra.validation.maxLength') => (value, values) =>
-        !isEmpty(value) && value.length > max
-            ? getMessage(message, { max }, value, values)
-            : undefined
+    (max, message = 'ra.validation.maxLength') =>
+        (value, values) =>
+            !isEmpty(value) && value.length > max
+                ? getMessage(message, { max }, value, values)
+                : undefined
 );
 
 /**
@@ -203,10 +200,11 @@ export const maxLength = memoize(
  * <NumberInput name="foo" validate={fooValidators} />
  */
 export const minValue = memoize(
-    (min, message = 'ra.validation.minValue') => (value, values) =>
-        !isEmpty(value) && value < min
-            ? getMessage(message, { min }, value, values)
-            : undefined
+    (min, message = 'ra.validation.minValue') =>
+        (value, values) =>
+            !isEmpty(value) && value < min
+                ? getMessage(message, { min }, value, values)
+                : undefined
 );
 
 /**
@@ -223,10 +221,11 @@ export const minValue = memoize(
  * <NumberInput name="foo" validate={fooValidators} />
  */
 export const maxValue = memoize(
-    (max, message = 'ra.validation.maxValue') => (value, values) =>
-        !isEmpty(value) && value > max
-            ? getMessage(message, { max }, value, values)
-            : undefined
+    (max, message = 'ra.validation.maxValue') =>
+        (value, values) =>
+            !isEmpty(value) && value > max
+                ? getMessage(message, { max }, value, values)
+                : undefined
 );
 
 /**
@@ -242,10 +241,11 @@ export const maxValue = memoize(
  * <TextInput name="age" validate={ageValidators} />
  */
 export const number = memoize(
-    (message = 'ra.validation.number') => (value, values) =>
-        !isEmpty(value) && isNaN(Number(value))
-            ? getMessage(message, undefined, value, values)
-            : undefined
+    (message = 'ra.validation.number') =>
+        (value, values) =>
+            !isEmpty(value) && isNaN(Number(value))
+                ? getMessage(message, undefined, value, values)
+                : undefined
 );
 
 /**
@@ -262,10 +262,11 @@ export const number = memoize(
  * <TextInput name="zip" validate={zipValidators} />
  */
 export const regex = lodashMemoize(
-    (pattern, message = 'ra.validation.regex') => (value, values) =>
-        !isEmpty(value) && typeof value === 'string' && !pattern.test(value)
-            ? getMessage(message, { pattern }, value, values)
-            : undefined,
+    (pattern, message = 'ra.validation.regex') =>
+        (value, values) =>
+            !isEmpty(value) && typeof value === 'string' && !pattern.test(value)
+                ? getMessage(message, { pattern }, value, values)
+                : undefined,
     (pattern, message) => {
         return pattern.toString() + message;
     }
@@ -306,8 +307,9 @@ const oneOfTypeMessage: MessageFunc = ({ args }) => ({
  * <TextInput name="gender" validate={genderValidators} />
  */
 export const choices = memoize(
-    (list, message = oneOfTypeMessage) => (value, values) =>
-        !isEmpty(value) && list.indexOf(value) === -1
-            ? getMessage(message, { list }, value, values)
-            : undefined
+    (list, message = oneOfTypeMessage) =>
+        (value, values) =>
+            !isEmpty(value) && list.indexOf(value) === -1
+                ? getMessage(message, { list }, value, values)
+                : undefined
 );

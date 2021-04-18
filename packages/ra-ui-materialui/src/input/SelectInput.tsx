@@ -205,9 +205,10 @@ const SelectInput: FunctionComponent<SelectInputProps> = props => {
             : translate(emptyText, { _: emptyText });
     }, [emptyText, translate]);
 
-    const renderMenuItemOption = useCallback(choice => getChoiceText(choice), [
-        getChoiceText,
-    ]);
+    const renderMenuItemOption = useCallback(
+        choice => getChoiceText(choice),
+        [getChoiceText]
+    );
 
     if (loading) {
         return (

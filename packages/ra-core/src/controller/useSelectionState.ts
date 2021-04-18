@@ -25,9 +25,8 @@ export interface SelectionState {
 const useSelectionState = (
     initialSelection = defaultSelection
 ): SelectionState => {
-    const [selectedIds, setSelectedIds] = useSafeSetState<Identifier[]>(
-        initialSelection
-    );
+    const [selectedIds, setSelectedIds] =
+        useSafeSetState<Identifier[]>(initialSelection);
 
     const isFirstRender = useRef(true);
     useEffect(() => {

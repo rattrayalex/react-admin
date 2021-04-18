@@ -197,33 +197,30 @@ describe('<SaveButton />', () => {
     };
 
     it('should allow to override the onSuccess side effects', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             update: (_, { data }) => Promise.resolve({ data }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const EditToolbar = props => (
             <Toolbar {...props}>
                 <SaveButton onSuccess={onSuccess} />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <DataProviderContext.Provider value={dataProvider}>
-                <Edit {...defaultEditProps}>
-                    <SimpleForm toolbar={<EditToolbar />}>
-                        <TextInput source="title" />
-                    </SimpleForm>
-                </Edit>
-            </DataProviderContext.Provider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <DataProviderContext.Provider value={dataProvider}>
+                    <Edit {...defaultEditProps}>
+                        <SimpleForm toolbar={<EditToolbar />}>
+                            <TextInput source="title" />
+                        </SimpleForm>
+                    </Edit>
+                </DataProviderContext.Provider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).toBeDefined();
@@ -242,33 +239,30 @@ describe('<SaveButton />', () => {
 
     it('should allow to override the onFailure side effects', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             update: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const EditToolbar = props => (
             <Toolbar {...props}>
                 <SaveButton onFailure={onFailure} />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <DataProviderContext.Provider value={dataProvider}>
-                <Edit {...defaultEditProps}>
-                    <SimpleForm toolbar={<EditToolbar />}>
-                        <TextInput source="title" />
-                    </SimpleForm>
-                </Edit>
-            </DataProviderContext.Provider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <DataProviderContext.Provider value={dataProvider}>
+                    <Edit {...defaultEditProps}>
+                        <SimpleForm toolbar={<EditToolbar />}>
+                            <TextInput source="title" />
+                        </SimpleForm>
+                    </Edit>
+                </DataProviderContext.Provider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).toBeDefined();
@@ -289,13 +283,13 @@ describe('<SaveButton />', () => {
         const update = jest
             .fn()
             .mockImplementationOnce((_, { data }) => Promise.resolve({ data }));
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             update,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn().mockImplementationOnce(data => ({
             ...data,
             transformed: true,
@@ -305,20 +299,17 @@ describe('<SaveButton />', () => {
                 <SaveButton transform={transform} />
             </Toolbar>
         );
-        const {
-            queryByDisplayValue,
-            getByLabelText,
-            getByText,
-        } = renderWithRedux(
-            <DataProviderContext.Provider value={dataProvider}>
-                <Edit {...defaultEditProps}>
-                    <SimpleForm toolbar={<EditToolbar />}>
-                        <TextInput source="title" />
-                    </SimpleForm>
-                </Edit>
-            </DataProviderContext.Provider>,
-            { admin: { resources: { posts: { data: {} } } } }
-        );
+        const { queryByDisplayValue, getByLabelText, getByText } =
+            renderWithRedux(
+                <DataProviderContext.Provider value={dataProvider}>
+                    <Edit {...defaultEditProps}>
+                        <SimpleForm toolbar={<EditToolbar />}>
+                            <TextInput source="title" />
+                        </SimpleForm>
+                    </Edit>
+                </DataProviderContext.Provider>,
+                { admin: { resources: { posts: { data: {} } } } }
+            );
         // waitFor for the dataProvider.getOne() return
         await waitFor(() => {
             expect(queryByDisplayValue('lorem')).toBeDefined();

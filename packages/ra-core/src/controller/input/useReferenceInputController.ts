@@ -77,14 +77,8 @@ export const useReferenceInputController = (
     const translate = useTranslate();
 
     // pagination logic
-    const {
-        pagination,
-        setPagination,
-        page,
-        setPage,
-        perPage,
-        setPerPage,
-    } = usePaginationState({ page: initialPage, perPage: initialPerPage });
+    const { pagination, setPagination, page, setPage, perPage, setPerPage } =
+        usePaginationState({ page: initialPage, perPage: initialPerPage });
 
     // sort logic
     const { sort, setSort: setSortObject } = useSortState(sortOverride);
@@ -106,12 +100,8 @@ export const useReferenceInputController = (
     // they never change
 
     // selection logic
-    const {
-        selectedIds,
-        onSelect,
-        onToggleItem,
-        onUnselectItems,
-    } = useSelectionState();
+    const { selectedIds, onSelect, onToggleItem, onUnselectItems } =
+        useSelectionState();
 
     // fetch possible values
     const {

@@ -185,10 +185,10 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
         [choices, optionValue]
     );
 
-    const selectedItems = useMemo(() => values.map(getSuggestionFromValue), [
-        getSuggestionFromValue,
-        values,
-    ]);
+    const selectedItems = useMemo(
+        () => values.map(getSuggestionFromValue),
+        [getSuggestionFromValue, values]
+    );
 
     const { getChoiceText, getChoiceValue, getSuggestions } = useSuggestions({
         allowDuplicates,
@@ -280,7 +280,8 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
             return;
         }
 
-        const inputPosition = inputEl.current.getBoundingClientRect() as DOMRect;
+        const inputPosition =
+            inputEl.current.getBoundingClientRect() as DOMRect;
 
         // It works by implementing a mock element providing the only method used
         // by the PopOver component, getBoundingClientRect, which will return a

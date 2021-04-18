@@ -37,107 +37,111 @@ const useStyles = makeStyles(
 
 const defaultIcon = <ActionDelete />;
 
-const BulkDeleteWithConfirmButton: FC<BulkDeleteWithConfirmButtonProps> = props => {
-    const {
-        basePath,
-        classes: classesOverride,
-        confirmTitle = 'ra.message.bulk_delete_title',
-        confirmContent = 'ra.message.bulk_delete_content',
-        icon = defaultIcon,
-        label,
-        onClick,
-        selectedIds,
-        ...rest
-    } = props;
-    const [isOpen, setOpen] = useState(false);
-    const classes = useStyles(props);
-    const notify = useNotify();
-    const unselectAll = useUnselectAll();
-    const refresh = useRefresh();
-    const translate = useTranslate();
-    const resource = useResourceContext(props);
-    const [deleteMany, { loading }] = useDeleteMany(resource, selectedIds, {
-        action: CRUD_DELETE_MANY,
-        onSuccess: () => {
-            refresh();
-            notify('ra.notification.deleted', 'info', {
-                smart_count: selectedIds.length,
-            });
-            unselectAll(resource);
-        },
-        onFailure: error => {
-            notify(
-                typeof error === 'string'
-                    ? error
-                    : error.message || 'ra.notification.http_error',
-                'warning',
-                {
-                    _:
-                        typeof error === 'string'
-                            ? error
-                            : error && error.message
-                            ? error.message
-                            : undefined,
-                }
-            );
-            setOpen(false);
-        },
-    });
-
-    const handleClick = e => {
-        setOpen(true);
-        e.stopPropagation();
-    };
-
-    const handleDialogClose = () => {
-        setOpen(false);
-    };
-
-    const handleDelete = e => {
-        deleteMany();
-
-        if (typeof onClick === 'function') {
-            onClick(e);
-        }
-    };
-
-    return (
-        <Fragment>
-            <Button
-                onClick={handleClick}
-                label={label}
-                className={classes.deleteButton}
-                {...sanitizeRestProps(rest)}
-            >
-                {icon}
-            </Button>
-            <Confirm
-                isOpen={isOpen}
-                loading={loading}
-                title={confirmTitle}
-                content={confirmContent}
-                translateOptions={{
+const BulkDeleteWithConfirmButton: FC<BulkDeleteWithConfirmButtonProps> =
+    props => {
+        const {
+            basePath,
+            classes: classesOverride,
+            confirmTitle = 'ra.message.bulk_delete_title',
+            confirmContent = 'ra.message.bulk_delete_content',
+            icon = defaultIcon,
+            label,
+            onClick,
+            selectedIds,
+            ...rest
+        } = props;
+        const [isOpen, setOpen] = useState(false);
+        const classes = useStyles(props);
+        const notify = useNotify();
+        const unselectAll = useUnselectAll();
+        const refresh = useRefresh();
+        const translate = useTranslate();
+        const resource = useResourceContext(props);
+        const [deleteMany, { loading }] = useDeleteMany(resource, selectedIds, {
+            action: CRUD_DELETE_MANY,
+            onSuccess: () => {
+                refresh();
+                notify('ra.notification.deleted', 'info', {
                     smart_count: selectedIds.length,
-                    name: translate(`resources.${resource}.forcedCaseName`, {
+                });
+                unselectAll(resource);
+            },
+            onFailure: error => {
+                notify(
+                    typeof error === 'string'
+                        ? error
+                        : error.message || 'ra.notification.http_error',
+                    'warning',
+                    {
+                        _:
+                            typeof error === 'string'
+                                ? error
+                                : error && error.message
+                                ? error.message
+                                : undefined,
+                    }
+                );
+                setOpen(false);
+            },
+        });
+
+        const handleClick = e => {
+            setOpen(true);
+            e.stopPropagation();
+        };
+
+        const handleDialogClose = () => {
+            setOpen(false);
+        };
+
+        const handleDelete = e => {
+            deleteMany();
+
+            if (typeof onClick === 'function') {
+                onClick(e);
+            }
+        };
+
+        return (
+            <Fragment>
+                <Button
+                    onClick={handleClick}
+                    label={label}
+                    className={classes.deleteButton}
+                    {...sanitizeRestProps(rest)}
+                >
+                    {icon}
+                </Button>
+                <Confirm
+                    isOpen={isOpen}
+                    loading={loading}
+                    title={confirmTitle}
+                    content={confirmContent}
+                    translateOptions={{
                         smart_count: selectedIds.length,
-                        _: inflection.humanize(
-                            translate(`resources.${resource}.name`, {
+                        name: translate(
+                            `resources.${resource}.forcedCaseName`,
+                            {
                                 smart_count: selectedIds.length,
-                                _: inflection.inflect(
-                                    resource,
-                                    selectedIds.length
+                                _: inflection.humanize(
+                                    translate(`resources.${resource}.name`, {
+                                        smart_count: selectedIds.length,
+                                        _: inflection.inflect(
+                                            resource,
+                                            selectedIds.length
+                                        ),
+                                    }),
+                                    true
                                 ),
-                            }),
-                            true
+                            }
                         ),
-                    }),
-                }}
-                onConfirm={handleDelete}
-                onClose={handleDialogClose}
-            />
-        </Fragment>
-    );
-};
+                    }}
+                    onConfirm={handleDelete}
+                    onClose={handleDialogClose}
+                />
+            </Fragment>
+        );
+    };
 
 const sanitizeRestProps = ({
     basePath,

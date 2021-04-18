@@ -71,13 +71,13 @@ describe('<DeleteWithUndoButton />', () => {
     };
 
     it('should allow to override the onSuccess side effects', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () =>
                 Promise.resolve({
                     data: { id: 123, title: 'lorem' },
                 }),
             delete: () => Promise.resolve({ data: { id: 123 } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const EditToolbar = props => (
             <Toolbar {...props}>

@@ -284,7 +284,8 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
             return;
         }
 
-        const inputPosition = inputEl.current.getBoundingClientRect() as DOMRect;
+        const inputPosition =
+            inputEl.current.getBoundingClientRect() as DOMRect;
 
         // It works by implementing a mock element providing the only method used
         // by the PopOver component, getBoundingClientRect, which will return a

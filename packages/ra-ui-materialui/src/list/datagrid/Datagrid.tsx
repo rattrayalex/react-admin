@@ -143,9 +143,10 @@ const Datagrid: FC<DatagridProps> = React.forwardRef((props, ref) => {
     } = useListContext(props);
     const version = useVersion();
 
-    const contextValue = useMemo(() => ({ isRowExpandable }), [
-        isRowExpandable,
-    ]);
+    const contextValue = useMemo(
+        () => ({ isRowExpandable }),
+        [isRowExpandable]
+    );
 
     const updateSortCallback = useCallback(
         event => {

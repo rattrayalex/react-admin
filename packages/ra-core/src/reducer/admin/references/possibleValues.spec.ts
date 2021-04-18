@@ -52,11 +52,10 @@ describe('possibleValues reducer', () => {
         });
 
         it('should return all formatted possibleValues in state if selectedIds param is not set', () => {
-            const possibleReferences = getPossibleReferences(referenceState, [
-                1,
-                2,
-                4,
-            ]);
+            const possibleReferences = getPossibleReferences(
+                referenceState,
+                [1, 2, 4]
+            );
             expect(possibleReferences).toEqual([
                 { name: 'object name 1' },
                 { name: 'object name 2' },

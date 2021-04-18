@@ -106,17 +106,11 @@ export const useReferenceArrayInputController = (
     ]);
 
     // pagination logic
-    const {
-        page,
-        setPage,
-        perPage,
-        setPerPage,
-        pagination,
-        setPagination,
-    } = usePaginationState({
-        page: initialPage,
-        perPage: initialPerPage,
-    });
+    const { page, setPage, perPage, setPerPage, pagination, setPagination } =
+        usePaginationState({
+            page: initialPage,
+            perPage: initialPerPage,
+        });
 
     const form = useForm();
     const onSelect = useCallback(
@@ -185,9 +179,10 @@ export const useReferenceArrayInputController = (
     const [displayedFilters, setDisplayedFilters] = useSafeSetState<{
         [key: string]: boolean;
     }>({});
-    const [filterValues, setFilterValues] = useSafeSetState<{
-        [key: string]: any;
-    }>(defaultFilter);
+    const [filterValues, setFilterValues] =
+        useSafeSetState<{
+            [key: string]: any;
+        }>(defaultFilter);
     const hideFilter = useCallback(
         (filterName: string) => {
             setDisplayedFilters(previousState => {

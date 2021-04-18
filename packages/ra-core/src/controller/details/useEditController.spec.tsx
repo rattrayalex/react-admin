@@ -31,7 +31,7 @@ describe('useEditController', () => {
             .mockImplementationOnce(() =>
                 Promise.resolve({ data: { id: 12, title: 'hello' } })
             );
-        const dataProvider = ({ getOne } as unknown) as DataProvider;
+        const dataProvider = { getOne } as unknown as DataProvider;
         const { queryAllByText, unmount } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <SaveContextProvider value={saveContextValue}>
@@ -51,9 +51,9 @@ describe('useEditController', () => {
     });
 
     it('should dispatch a CRUD_GET_ONE action on mount', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 13, title: 'hello' } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <SaveContextProvider value={saveContextValue}>
@@ -74,9 +74,9 @@ describe('useEditController', () => {
     });
 
     it('should grab the record from the store based on the id', () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12, title: 'world' } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const { queryAllByText } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <SaveContextProvider value={saveContextValue}>
@@ -102,10 +102,10 @@ describe('useEditController', () => {
             .mockImplementationOnce((_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         let saveCallback;
         renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -129,11 +129,11 @@ describe('useEditController', () => {
     });
 
     it('should return an undoable save callback by default', async () => {
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         let saveCallback;
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -164,11 +164,11 @@ describe('useEditController', () => {
 
     it('should return a save callback when undoable is false', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
                 <SaveContextProvider value={saveContextValue}>
@@ -206,11 +206,11 @@ describe('useEditController', () => {
 
     it('should allow onSuccess to override the default success side effects', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -239,11 +239,11 @@ describe('useEditController', () => {
 
     it('should allow the save onSuccess option to override the success side effects override', async () => {
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: (_, { id, data, previousData }) =>
                 Promise.resolve({ data: { id, ...previousData, ...data } }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onSuccess = jest.fn();
         const onSuccessSave = jest.fn();
         const { dispatch } = renderWithRedux(
@@ -279,10 +279,10 @@ describe('useEditController', () => {
     it('should allow onFailure to override the default failure side effects', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const { dispatch } = renderWithRedux(
             <DataProviderContext.Provider value={dataProvider}>
@@ -312,10 +312,10 @@ describe('useEditController', () => {
     it('should allow the save onFailure option to override the failure side effects override', async () => {
         jest.spyOn(console, 'error').mockImplementationOnce(() => {});
         let saveCallback;
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update: () => Promise.reject({ message: 'not good' }),
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const onFailure = jest.fn();
         const onFailureSave = jest.fn();
         const { dispatch } = renderWithRedux(
@@ -355,10 +355,10 @@ describe('useEditController', () => {
             .mockImplementationOnce((_, { id, data }) =>
                 Promise.resolve({ data: { id, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn().mockImplementationOnce(data => ({
             ...data,
             transformed: true,
@@ -398,10 +398,10 @@ describe('useEditController', () => {
             .mockImplementationOnce((_, { id, data }) =>
                 Promise.resolve({ data: { id, ...data } })
             );
-        const dataProvider = ({
+        const dataProvider = {
             getOne: () => Promise.resolve({ data: { id: 12 } }),
             update,
-        } as unknown) as DataProvider;
+        } as unknown as DataProvider;
         const transform = jest.fn();
         const transformSave = jest.fn().mockImplementationOnce(data => ({
             ...data,

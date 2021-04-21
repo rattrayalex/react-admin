@@ -48,7 +48,14 @@ export const PostList = props => (
 );
 
 const PostTitle = ({ record }) => {
-    return <span>Post {record ? `"${record.title}"` : ''}</span>;
+    return (
+        <span>
+            Post{' '}
+            {record ?
+                `"${record.title}"`
+            : ''}
+        </span>
+    );
 };
 
 export const PostEdit = props => (

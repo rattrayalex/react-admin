@@ -44,17 +44,17 @@ const ImageField: FC<ImageFieldProps> = props => {
     const sourceValue = get(record, source);
     const classes = useStyles(props);
     if (!sourceValue) {
-        return emptyText ? (
-            <Typography
-                component="span"
-                variant="body2"
-                className={className}
-                {...sanitizeFieldRestProps(rest)}
-            >
-                {emptyText}
-            </Typography>
-        ) : (
-            <div className={className} {...sanitizeFieldRestProps(rest)} />
+        return (
+            emptyText ?
+                <Typography
+                    component="span"
+                    variant="body2"
+                    className={className}
+                    {...sanitizeFieldRestProps(rest)}
+                >
+                    {emptyText}
+                </Typography>
+            : <div className={className} {...sanitizeFieldRestProps(rest)} />
         );
     }
 

@@ -128,7 +128,11 @@ const FileInput: FunctionComponent<
         ...rest,
     });
     const { touched, error, submitError } = meta;
-    const files = value ? (Array.isArray(value) ? value : [value]) : [];
+    const files =
+        value ?
+            Array.isArray(value) ? value
+            : [value]
+        : [];
 
     const onDrop = (newFiles, rejectedFiles, event) => {
         const updatedFiles = multiple ? [...files, ...newFiles] : [...newFiles];
@@ -160,9 +164,9 @@ const FileInput: FunctionComponent<
     };
 
     const childrenElement =
-        children && isValidElement(Children.only(children))
-            ? (Children.only(children) as ReactElement<any>)
-            : undefined;
+        children && isValidElement(Children.only(children)) ?
+            (Children.only(children) as ReactElement<any>)
+        : undefined;
 
     const { getRootProps, getInputProps } = useDropzone({
         ...options,
@@ -197,11 +201,11 @@ const FileInput: FunctionComponent<
                             ...inputPropsOptions,
                         })}
                     />
-                    {placeholder ? (
+                    {placeholder ?
                         placeholder
-                    ) : multiple ? (
+                    : multiple ?
                         <p>{translate(labelMultiple)}</p>
-                    ) : (
+                    : (
                         <p>{translate(labelSingle)}</p>
                     )}
                 </div>

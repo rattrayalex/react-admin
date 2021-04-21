@@ -7,13 +7,13 @@ export const UserList = props => {
 
     return (
         <List title="All users" {...props}>
-            {isSmall ? (
+            {isSmall ?
                 <SimpleList
                     primaryText={record => record.name}
                     secondaryText={record => record.username}
                     tertiaryText={record => record.email}
                 />
-            ) : (
+            : (
                 <Datagrid>
                     <TextField source="id" />
                     <TextField source="name" />

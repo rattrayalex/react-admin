@@ -30,9 +30,8 @@ const Basket: FC<FieldProps<Order>> = ({ record }) => {
         },
         {},
         state => {
-            const productIds = record
-                ? record.basket.map(item => item.product_id)
-                : [];
+            const productIds =
+                record ? record.basket.map(item => item.product_id) : [];
 
             return productIds
                 .map<Product>(

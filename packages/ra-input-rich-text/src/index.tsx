@@ -78,9 +78,8 @@ const RichTextInput: FunctionComponent<Props> = props => {
     const onTextChange = useCallback(
         debounce(() => {
             const value =
-                editor.current.innerHTML === '<p><br></p>'
-                    ? ''
-                    : editor.current.innerHTML;
+                editor.current.innerHTML === '<p><br></p>' ? ''
+                : editor.current.innerHTML;
 
             if (lastValueChange.current !== value) {
                 lastValueChange.current = value;

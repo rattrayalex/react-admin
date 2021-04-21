@@ -32,11 +32,8 @@ import BulkDeleteWithUndoButton, {
  * );
  */
 const BulkDeleteButton: FC<BulkDeleteButtonProps> = ({ undoable, ...props }) =>
-    undoable ? (
-        <BulkDeleteWithUndoButton {...props} />
-    ) : (
-        <BulkDeleteWithConfirmButton {...props} />
-    );
+    undoable ? <BulkDeleteWithUndoButton {...props} />
+    : <BulkDeleteWithConfirmButton {...props} />;
 
 interface Props {
     undoable?: boolean;

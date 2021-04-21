@@ -32,8 +32,8 @@ const TabbedFormTabs: FC<TabbedFormTabsProps> = ({
     // available tab. The current location will be applied again on the
     // first render containing the targeted tab. This is almost transparent
     // for the user who may just see a short tab selection animation
-    const tabValue = validTabPaths.includes(location.pathname)
-        ? location.pathname
+    const tabValue =
+        validTabPaths.includes(location.pathname) ? location.pathname
         : validTabPaths[0];
 
     return (
@@ -75,7 +75,9 @@ export const getTabFullPath = (
     baseUrl: string
 ): string =>
     `${baseUrl}${
-        tab.props.path ? `/${tab.props.path}` : index > 0 ? `/${index}` : ''
+        tab.props.path ? `/${tab.props.path}`
+        : index > 0 ? `/${index}`
+        : ''
     }`.replace('//', '/'); // Because baseUrl can be a single / when on the first tab
 
 export interface TabbedFormTabsProps extends TabsProps {

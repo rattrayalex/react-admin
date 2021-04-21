@@ -20,9 +20,8 @@ export const useReferenceArrayInputContext = <
             merge(
                 {},
                 context,
-                props != null
-                    ? extractReferenceArrayInputContextProps(props)
-                    : {}
+                props != null ? extractReferenceArrayInputContextProps(props)
+                : {}
             ),
         [context, props]
     );

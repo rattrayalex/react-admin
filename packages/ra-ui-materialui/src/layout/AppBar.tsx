@@ -122,9 +122,8 @@ const AppBar = (props: AppBarProps): JSX.Element => {
                 >
                     <Tooltip
                         title={translate(
-                            open
-                                ? 'ra.action.close_menu'
-                                : 'ra.action.open_menu',
+                            open ? 'ra.action.close_menu'
+                            : 'ra.action.open_menu',
                             {
                                 _: 'Open/Close menu',
                             }
@@ -138,29 +137,27 @@ const AppBar = (props: AppBarProps): JSX.Element => {
                         >
                             <MenuIcon
                                 classes={{
-                                    root: open
-                                        ? classes.menuButtonIconOpen
+                                    root:
+                                        open ? classes.menuButtonIconOpen
                                         : classes.menuButtonIconClosed,
                                 }}
                             />
                         </IconButton>
                     </Tooltip>
-                    {Children.count(children) === 0 ? (
+                    {Children.count(children) === 0 ?
                         <Typography
                             variant="h6"
                             color="inherit"
                             className={classes.title}
                             id="react-admin-title"
                         />
-                    ) : (
-                        children
-                    )}
+                    : children}
                     <LoadingIndicator />
-                    {typeof userMenu === 'boolean'
-                        ? userMenu === true
-                            ? cloneElement(<DefaultUserMenu />, { logout })
-                            : null
-                        : cloneElement(userMenu, { logout })}
+                    {typeof userMenu === 'boolean' ?
+                        userMenu === true ?
+                            cloneElement(<DefaultUserMenu />, { logout })
+                        : null
+                    : cloneElement(userMenu, { logout })}
                 </Toolbar>
             </MuiAppBar>
         </HideOnScroll>

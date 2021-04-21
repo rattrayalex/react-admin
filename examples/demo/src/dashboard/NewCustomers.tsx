@@ -52,23 +52,23 @@ const NewCustomers = () => {
             subtitle={nb}
         >
             <List>
-                {visitors
-                    ? visitors.map((record: Customer) => (
-                          <ListItem
-                              button
-                              to={`/customers/${record.id}`}
-                              component={Link}
-                              key={record.id}
-                          >
-                              <ListItemAvatar>
-                                  <Avatar src={`${record.avatar}?size=32x32`} />
-                              </ListItemAvatar>
-                              <ListItemText
-                                  primary={`${record.first_name} ${record.last_name}`}
-                              />
-                          </ListItem>
-                      ))
-                    : null}
+                {visitors ?
+                    visitors.map((record: Customer) => (
+                        <ListItem
+                            button
+                            to={`/customers/${record.id}`}
+                            component={Link}
+                            key={record.id}
+                        >
+                            <ListItemAvatar>
+                                <Avatar src={`${record.avatar}?size=32x32`} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={`${record.first_name} ${record.last_name}`}
+                            />
+                        </ListItem>
+                    ))
+                : null}
             </List>
             <Box flexGrow="1">&nbsp;</Box>
             <Button

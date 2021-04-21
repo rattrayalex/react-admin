@@ -36,83 +36,85 @@ const ReviewListMobile = () => {
     const classes = useStyles();
     const { basePath, data, ids, loaded, total } = useListContext<Review>();
 
-    return loaded || Number(total) > 0 ? (
-        <List className={classes.root}>
-            {(ids as Exclude<typeof ids, undefined>).map(id => {
-                const item = (data as Exclude<typeof data, undefined>)[id];
-                if (!item) return null;
+    return (
+        loaded || Number(total) > 0 ?
+            <List className={classes.root}>
+                {(ids as Exclude<typeof ids, undefined>).map(id => {
+                    const item = (data as Exclude<typeof data, undefined>)[id];
+                    if (!item) return null;
 
-                return (
-                    <Link
-                        to={linkToRecord(basePath, id)}
-                        className={classes.link}
-                        key={id}
-                    >
-                        <ListItem button>
-                            <ListItemAvatar>
-                                <ReferenceField
-                                    record={item}
-                                    source="customer_id"
-                                    reference="customers"
-                                    basePath={basePath}
-                                    link={false}
-                                >
-                                    <AvatarField size="40" />
-                                </ReferenceField>
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary={
-                                    <Fragment>
-                                        <ReferenceField
-                                            record={item}
-                                            source="customer_id"
-                                            reference="customers"
-                                            basePath={basePath}
-                                            link={false}
-                                        >
-                                            <FunctionField
-                                                render={(record?: Record) =>
-                                                    record
-                                                        ? `${
-                                                              (
-                                                                  record as Customer
-                                                              ).first_name
-                                                          } ${
-                                                              (
-                                                                  record as Customer
-                                                              ).last_name
-                                                          }`
+                    return (
+                        <Link
+                            to={linkToRecord(basePath, id)}
+                            className={classes.link}
+                            key={id}
+                        >
+                            <ListItem button>
+                                <ListItemAvatar>
+                                    <ReferenceField
+                                        record={item}
+                                        source="customer_id"
+                                        reference="customers"
+                                        basePath={basePath}
+                                        link={false}
+                                    >
+                                        <AvatarField size="40" />
+                                    </ReferenceField>
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={
+                                        <Fragment>
+                                            <ReferenceField
+                                                record={item}
+                                                source="customer_id"
+                                                reference="customers"
+                                                basePath={basePath}
+                                                link={false}
+                                            >
+                                                <FunctionField
+                                                    render={(record?: Record) =>
+                                                        record ?
+                                                            `${
+                                                                (
+                                                                    record as Customer
+                                                                ).first_name
+                                                            } ${
+                                                                (
+                                                                    record as Customer
+                                                                ).last_name
+                                                            }`
                                                         : ''
-                                                }
-                                                variant="subtitle1"
-                                                className={classes.inline}
-                                            />
-                                        </ReferenceField>{' '}
-                                        on{' '}
-                                        <ReferenceField
-                                            record={item}
-                                            source="product_id"
-                                            reference="products"
-                                            basePath={basePath}
-                                            link={false}
-                                        >
-                                            <TextField
-                                                source="reference"
-                                                variant="subtitle1"
-                                                className={classes.inline}
-                                            />
-                                        </ReferenceField>
-                                    </Fragment>
-                                }
-                                secondary={item.comment}
-                                secondaryTypographyProps={{ noWrap: true }}
-                            />
-                        </ListItem>
-                    </Link>
-                );
-            })}
-        </List>
-    ) : null;
+                                                    }
+                                                    variant="subtitle1"
+                                                    className={classes.inline}
+                                                />
+                                            </ReferenceField>{' '}
+                                            on{' '}
+                                            <ReferenceField
+                                                record={item}
+                                                source="product_id"
+                                                reference="products"
+                                                basePath={basePath}
+                                                link={false}
+                                            >
+                                                <TextField
+                                                    source="reference"
+                                                    variant="subtitle1"
+                                                    className={classes.inline}
+                                                />
+                                            </ReferenceField>
+                                        </Fragment>
+                                    }
+                                    secondary={item.comment}
+                                    secondaryTypographyProps={{ noWrap: true }}
+                                />
+                            </ListItem>
+                        </Link>
+                    );
+                })}
+            </List>
+        : null
+    );
 };
 
 ReviewListMobile.propTypes = {

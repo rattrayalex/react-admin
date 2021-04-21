@@ -104,7 +104,7 @@ const PostEdit = ({ permissions, ...props }) => (
                                     getSource,
                                     ...rest
                                 }) =>
-                                    scopedFormData && scopedFormData.user_id ? (
+                                    scopedFormData && scopedFormData.user_id ?
                                         <SelectInput
                                             label="Role"
                                             source={getSource('role')}
@@ -124,7 +124,7 @@ const PostEdit = ({ permissions, ...props }) => (
                                             ]}
                                             {...rest}
                                         />
-                                    ) : null
+                                    : null
                                 }
                             </FormDataConsumer>
                         </SimpleFormIterator>

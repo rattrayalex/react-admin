@@ -78,17 +78,17 @@ const ReviewList: FC<ListProps> = props => {
                                 perPage={25}
                                 sort={{ field: 'date', order: 'DESC' }}
                             >
-                                {isXSmall ? (
+                                {isXSmall ?
                                     <ReviewListMobile />
-                                ) : (
+                                : (
                                     <ReviewListDesktop
                                         selectedRow={
-                                            isMatch
-                                                ? parseInt(
-                                                      (match as any).params.id,
-                                                      10
-                                                  )
-                                                : undefined
+                                            isMatch ?
+                                                parseInt(
+                                                    (match as any).params.id,
+                                                    10
+                                                )
+                                            : undefined
                                         }
                                     />
                                 )}
@@ -103,13 +103,13 @@ const ReviewList: FC<ListProps> = props => {
                                 }}
                             >
                                 {/* To avoid any errors if the route does not match, we don't render at all the component in this case */}
-                                {isMatch ? (
+                                {isMatch ?
                                     <ReviewEdit
                                         id={(match as any).params.id}
                                         onCancel={handleClose}
                                         {...props}
                                     />
-                                ) : null}
+                                : null}
                             </Drawer>
                         </Fragment>
                     );

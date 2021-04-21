@@ -33,11 +33,8 @@ export const ShowView = (props: ShowViewProps) => {
     const { hasEdit } = useResourceDefinition(props);
 
     const finalActions =
-        typeof actions === 'undefined' && hasEdit ? (
-            <DefaultActions />
-        ) : (
-            actions
-        );
+        typeof actions === 'undefined' && hasEdit ? <DefaultActions />
+        : actions;
 
     if (!children) {
         return null;

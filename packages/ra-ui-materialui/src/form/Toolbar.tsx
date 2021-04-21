@@ -24,9 +24,8 @@ const useStyles = makeStyles(
     theme => ({
         toolbar: {
             backgroundColor:
-                theme.palette.type === 'light'
-                    ? theme.palette.grey[100]
-                    : theme.palette.grey[900],
+                theme.palette.type === 'light' ? theme.palette.grey[100]
+                : theme.palette.grey[900],
         },
         desktopToolbar: {
             marginTop: theme.spacing(2),
@@ -137,7 +136,7 @@ const Toolbar: FC<ToolbarProps> = props => {
                 role="toolbar"
                 {...rest}
             >
-                {Children.count(children) === 0 ? (
+                {Children.count(children) === 0 ?
                     <div className={classes.defaultToolbar}>
                         <SaveButton
                             handleSubmitWithRedirect={
@@ -159,44 +158,44 @@ const Toolbar: FC<ToolbarProps> = props => {
                             />
                         )}
                     </div>
-                ) : (
+                : (
                     Children.map(children, (button: ReactElement) =>
-                        button && isValidElement<any>(button)
-                            ? React.cloneElement(button, {
-                                  basePath: valueOrDefault(
-                                      button.props.basePath,
-                                      basePath
-                                  ),
-                                  handleSubmit: valueOrDefault(
-                                      button.props.handleSubmit,
-                                      handleSubmit
-                                  ),
-                                  handleSubmitWithRedirect: valueOrDefault(
-                                      button.props.handleSubmitWithRedirect,
-                                      handleSubmitWithRedirect
-                                  ),
-                                  onSave: button.props.onSave,
-                                  invalid,
-                                  pristine,
-                                  record: valueOrDefault(
-                                      button.props.record,
-                                      record
-                                  ),
-                                  resource: valueOrDefault(
-                                      button.props.resource,
-                                      resource
-                                  ),
-                                  saving,
-                                  submitOnEnter: valueOrDefault(
-                                      button.props.submitOnEnter,
-                                      submitOnEnter
-                                  ),
-                                  undoable: valueOrDefault(
-                                      button.props.undoable,
-                                      undoable
-                                  ),
-                              })
-                            : null
+                        button && isValidElement<any>(button) ?
+                            React.cloneElement(button, {
+                                basePath: valueOrDefault(
+                                    button.props.basePath,
+                                    basePath
+                                ),
+                                handleSubmit: valueOrDefault(
+                                    button.props.handleSubmit,
+                                    handleSubmit
+                                ),
+                                handleSubmitWithRedirect: valueOrDefault(
+                                    button.props.handleSubmitWithRedirect,
+                                    handleSubmitWithRedirect
+                                ),
+                                onSave: button.props.onSave,
+                                invalid,
+                                pristine,
+                                record: valueOrDefault(
+                                    button.props.record,
+                                    record
+                                ),
+                                resource: valueOrDefault(
+                                    button.props.resource,
+                                    resource
+                                ),
+                                saving,
+                                submitOnEnter: valueOrDefault(
+                                    button.props.submitOnEnter,
+                                    submitOnEnter
+                                ),
+                                undoable: valueOrDefault(
+                                    button.props.undoable,
+                                    undoable
+                                ),
+                            })
+                        : null
                     )
                 )}
             </MuiToolbar>

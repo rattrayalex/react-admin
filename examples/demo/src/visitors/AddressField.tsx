@@ -4,10 +4,10 @@ import { FieldProps } from 'react-admin';
 import { Customer } from '../types';
 
 const AddressField: FC<FieldProps<Customer>> = ({ record }) =>
-    record ? (
+    record ?
         <span>
             {record.address}, {record.city}, {record.stateAbbr} {record.zipcode}
         </span>
-    ) : null;
+    : null;
 
 export default AddressField;

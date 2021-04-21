@@ -19,12 +19,15 @@ import { Category } from '../types';
 
 const CategoryTitle: FC<FieldProps<Category>> = ({ record }) => {
     const translate = useTranslate();
-    return record ? (
-        <span>
-            {translate('resources.categories.name', { smart_count: 1 })} &quot;
-            {record.name}&quot;
-        </span>
-    ) : null;
+    return (
+        record ?
+            <span>
+                {translate('resources.categories.name', { smart_count: 1 })}{' '}
+                &quot;
+                {record.name}&quot;
+            </span>
+        : null
+    );
 };
 
 const CategoryEdit: FC<EditProps> = props => (

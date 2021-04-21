@@ -50,39 +50,41 @@ const SimpleListLoading: FC<Props & ListProps> = props => {
     const classes = useStyles(props);
     const oneSecondHasPassed = useTimeout(1000);
 
-    return oneSecondHasPassed ? (
-        <List className={className} {...rest}>
-            {times(nbFakeLines, key => (
-                <ListItem key={key}>
-                    {hasLeftAvatarOrIcon && (
-                        <ListItemAvatar>
-                            <Avatar>&nbsp;</Avatar>
-                        </ListItemAvatar>
-                    )}
-                    <ListItemText
-                        primary={
-                            <div>
-                                <Placeholder className={classes.primary} />
-                                {hasTertiaryText && (
-                                    <span className={classes.tertiary}>
-                                        <Placeholder />
-                                    </span>
-                                )}
-                            </div>
-                        }
-                        secondary={
-                            hasSecondaryText ? <Placeholder /> : undefined
-                        }
-                    />
-                    {hasRightAvatarOrIcon && (
-                        <ListItemSecondaryAction>
-                            <Avatar>&nbsp;</Avatar>
-                        </ListItemSecondaryAction>
-                    )}
-                </ListItem>
-            ))}
-        </List>
-    ) : null;
+    return (
+        oneSecondHasPassed ?
+            <List className={className} {...rest}>
+                {times(nbFakeLines, key => (
+                    <ListItem key={key}>
+                        {hasLeftAvatarOrIcon && (
+                            <ListItemAvatar>
+                                <Avatar>&nbsp;</Avatar>
+                            </ListItemAvatar>
+                        )}
+                        <ListItemText
+                            primary={
+                                <div>
+                                    <Placeholder className={classes.primary} />
+                                    {hasTertiaryText && (
+                                        <span className={classes.tertiary}>
+                                            <Placeholder />
+                                        </span>
+                                    )}
+                                </div>
+                            }
+                            secondary={
+                                hasSecondaryText ? <Placeholder /> : undefined
+                            }
+                        />
+                        {hasRightAvatarOrIcon && (
+                            <ListItemSecondaryAction>
+                                <Avatar>&nbsp;</Avatar>
+                            </ListItemSecondaryAction>
+                        )}
+                    </ListItem>
+                ))}
+            </List>
+        : null
+    );
 };
 
 SimpleListLoading.propTypes = {

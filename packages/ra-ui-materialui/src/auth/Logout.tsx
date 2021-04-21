@@ -60,7 +60,11 @@ const LogoutWithRef: FunctionComponent<
             {...rest}
         >
             <ListItemIcon className={classes.icon}>
-                {icon ? icon : <ExitIcon />}
+                {icon ?
+                    icon
+                : (
+                    <ExitIcon />
+                )}
             </ListItemIcon>
             {translate('ra.auth.logout')}
         </MenuItem>

@@ -114,7 +114,9 @@ describe('useMutation', () => {
             <Mutation type="mytype" resource="foo">
                 {(mutate, { data }) => (
                     <button data-testid="test" onClick={mutate}>
-                        {data ? data.foo : 'no data'}
+                        {data ?
+                            data.foo
+                        : 'no data'}
                     </button>
                 )}
             </Mutation>
@@ -143,7 +145,9 @@ describe('useMutation', () => {
             <Mutation type="mytype" resource="foo">
                 {(mutate, { error }) => (
                     <button data-testid="test" onClick={mutate}>
-                        {error ? error.message : 'no data'}
+                        {error ?
+                            error.message
+                        : 'no data'}
                     </button>
                 )}
             </Mutation>

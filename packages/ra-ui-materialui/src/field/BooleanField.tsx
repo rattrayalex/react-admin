@@ -58,11 +58,11 @@ export const BooleanField: FC<BooleanFieldProps> = memo<BooleanFieldProps>(
                     {...sanitizeFieldRestProps(rest)}
                 >
                     <Tooltip title={translate(ariaLabel, { _: ariaLabel })}>
-                        {value === true ? (
+                        {value === true ?
                             <span>
                                 <TrueIcon data-testid="true" fontSize="small" />
                             </span>
-                        ) : (
+                        : (
                             <span>
                                 <FalseIcon
                                     data-testid="false"

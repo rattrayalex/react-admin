@@ -32,8 +32,9 @@ const EditButton: FC<EditButtonProps> = ({
             component={Link}
             to={useMemo(
                 () => ({
-                    pathname: record
-                        ? linkToRecord(basePath || `/${resource}`, record.id)
+                    pathname:
+                        record ?
+                            linkToRecord(basePath || `/${resource}`, record.id)
                         : '',
                     state: { _scrollToTop: scrollToTop },
                 }),

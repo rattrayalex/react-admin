@@ -38,22 +38,22 @@ const AcceptButton: FC<{ record: Review }> = ({ record }) => {
             },
         }
     );
-    return record && record.status === 'pending' ? (
-        <Button
-            variant="outlined"
-            color="primary"
-            size="small"
-            onClick={approve}
-            disabled={loading}
-        >
-            <ThumbUp
+    return (
+        record && record.status === 'pending' ?
+            <Button
+                variant="outlined"
                 color="primary"
-                style={{ paddingRight: '0.5em', color: 'green' }}
-            />
-            {translate('resources.reviews.action.accept')}
-        </Button>
-    ) : (
-        <span />
+                size="small"
+                onClick={approve}
+                disabled={loading}
+            >
+                <ThumbUp
+                    color="primary"
+                    style={{ paddingRight: '0.5em', color: 'green' }}
+                />
+                {translate('resources.reviews.action.accept')}
+            </Button>
+        : <span />
     );
 };
 

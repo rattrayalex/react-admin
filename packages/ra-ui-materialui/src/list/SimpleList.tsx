@@ -112,9 +112,8 @@ const SimpleList: FC<SimpleListProps> = props => {
                         <ListItem
                             button={!!linkType as any}
                             style={
-                                rowStyle
-                                    ? rowStyle(data[id], rowIndex)
-                                    : undefined
+                                rowStyle ? rowStyle(data[id], rowIndex)
+                                : undefined
                             }
                         >
                             {leftIcon && (
@@ -231,19 +230,19 @@ const LinkOrNot: FC<LinkOrNotProps> = ({
     const link =
         typeof linkType === 'function' ? linkType(record, id) : linkType;
 
-    return link === 'edit' || link === true ? (
-        <Link to={linkToRecord(basePath, id)} className={classes.link}>
-            {children}
-        </Link>
-    ) : link === 'show' ? (
-        <Link
-            to={`${linkToRecord(basePath, id)}/show`}
-            className={classes.link}
-        >
-            {children}
-        </Link>
-    ) : (
-        <span>{children}</span>
+    return (
+        link === 'edit' || link === true ?
+            <Link to={linkToRecord(basePath, id)} className={classes.link}>
+                {children}
+            </Link>
+        : link === 'show' ?
+            <Link
+                to={`${linkToRecord(basePath, id)}/show`}
+                className={classes.link}
+            >
+                {children}
+            </Link>
+        : <span>{children}</span>
     );
 };
 

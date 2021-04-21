@@ -51,16 +51,12 @@ export function* handleRedirection({
             resolveRedirectTo(
                 redirectTo,
                 basePath,
-                payload
-                    ? payload.id || (payload.data ? payload.data.id : null)
-                    : requestPayload
-                    ? requestPayload.id
-                    : null,
-                payload && payload.data
-                    ? payload.data
-                    : requestPayload && requestPayload.data
-                    ? requestPayload.data
-                    : null
+                payload ? payload.id || (payload.data ? payload.data.id : null)
+                : requestPayload ? requestPayload.id
+                : null,
+                payload && payload.data ? payload.data
+                : requestPayload && requestPayload.data ? requestPayload.data
+                : null
             )
         )
     );

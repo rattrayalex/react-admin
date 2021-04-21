@@ -52,15 +52,16 @@ export const DatagridHeaderCell = (
             variant="head"
             {...rest}
         >
-            {updateSort &&
-            field.props.sortable !== false &&
-            (field.props.sortBy || field.props.source) ? (
+            {(
+                updateSort &&
+                field.props.sortable !== false &&
+                (field.props.sortBy || field.props.source)
+            ) ?
                 <Tooltip
                     title={translate('ra.action.sort')}
                     placement={
-                        field.props.textAlign === 'right'
-                            ? 'bottom-end'
-                            : 'bottom-start'
+                        field.props.textAlign === 'right' ? 'bottom-end'
+                        : 'bottom-start'
                     }
                     enterDelay={300}
                 >
@@ -83,7 +84,7 @@ export const DatagridHeaderCell = (
                         />
                     </TableSortLabel>
                 </Tooltip>
-            ) : (
+            : (
                 <FieldTitle
                     label={field.props.label}
                     source={field.props.source}

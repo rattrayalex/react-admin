@@ -43,7 +43,13 @@ const TestComponent = ({
     useEffect(() => {
         logoutIfAccessDenied(error, disableNotification).then(setLoggedOut);
     }, [error, disableNotification, logoutIfAccessDenied]);
-    return <div>{loggedOut ? '' : 'logged in'}</div>;
+    return (
+        <div>
+            {loggedOut ?
+                ''
+            : 'logged in'}
+        </div>
+    );
 };
 
 jest.mock('./useLogout');

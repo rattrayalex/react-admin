@@ -6,7 +6,9 @@ const UserTitle = ({ record }) => {
     const translate = useTranslate();
     return (
         <span>
-            {record ? translate('user.edit.title', { title: record.name }) : ''}
+            {record ?
+                translate('user.edit.title', { title: record.name })
+            : ''}
         </span>
     );
 };

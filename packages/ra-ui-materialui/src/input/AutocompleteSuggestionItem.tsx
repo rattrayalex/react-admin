@@ -69,25 +69,29 @@ const AutocompleteSuggestionItem: FunctionComponent<
             })}
             {...rest}
         >
-            {isValidElement<{ filterValue }>(suggestionText) ? (
+            {isValidElement<{ filterValue }>(suggestionText) ?
                 cloneElement<{ filterValue }>(suggestionText, { filterValue })
-            ) : (
+            : (
                 <div className={classes.suggestion}>
                     {parts.map((part, index) => {
-                        return part.highlight ? (
-                            <span
-                                key={index}
-                                className={classes.highlightedSuggestionText}
-                            >
-                                {part.text}
-                            </span>
-                        ) : (
-                            <strong
-                                key={index}
-                                className={classes.suggestionText}
-                            >
-                                {part.text}
-                            </strong>
+                        return (
+                            part.highlight ?
+                                <span
+                                    key={index}
+                                    className={
+                                        classes.highlightedSuggestionText
+                                    }
+                                >
+                                    {part.text}
+                                </span>
+                            : (
+                                <strong
+                                    key={index}
+                                    className={classes.suggestionText}
+                                >
+                                    {part.text}
+                                </strong>
+                            )
                         );
                     })}
                 </div>

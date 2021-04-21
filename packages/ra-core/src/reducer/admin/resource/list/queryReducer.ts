@@ -47,8 +47,8 @@ const queryReducer: Reducer<ListParams> = (
                 ...previousState,
                 page: 1,
                 filter: payload.filter,
-                displayedFilters: payload.displayedFilters
-                    ? payload.displayedFilters
+                displayedFilters:
+                    payload.displayedFilters ? payload.displayedFilters
                     : previousState.displayedFilters,
             };
         }

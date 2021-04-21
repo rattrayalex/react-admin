@@ -24,11 +24,11 @@ const RichTextField: FC<RichTextFieldProps> = memo<RichTextFieldProps>(
                 component="span"
                 {...sanitizeFieldRestProps(rest)}
             >
-                {value == null && emptyText ? (
+                {value == null && emptyText ?
                     emptyText
-                ) : stripTags ? (
+                : stripTags ?
                     removeTags(value)
-                ) : (
+                : (
                     <span dangerouslySetInnerHTML={{ __html: value }} />
                 )}
             </Typography>

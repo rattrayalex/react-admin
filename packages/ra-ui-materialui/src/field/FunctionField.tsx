@@ -24,7 +24,7 @@ const FunctionField = <RecordType extends Record = Record>(
     const record = useRecordContext(props);
     return useMemo(
         () =>
-            record ? (
+            record ?
                 <Typography
                     component="span"
                     variant="body2"
@@ -33,7 +33,7 @@ const FunctionField = <RecordType extends Record = Record>(
                 >
                     {render(record, source)}
                 </Typography>
-            ) : null,
+            : null,
         [className, record, source, render, rest]
     );
 };

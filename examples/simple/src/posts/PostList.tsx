@@ -130,7 +130,7 @@ const PostList = props => {
             sort={{ field: 'published_at', order: 'DESC' }}
             exporter={exporter}
         >
-            {isSmall ? (
+            {isSmall ?
                 <SimpleList
                     primaryText={record => record.title}
                     secondaryText={record => `${record.views} views`}
@@ -138,7 +138,7 @@ const PostList = props => {
                         new Date(record.published_at).toLocaleDateString()
                     }
                 />
-            ) : (
+            : (
                 <Datagrid rowClick={rowClick} expand={PostPanel} optimized>
                     <TextField source="id" />
                     <TextField source="title" cellClassName={classes.title} />

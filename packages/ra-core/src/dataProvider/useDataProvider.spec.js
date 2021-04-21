@@ -404,7 +404,9 @@ describe('useDataProvider', () => {
                                 )
                             }
                         >
-                            {updated ? '(updated)' : 'update'}
+                            {updated ?
+                                '(updated)'
+                            : 'update'}
                         </button>
                     );
                 };
@@ -455,7 +457,9 @@ describe('useDataProvider', () => {
                                 )
                             }
                         >
-                            {updated ? '(updated)' : 'update'}
+                            {updated ?
+                                '(updated)'
+                            : 'update'}
                         </button>
                     );
                 };
@@ -502,7 +506,9 @@ describe('useDataProvider', () => {
                                 )
                             }
                         >
-                            {updated ? '(updated)' : 'update'}
+                            {updated ?
+                                '(updated)'
+                            : 'update'}
                         </button>
                     );
                 };

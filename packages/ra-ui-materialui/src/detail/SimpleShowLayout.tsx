@@ -66,7 +66,7 @@ const SimpleShowLayout = ({
         {...sanitizeRestProps(rest)}
     >
         {Children.map(children, field =>
-            field && isValidElement<any>(field) ? (
+            field && isValidElement<any>(field) ?
                 <div
                     key={field.props.source}
                     className={classnames(
@@ -74,7 +74,7 @@ const SimpleShowLayout = ({
                         field.props.className
                     )}
                 >
-                    {field.props.addLabel ? (
+                    {field.props.addLabel ?
                         <Labeled
                             record={record}
                             resource={resource}
@@ -86,9 +86,9 @@ const SimpleShowLayout = ({
                         >
                             {field}
                         </Labeled>
-                    ) : typeof field.type === 'string' ? (
+                    : typeof field.type === 'string' ?
                         field
-                    ) : (
+                    : (
                         cloneElement(field, {
                             record,
                             resource,
@@ -96,7 +96,7 @@ const SimpleShowLayout = ({
                         })
                     )}
                 </div>
-            ) : null
+            : null
         )}
     </CardContentInner>
 );

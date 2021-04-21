@@ -73,9 +73,8 @@ const ArrayInput: FC<ArrayInputProps> = ({
     margin = 'dense',
     ...rest
 }) => {
-    const sanitizedValidate = Array.isArray(validate)
-        ? composeSyncValidators(validate)
-        : validate;
+    const sanitizedValidate =
+        Array.isArray(validate) ? composeSyncValidators(validate) : validate;
 
     const fieldProps = useFieldArray(source, {
         initialValue: defaultValue,
@@ -128,7 +127,7 @@ const ArrayInput: FC<ArrayInputProps> = ({
                 margin,
                 disabled,
             })}
-            {!!((touched || dirty) && arrayInputError) || helperText ? (
+            {!!((touched || dirty) && arrayInputError) || helperText ?
                 <FormHelperText error={(touched || dirty) && !!arrayInputError}>
                     <InputHelperText
                         touched={touched || dirty}
@@ -136,7 +135,7 @@ const ArrayInput: FC<ArrayInputProps> = ({
                         helperText={helperText}
                     />
                 </FormHelperText>
-            ) : null}
+            : null}
         </FormControl>
     );
 };

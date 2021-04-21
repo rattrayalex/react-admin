@@ -45,11 +45,8 @@ export const EditView = (props: EditViewProps) => {
     } = useEditContext(props);
 
     const finalActions =
-        typeof actions === 'undefined' && hasShow ? (
-            <DefaultActions />
-        ) : (
-            actions
-        );
+        typeof actions === 'undefined' && hasShow ? <DefaultActions />
+        : actions;
     if (!children) {
         return null;
     }
@@ -79,25 +76,25 @@ export const EditView = (props: EditViewProps) => {
                 })}
             >
                 <Content className={classes.card}>
-                    {record ? (
+                    {record ?
                         cloneElement(Children.only(children), {
                             basePath,
                             record,
                             redirect:
-                                typeof children.props.redirect === 'undefined'
-                                    ? redirect
-                                    : children.props.redirect,
+                                typeof children.props.redirect === 'undefined' ?
+                                    redirect
+                                : children.props.redirect,
                             resource,
                             save:
-                                typeof children.props.save === 'undefined'
-                                    ? save
-                                    : children.props.save,
+                                typeof children.props.save === 'undefined' ?
+                                    save
+                                : children.props.save,
                             saving,
                             undoable,
                             mutationMode,
                             version,
                         })
-                    ) : (
+                    : (
                         <CardContent>&nbsp;</CardContent>
                     )}
                 </Content>
@@ -108,9 +105,8 @@ export const EditView = (props: EditViewProps) => {
                         resource,
                         version,
                         save:
-                            typeof children.props.save === 'undefined'
-                                ? save
-                                : children.props.save,
+                            typeof children.props.save === 'undefined' ? save
+                            : children.props.save,
                         saving,
                     })}
             </div>

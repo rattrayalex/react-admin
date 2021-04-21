@@ -77,9 +77,10 @@ export const addRecordsAndRemoveOutdated = (
     const records = { fetchedAt: newFetchedAt };
     Object.keys(newFetchedAt).forEach(
         id =>
-            (records[id] = newRecordsById[id]
-                ? isEqual(newRecordsById[id], oldRecords[id])
-                    ? oldRecords[id] // do not change the record to avoid a redraw
+            (records[id] =
+                newRecordsById[id] ?
+                    isEqual(newRecordsById[id], oldRecords[id]) ?
+                        oldRecords[id] // do not change the record to avoid a redraw
                     : newRecordsById[id]
                 : oldRecords[id])
     );
@@ -96,8 +97,9 @@ export const addRecords = (
 ): RecordSetWithDate => {
     const newRecordsById = { ...oldRecords };
     newRecords.forEach(record => {
-        newRecordsById[record.id] = isEqual(record, oldRecords[record.id])
-            ? (oldRecords[record.id] as Record)
+        newRecordsById[record.id] =
+            isEqual(record, oldRecords[record.id]) ?
+                (oldRecords[record.id] as Record)
             : record;
     });
 
@@ -121,8 +123,9 @@ export const addOneRecord = (
 ): RecordSetWithDate => {
     const newRecordsById = {
         ...oldRecords,
-        [newRecord.id]: isEqual(newRecord, oldRecords[newRecord.id])
-            ? oldRecords[newRecord.id] // do not change the record to avoid a redraw
+        [newRecord.id]:
+            isEqual(newRecord, oldRecords[newRecord.id]) ?
+                oldRecords[newRecord.id] // do not change the record to avoid a redraw
             : newRecord,
     };
 

@@ -40,9 +40,8 @@ export default (db, { serializeDate }) => {
         const date = randomDate(customer.first_seen, customer.last_seen);
 
         const status =
-            isAfter(date, aMonthAgo) && random.boolean()
-                ? 'ordered'
-                : weightedArrayElement(['delivered', 'cancelled'], [10, 1]);
+            isAfter(date, aMonthAgo) && random.boolean() ? 'ordered'
+            : weightedArrayElement(['delivered', 'cancelled'], [10, 1]);
         return {
             id,
             reference: random.alphaNumeric(6).toUpperCase(),

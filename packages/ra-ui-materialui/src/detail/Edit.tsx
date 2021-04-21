@@ -66,13 +66,13 @@ export const Edit = (
             <EditView {...props} {...controllerProps} />
         </EditContextProvider>
     );
-    return props.resource ? (
-        // support resource override via props
-        <ResourceContextProvider value={props.resource}>
-            {body}
-        </ResourceContextProvider>
-    ) : (
-        body
+    return (
+        props.resource ?
+            // support resource override via props
+            <ResourceContextProvider value={props.resource}>
+                {body}
+            </ResourceContextProvider>
+        : body
     );
 };
 

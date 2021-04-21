@@ -29,12 +29,12 @@ const ReviewEditToolbar: FC<ToolbarProps<Review>> = ({
     if (!record) return null;
     return (
         <MuiToolbar className={classes.root}>
-            {record.status === 'pending' ? (
+            {record.status === 'pending' ?
                 <Fragment>
                     <AcceptButton record={record} />
                     <RejectButton record={record} />
                 </Fragment>
-            ) : (
+            : (
                 <Fragment>
                     <SaveButton
                         handleSubmitWithRedirect={handleSubmitWithRedirect}

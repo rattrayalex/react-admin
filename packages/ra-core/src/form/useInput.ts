@@ -62,9 +62,8 @@ const useInput = ({
         };
     }, [formContext, formGroupName, source]);
 
-    const sanitizedValidate = Array.isArray(validate)
-        ? composeValidators(validate)
-        : validate;
+    const sanitizedValidate =
+        Array.isArray(validate) ? composeValidators(validate) : validate;
 
     const { input, meta } = useFinalFormField(finalName, {
         initialValue: defaultValue,

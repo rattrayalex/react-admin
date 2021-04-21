@@ -31,11 +31,12 @@ const ShowButton: FC<ShowButtonProps> = ({
             component={Link}
             to={useMemo(
                 () => ({
-                    pathname: record
-                        ? `${linkToRecord(
-                              basePath || `/${resource}`,
-                              record.id
-                          )}/show`
+                    pathname:
+                        record ?
+                            `${linkToRecord(
+                                basePath || `/${resource}`,
+                                record.id
+                            )}/show`
                         : '',
                     state: { _scrollToTop: scrollToTop },
                 }),
@@ -76,9 +77,9 @@ ShowButton.propTypes = {
 const PureShowButton = memo(
     ShowButton,
     (props: ShowButtonProps, nextProps: ShowButtonProps) =>
-        (props.record && nextProps.record
-            ? props.record.id === nextProps.record.id
-            : props.record == nextProps.record) && // eslint-disable-line eqeqeq
+        (props.record && nextProps.record ?
+            props.record.id === nextProps.record.id
+        : props.record == nextProps.record) && // eslint-disable-line eqeqeq
         props.basePath === nextProps.basePath &&
         props.to === nextProps.to &&
         props.disabled === nextProps.disabled

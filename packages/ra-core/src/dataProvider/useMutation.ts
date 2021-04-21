@@ -146,11 +146,9 @@ const useMutation = (
             callTimeQuery?: Mutation | Event,
             callTimeOptions?: MutationOptions
         ): void | Promise<any> => {
-            const finalDataProvider = hasDeclarativeSideEffectsSupport(
-                options,
-                callTimeOptions
-            )
-                ? dataProviderWithDeclarativeSideEffects
+            const finalDataProvider =
+                hasDeclarativeSideEffectsSupport(options, callTimeOptions) ?
+                    dataProviderWithDeclarativeSideEffects
                 : dataProvider;
             const params = mergeDefinitionAndCallTimeParameters(
                 query,
@@ -166,9 +164,9 @@ const useMutation = (
             const promise = finalDataProvider[params.type]
                 .apply(
                     finalDataProvider,
-                    typeof params.resource !== 'undefined'
-                        ? [params.resource, params.payload, params.options]
-                        : [params.payload, params.options]
+                    typeof params.resource !== 'undefined' ?
+                        [params.resource, params.payload, params.options]
+                    : [params.payload, params.options]
                 )
                 .then(response => {
                     const { data, total } = response;
@@ -297,15 +295,16 @@ const mergeDefinitionAndCallTimeParameters = (
         return {
             type: query.type || callTimeQuery.type,
             resource: query.resource || callTimeQuery.resource,
-            payload: callTimeQuery
-                ? merge({}, query.payload, callTimeQuery.payload)
+            payload:
+                callTimeQuery ? merge({}, query.payload, callTimeQuery.payload)
                 : query.payload,
-            options: callTimeOptions
-                ? merge(
-                      {},
-                      sanitizeOptions(options),
-                      sanitizeOptions(callTimeOptions)
-                  )
+            options:
+                callTimeOptions ?
+                    merge(
+                        {},
+                        sanitizeOptions(options),
+                        sanitizeOptions(callTimeOptions)
+                    )
                 : sanitizeOptions(options),
         };
     return {

@@ -62,14 +62,13 @@ export const CreateView = (props: CreateViewProps) => {
                         basePath,
                         record,
                         redirect:
-                            typeof children.props.redirect === 'undefined'
-                                ? redirect
-                                : children.props.redirect,
+                            typeof children.props.redirect === 'undefined' ?
+                                redirect
+                            : children.props.redirect,
                         resource,
                         save:
-                            typeof children.props.save === 'undefined'
-                                ? save
-                                : children.props.save,
+                            typeof children.props.save === 'undefined' ? save
+                            : children.props.save,
                         saving,
                         version,
                     })}
@@ -80,9 +79,8 @@ export const CreateView = (props: CreateViewProps) => {
                         record,
                         resource,
                         save:
-                            typeof children.props.save === 'undefined'
-                                ? save
-                                : children.props.save,
+                            typeof children.props.save === 'undefined' ? save
+                            : children.props.save,
                         saving,
                         version,
                     })}

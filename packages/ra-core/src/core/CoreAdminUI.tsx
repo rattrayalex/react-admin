@@ -83,7 +83,7 @@ const CoreAdminUI: FunctionComponent<AdminUIProps> = ({
 
     return (
         <Switch>
-            {loginPage !== false && loginPage !== true ? (
+            {loginPage !== false && loginPage !== true ?
                 <Route
                     exact
                     path="/login"
@@ -95,7 +95,7 @@ const CoreAdminUI: FunctionComponent<AdminUIProps> = ({
                         })
                     }
                 />
-            ) : null}
+            : null}
             <Route
                 path="/"
                 render={props => (

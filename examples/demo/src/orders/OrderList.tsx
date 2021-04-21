@@ -39,9 +39,10 @@ const OrderFilter: FC<Omit<FilterProps, 'children'>> = props => (
         <ReferenceInput source="customer_id" reference="customers">
             <AutocompleteInput
                 optionText={(choice: Customer) =>
-                    choice.id // the empty choice is { id: '' }
-                        ? `${choice.first_name} ${choice.last_name}`
-                        : ''
+                    (
+                        choice.id // the empty choice is { id: '' }
+                    ) ? `${choice.first_name} ${choice.last_name}`
+                    : ''
                 }
             />
         </ReferenceInput>
@@ -135,11 +136,9 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
     );
 
     const selectedIds =
-        filterValues.status === 'ordered'
-            ? ordered
-            : filterValues.status === 'delivered'
-            ? delivered
-            : cancelled;
+        filterValues.status === 'ordered' ? ordered
+        : filterValues.status === 'delivered' ? delivered
+        : cancelled;
 
     return (
         <Fragment>
@@ -154,22 +153,22 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                     <Tab
                         key={choice.id}
                         label={
-                            totals[choice.name]
-                                ? `${choice.name} (${totals[choice.name]})`
-                                : choice.name
+                            totals[choice.name] ?
+                                `${choice.name} (${totals[choice.name]})`
+                            : choice.name
                         }
                         value={choice.id}
                     />
                 ))}
             </Tabs>
             <Divider />
-            {isXSmall ? (
+            {isXSmall ?
                 <ListContextProvider
                     value={{ ...listContext, ids: selectedIds }}
                 >
                     <MobileGrid {...props} ids={selectedIds} />
                 </ListContextProvider>
-            ) : (
+            : (
                 <div>
                     {filterValues.status === 'ordered' && (
                         <ListContextProvider

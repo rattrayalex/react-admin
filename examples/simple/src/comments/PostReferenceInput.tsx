@@ -82,7 +82,7 @@ const PostReferenceInput = props => {
             <FormSpy
                 subscription={{ values: true }}
                 render={({ values }) =>
-                    values.post_id ? (
+                    values.post_id ?
                         <Fragment>
                             <Button
                                 data-testid="button-show-post"
@@ -118,7 +118,7 @@ const PostReferenceInput = props => {
                                 </DialogActions>
                             </Dialog>
                         </Fragment>
-                    ) : null
+                    : null
                 }
             />
             <Dialog

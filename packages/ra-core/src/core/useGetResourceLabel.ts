@@ -35,18 +35,21 @@ export const useGetResourceLabel = (): GetResourceLabel => {
         const label = translate(`resources.${resource}.name`, {
             smart_count: count,
             _:
-                resourceDefinition &&
-                resourceDefinition.options &&
-                resourceDefinition.options.label
-                    ? translate(resourceDefinition.options.label, {
-                          smart_count: count,
-                          _: resourceDefinition.options.label,
-                      })
-                    : inflection.humanize(
-                          count > 1
-                              ? inflection.pluralize(resource)
-                              : inflection.singularize(resource)
-                      ),
+                (
+                    resourceDefinition &&
+                    resourceDefinition.options &&
+                    resourceDefinition.options.label
+                ) ?
+                    translate(resourceDefinition.options.label, {
+                        smart_count: count,
+                        _: resourceDefinition.options.label,
+                    })
+                : (
+                    inflection.humanize(
+                        count > 1 ? inflection.pluralize(resource)
+                        : inflection.singularize(resource)
+                    )
+                ),
         });
 
         return label;

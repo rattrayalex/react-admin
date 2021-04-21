@@ -154,9 +154,9 @@ function ResettableTextField(props: ResettableTextFieldProps) {
             value={value}
             InputProps={{
                 classes:
-                    props.select && variant === 'filled'
-                        ? { adornedEnd: inputAdornedEnd }
-                        : {},
+                    props.select && variant === 'filled' ?
+                        { adornedEnd: inputAdornedEnd }
+                    : {},
                 endAdornment: getEndAdornment(),
                 ...InputPropsWithoutEndAdornment,
             }}

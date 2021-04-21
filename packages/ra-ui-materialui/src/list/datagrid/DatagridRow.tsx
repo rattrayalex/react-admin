@@ -34,11 +34,11 @@ import useDatagridStyles from './useDatagridStyles';
 import { useDatagridContext } from './useDatagridContext';
 
 const computeNbColumns = (expand, children, hasBulkActions) =>
-    expand
-        ? 1 + // show expand button
-          (hasBulkActions ? 1 : 0) + // checkbox column
-          React.Children.toArray(children).filter(child => !!child).length // non-null children
-        : 0; // we don't need to compute columns if there is no expand panel;
+    expand ?
+        1 + // show expand button
+        (hasBulkActions ? 1 : 0) + // checkbox column
+        React.Children.toArray(children).filter(child => !!child).length // non-null children
+    : 0; // we don't need to compute columns if there is no expand panel;
 
 const defaultClasses = { expandIconCell: '', checkbox: '', rowCell: '' };
 
@@ -109,9 +109,9 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
             event.persist();
 
             const effect =
-                typeof rowClick === 'function'
-                    ? await rowClick(id, basePath || `/${resource}`, record)
-                    : rowClick;
+                typeof rowClick === 'function' ?
+                    await rowClick(id, basePath || `/${resource}`, record)
+                : rowClick;
             switch (effect) {
                 case 'edit':
                     history.push(linkToRecord(basePath || `/${resource}`, id));
@@ -183,7 +183,7 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
                     </TableCell>
                 )}
                 {React.Children.map(children, (field, index) =>
-                    isValidElement(field) ? (
+                    isValidElement(field) ?
                         <DatagridCell
                             key={`${id}-${
                                 (field.props as any).source || index
@@ -195,26 +195,28 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
                             record={record}
                             {...{ field, basePath, resource }}
                         />
-                    ) : null
+                    : null
                 )}
             </TableRow>
             {expandable && expanded && (
                 <TableRow key={`${id}-expand`} id={`${id}-expand`}>
                     <TableCell colSpan={nbColumns}>
-                        {isValidElement(expand)
-                            ? cloneElement(expand, {
-                                  // @ts-ignore
-                                  record,
-                                  basePath,
-                                  resource,
-                                  id: String(id),
-                              })
-                            : createElement(expand, {
-                                  record,
-                                  basePath,
-                                  resource,
-                                  id: String(id),
-                              })}
+                        {isValidElement(expand) ?
+                            cloneElement(expand, {
+                                // @ts-ignore
+                                record,
+                                basePath,
+                                resource,
+                                id: String(id),
+                            })
+                        : (
+                            createElement(expand, {
+                                record,
+                                basePath,
+                                resource,
+                                id: String(id),
+                            })
+                        )}
                     </TableCell>
                 </TableRow>
             )}

@@ -22,7 +22,9 @@ const UserFilter = ({ permissions, ...props }) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
         <TextInput source="name" />
-        {permissions === 'admin' ? <TextInput source="role" /> : null}
+        {permissions === 'admin' ?
+            <TextInput source="role" />
+        : null}
     </Filter>
 );
 
@@ -31,9 +33,10 @@ const UserBulkActionButtons = props => (
 );
 
 const rowClick = memoize(permissions => (id, basePath, record) => {
-    return permissions === 'admin'
-        ? Promise.resolve('edit')
-        : Promise.resolve('show');
+    return (
+        permissions === 'admin' ? Promise.resolve('edit')
+        : Promise.resolve('show')
+    );
 });
 
 const UserList = ({ permissions, ...props }) => (
@@ -45,14 +48,14 @@ const UserList = ({ permissions, ...props }) => (
         aside={<Aside />}
         bulkActionButtons={<UserBulkActionButtons />}
     >
-        {useMediaQuery(theme => theme.breakpoints.down('sm')) ? (
+        {useMediaQuery(theme => theme.breakpoints.down('sm')) ?
             <SimpleList
                 primaryText={record => record.name}
                 secondaryText={record =>
                     permissions === 'admin' ? record.role : null
                 }
             />
-        ) : (
+        : (
             <Datagrid
                 rowClick={rowClick(permissions)}
                 expand={<UserEditEmbedded />}

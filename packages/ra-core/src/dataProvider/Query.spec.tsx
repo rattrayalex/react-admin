@@ -62,7 +62,9 @@ describe('Query', () => {
                         data-testid="test"
                         className={loading ? 'loading' : 'idle'}
                     >
-                        {data ? data.foo : 'no data'}
+                        {data ?
+                            data.foo
+                        : 'no data'}
                     </div>
                 )}
             </Query>
@@ -100,7 +102,9 @@ describe('Query', () => {
                         data-testid="test"
                         className={loading ? 'loading' : 'idle'}
                     >
-                        {loading ? 'no data' : total}
+                        {loading ?
+                            'no data'
+                        : total}
                     </div>
                 )}
             </Query>
@@ -138,7 +142,9 @@ describe('Query', () => {
                         data-testid="test"
                         className={loading ? 'loading' : 'idle'}
                     >
-                        {error ? error.message : 'no data'}
+                        {error ?
+                            error.message
+                        : 'no data'}
                     </div>
                 )}
             </Query>
@@ -292,7 +298,9 @@ describe('Query', () => {
                                                 loading ? 'loading' : 'idle'
                                             }
                                         >
-                                            {loading ? 'no data' : total}
+                                            {loading ?
+                                                'no data'
+                                            : total}
                                         </div>
                                     )}
                                 </Query>
@@ -343,7 +351,9 @@ describe('Query', () => {
                             data-testid="test"
                             className={loading ? 'loading' : 'idle'}
                         >
-                            {loading ? 'no data' : total}
+                            {loading ?
+                                'no data'
+                            : total}
                         </div>
                     )}
                 </Query>
@@ -413,7 +423,9 @@ describe('Query', () => {
                                                 loading ? 'loading' : 'idle'
                                             }
                                         >
-                                            {loading ? 'no data' : total}
+                                            {loading ?
+                                                'no data'
+                                            : total}
                                         </div>
                                     )}
                                 </Query>
@@ -465,7 +477,9 @@ describe('Query', () => {
                             data-testid="test"
                             className={loading ? 'loading' : 'idle'}
                         >
-                            {loading ? 'no data' : total}
+                            {loading ?
+                                'no data'
+                            : total}
                         </div>
                     )}
                 </Query>

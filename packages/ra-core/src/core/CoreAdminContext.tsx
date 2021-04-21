@@ -58,14 +58,14 @@ React-admin requires a valid dataProvider function to work.`);
     }
 
     const finalAuthProvider =
-        authProvider instanceof Function
-            ? convertLegacyAuthProvider(authProvider)
-            : authProvider;
+        authProvider instanceof Function ?
+            convertLegacyAuthProvider(authProvider)
+        : authProvider;
 
     const finalDataProvider =
-        dataProvider instanceof Function
-            ? convertLegacyDataProvider(dataProvider)
-            : dataProvider;
+        dataProvider instanceof Function ?
+            convertLegacyDataProvider(dataProvider)
+        : dataProvider;
 
     const finalHistory = history || createHashHistory();
 
@@ -74,13 +74,11 @@ React-admin requires a valid dataProvider function to work.`);
             <AuthContext.Provider value={finalAuthProvider}>
                 <DataProviderContext.Provider value={finalDataProvider}>
                     <TranslationProvider i18nProvider={i18nProvider}>
-                        {typeof window !== 'undefined' ? (
+                        {typeof window !== 'undefined' ?
                             <ConnectedRouter history={finalHistory}>
                                 {children}
                             </ConnectedRouter>
-                        ) : (
-                            children
-                        )}
+                        : children}
                     </TranslationProvider>
                 </DataProviderContext.Provider>
             </AuthContext.Provider>
@@ -88,16 +86,16 @@ React-admin requires a valid dataProvider function to work.`);
     };
 
     const [store] = useState(() =>
-        !reduxIsAlreadyInitialized
-            ? createAdminStore({
-                  authProvider: finalAuthProvider,
-                  customReducers,
-                  customSagas,
-                  dataProvider: finalDataProvider,
-                  initialState,
-                  history: finalHistory,
-              })
-            : undefined
+        !reduxIsAlreadyInitialized ?
+            createAdminStore({
+                authProvider: finalAuthProvider,
+                customReducers,
+                customSagas,
+                dataProvider: finalDataProvider,
+                initialState,
+                history: finalHistory,
+            })
+        : undefined
     );
 
     if (reduxIsAlreadyInitialized) {

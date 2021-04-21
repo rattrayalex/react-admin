@@ -25,16 +25,18 @@ interface Props extends FieldProps<Customer> {
 
 const FullNameField: FC<Props> = ({ record, size }) => {
     const classes = useStyles();
-    return record ? (
-        <div className={classes.root}>
-            <AvatarField
-                className={classes.avatar}
-                record={record}
-                size={size}
-            />
-            {record.first_name} {record.last_name}
-        </div>
-    ) : null;
+    return (
+        record ?
+            <div className={classes.root}>
+                <AvatarField
+                    className={classes.avatar}
+                    record={record}
+                    size={size}
+                />
+                {record.first_name} {record.last_name}
+            </div>
+        : null
+    );
 };
 
 FullNameField.defaultProps = {

@@ -53,14 +53,16 @@ const DeleteButton: FC<DeleteButtonProps> = ({
     if (!record || record.id == null) {
         return null;
     }
-    return undoable || mutationMode === 'undoable' ? (
-        <DeleteWithUndoButton record={record} {...props} />
-    ) : (
-        <DeleteWithConfirmButton
-            mutationMode={mutationMode}
-            record={record}
-            {...props}
-        />
+    return (
+        undoable || mutationMode === 'undoable' ?
+            <DeleteWithUndoButton record={record} {...props} />
+        : (
+            <DeleteWithConfirmButton
+                mutationMode={mutationMode}
+                record={record}
+                {...props}
+            />
+        )
     );
 };
 

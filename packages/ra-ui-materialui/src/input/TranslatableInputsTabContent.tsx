@@ -49,7 +49,7 @@ export const TranslatableInputsTabContent = (
                 {...other}
             >
                 {Children.map(children, child =>
-                    isValidElement(child) ? (
+                    isValidElement(child) ?
                         <FormInput
                             basePath={basePath}
                             input={cloneElement(child, {
@@ -62,7 +62,7 @@ export const TranslatableInputsTabContent = (
                             variant={child.props.variant || variant}
                             margin={child.props.margin || margin}
                         />
-                    ) : null
+                    : null
                 )}
             </div>
         </FormGroupContextProvider>

@@ -16,10 +16,11 @@ export default (db, { serializeDate }) => {
         const last_name = name.lastName();
         const email = internet.email(first_name, last_name);
         const birthday = has_ordered ? date.past(60) : null;
-        const avatar = has_ordered
-            ? 'https://marmelab.com/posters/avatar-' +
-              numberOfCustomers +
-              '.jpeg'
+        const avatar =
+            has_ordered ?
+                'https://marmelab.com/posters/avatar-' +
+                numberOfCustomers +
+                '.jpeg'
             : undefined;
 
         if (has_ordered) {

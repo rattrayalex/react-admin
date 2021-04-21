@@ -120,9 +120,9 @@ const useListParams = ({
     const [localParams, setLocalParams] = useState(defaultParams);
     const params = useSelector(
         (reduxState: ReduxState) =>
-            reduxState.admin.resources[resource]
-                ? reduxState.admin.resources[resource].list.params
-                : defaultParams,
+            reduxState.admin.resources[resource] ?
+                reduxState.admin.resources[resource].list.params
+            : defaultParams,
         shallowEqual
     );
 
@@ -136,9 +136,8 @@ const useListParams = ({
         syncWithLocation,
     ];
 
-    const queryFromLocation = syncWithLocation
-        ? parseQueryFromLocation(location)
-        : {};
+    const queryFromLocation =
+        syncWithLocation ? parseQueryFromLocation(location) : {};
 
     const query = useMemo(
         () =>
@@ -216,15 +215,16 @@ const useListParams = ({
 
     const setFilters = useCallback(
         (filter, displayedFilters, debounce = true) =>
-            debounce
-                ? debouncedSetFilters(filter, displayedFilters)
-                : changeParams({
-                      type: SET_FILTER,
-                      payload: {
-                          filter: removeEmpty(filter),
-                          displayedFilters,
-                      },
-                  }),
+            debounce ? debouncedSetFilters(filter, displayedFilters)
+            : (
+                changeParams({
+                    type: SET_FILTER,
+                    payload: {
+                        filter: removeEmpty(filter),
+                        displayedFilters,
+                    },
+                })
+            ),
         requestSignature // eslint-disable-line react-hooks/exhaustive-deps
     );
 
@@ -233,9 +233,10 @@ const useListParams = ({
         // to avoid problems with compound filter names (e.g. 'author.name')
         const displayedFilters = Object.keys(displayedFilterValues).reduce(
             (filters, filter) => {
-                return filter !== filterName
-                    ? { ...filters, [filter]: true }
-                    : filters;
+                return (
+                    filter !== filterName ? { ...filters, [filter]: true }
+                    : filters
+                );
             },
             {}
         );
@@ -253,8 +254,8 @@ const useListParams = ({
             ...displayedFilterValues,
             [filterName]: true,
         };
-        const filter = defaultValue
-            ? set(filterValues, filterName, defaultValue)
+        const filter =
+            defaultValue ? set(filterValues, filterName, defaultValue)
             : filterValues;
         changeParams({
             type: SET_FILTER,
@@ -352,11 +353,9 @@ export const getQuery = ({
     perPage,
 }) => {
     const query: Partial<ListParams> =
-        Object.keys(queryFromLocation).length > 0
-            ? queryFromLocation
-            : hasCustomParams(params)
-            ? { ...params }
-            : { filter: filterDefaultValues || {} };
+        Object.keys(queryFromLocation).length > 0 ? queryFromLocation
+        : hasCustomParams(params) ? { ...params }
+        : { filter: filterDefaultValues || {} };
 
     if (!query.sort) {
         query.sort = sort.field;
@@ -381,9 +380,8 @@ export const getNumberOrDefault = (
     defaultValue: number
 ) => {
     const parsedNumber =
-        typeof possibleNumber === 'string'
-            ? parseInt(possibleNumber, 10)
-            : possibleNumber;
+        typeof possibleNumber === 'string' ? parseInt(possibleNumber, 10)
+        : possibleNumber;
 
     return isNaN(parsedNumber) ? defaultValue : parsedNumber;
 };

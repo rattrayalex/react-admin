@@ -47,58 +47,60 @@ const Button: FC<ButtonProps> = props => {
     );
     const restProps = sanitizeButtonRestProps(rest);
 
-    return isXSmall ? (
-        label && !disabled ? (
-            <Tooltip title={translate(label, { _: label })}>
+    return (
+        isXSmall ?
+            label && !disabled ?
+                <Tooltip title={translate(label, { _: label })}>
+                    <IconButton
+                        aria-label={translate(label, { _: label })}
+                        className={className}
+                        color={color}
+                        {...restProps}
+                    >
+                        {children}
+                    </IconButton>
+                </Tooltip>
+            : (
                 <IconButton
-                    aria-label={translate(label, { _: label })}
                     className={className}
                     color={color}
+                    disabled={disabled}
                     {...restProps}
                 >
                     {children}
                 </IconButton>
-            </Tooltip>
-        ) : (
-            <IconButton
-                className={className}
+            )
+        : (
+            <MuiButton
+                className={classnames(classes.button, className)}
                 color={color}
+                size={size}
+                aria-label={label ? translate(label, { _: label }) : undefined}
                 disabled={disabled}
                 {...restProps}
             >
-                {children}
-            </IconButton>
-        )
-    ) : (
-        <MuiButton
-            className={classnames(classes.button, className)}
-            color={color}
-            size={size}
-            aria-label={label ? translate(label, { _: label }) : undefined}
-            disabled={disabled}
-            {...restProps}
-        >
-            {alignIcon === 'left' &&
-                children &&
-                React.cloneElement(children, {
-                    className: classes[`${size}Icon`],
-                })}
-            {label && (
-                <span
-                    className={classnames({
-                        [classes.label]: alignIcon === 'left',
-                        [classes.labelRightIcon]: alignIcon !== 'left',
+                {alignIcon === 'left' &&
+                    children &&
+                    React.cloneElement(children, {
+                        className: classes[`${size}Icon`],
                     })}
-                >
-                    {translate(label, { _: label })}
-                </span>
-            )}
-            {alignIcon === 'right' &&
-                children &&
-                React.cloneElement(children, {
-                    className: classes[`${size}Icon`],
-                })}
-        </MuiButton>
+                {label && (
+                    <span
+                        className={classnames({
+                            [classes.label]: alignIcon === 'left',
+                            [classes.labelRightIcon]: alignIcon !== 'left',
+                        })}
+                    >
+                        {translate(label, { _: label })}
+                    </span>
+                )}
+                {alignIcon === 'right' &&
+                    children &&
+                    React.cloneElement(children, {
+                        className: classes[`${size}Icon`],
+                    })}
+            </MuiButton>
+        )
     );
 };
 

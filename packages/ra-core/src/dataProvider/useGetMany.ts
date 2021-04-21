@@ -158,9 +158,8 @@ const makeGetManySelector = () =>
             (_, __, ids) => ids,
         ],
         (resourceData, ids) =>
-            resourceData
-                ? ids.map(id => resourceData[id])
-                : ids.map(id => undefined)
+            resourceData ? ids.map(id => resourceData[id])
+            : ids.map(id => undefined)
     );
 
 /**

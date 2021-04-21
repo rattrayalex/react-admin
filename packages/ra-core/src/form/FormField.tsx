@@ -35,22 +35,29 @@ const FormField: FunctionComponent<Props> = ({
         console.log('FormField is deprecated, use the useInput hook instead.');
     }
 
-    const sanitizedValidate = Array.isArray(validate)
-        ? composeValidators(validate)
-        : validate;
+    const sanitizedValidate =
+        Array.isArray(validate) ? composeValidators(validate) : validate;
 
     const finalId = id || props.source;
 
-    return input ? ( // An ancestor is already decorated by Field
-        React.createElement(props.component, { input, id: finalId, ...props })
-    ) : (
-        <Field
-            {...props}
-            id={finalId}
-            name={props.source}
-            isRequired={isRequired(validate)}
-            validate={sanitizedValidate}
-        />
+    return (
+        (
+            input // An ancestor is already decorated by Field
+        ) ?
+            React.createElement(props.component, {
+                input,
+                id: finalId,
+                ...props,
+            })
+        : (
+            <Field
+                {...props}
+                id={finalId}
+                name={props.source}
+                isRequired={isRequired(validate)}
+                validate={sanitizedValidate}
+            />
+        )
     );
 };
 

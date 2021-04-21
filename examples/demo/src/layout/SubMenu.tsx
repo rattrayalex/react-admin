@@ -50,7 +50,9 @@ const SubMenu: FC<Props> = ({
     const header = (
         <MenuItem dense={dense} button onClick={handleToggle}>
             <ListItemIcon className={classes.icon}>
-                {isOpen ? <ExpandMore /> : icon}
+                {isOpen ?
+                    <ExpandMore />
+                : icon}
             </ListItemIcon>
             <Typography variant="inherit" color="textSecondary">
                 {translate(name)}
@@ -60,9 +62,9 @@ const SubMenu: FC<Props> = ({
 
     return (
         <Fragment>
-            {sidebarIsOpen || isOpen ? (
+            {sidebarIsOpen || isOpen ?
                 header
-            ) : (
+            : (
                 <Tooltip title={translate(name)} placement="right">
                     {header}
                 </Tooltip>
@@ -73,9 +75,8 @@ const SubMenu: FC<Props> = ({
                     component="div"
                     disablePadding
                     className={
-                        sidebarIsOpen
-                            ? classes.sidebarIsOpen
-                            : classes.sidebarIsClosed
+                        sidebarIsOpen ? classes.sidebarIsOpen
+                        : classes.sidebarIsClosed
                     }
                 >
                     {children}

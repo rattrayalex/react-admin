@@ -202,9 +202,8 @@ const EventList: FC<EventListProps> = ({ record, basePath }) => {
                         <StepLabel
                             StepIconComponent={() => {
                                 const Component =
-                                    event.type === 'order'
-                                        ? order.icon
-                                        : review.icon;
+                                    event.type === 'order' ? order.icon
+                                    : review.icon;
                                 return (
                                     <Component
                                         fontSize="small"
@@ -224,13 +223,13 @@ const EventList: FC<EventListProps> = ({ record, basePath }) => {
                             })}
                         </StepLabel>
                         <StepContent>
-                            {event.type === 'order' ? (
+                            {event.type === 'order' ?
                                 <Order
                                     record={event.data as OrderRecord}
                                     key={`event_${event.data.id}`}
                                     basePath={basePath}
                                 />
-                            ) : (
+                            : (
                                 <Review
                                     record={event.data as ReviewRecord}
                                     key={`review_${event.data.id}`}
@@ -258,21 +257,21 @@ const mixOrdersAndReviews = (
     reviewIds?: Identifier[]
 ): AsideEvent[] => {
     const eventsFromOrders =
-        orderIds && orders
-            ? orderIds.map<AsideEvent>(id => ({
-                  type: 'order',
-                  date: orders[id].date,
-                  data: orders[id],
-              }))
-            : [];
+        orderIds && orders ?
+            orderIds.map<AsideEvent>(id => ({
+                type: 'order',
+                date: orders[id].date,
+                data: orders[id],
+            }))
+        : [];
     const eventsFromReviews =
-        reviewIds && reviews
-            ? reviewIds.map<AsideEvent>(id => ({
-                  type: 'review',
-                  date: reviews[id].date,
-                  data: reviews[id],
-              }))
-            : [];
+        reviewIds && reviews ?
+            reviewIds.map<AsideEvent>(id => ({
+                type: 'review',
+                date: reviews[id].date,
+                data: reviews[id],
+            }))
+        : [];
     const events = eventsFromOrders.concat(eventsFromReviews);
     events.sort(
         (e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime()
@@ -287,40 +286,42 @@ interface OrderProps {
 
 const Order: FC<OrderProps> = ({ record, basePath }) => {
     const translate = useTranslate();
-    return record ? (
-        <>
-            <Typography variant="body2" gutterBottom>
-                <Link to={`/commands/${record.id}`} component={RouterLink}>
-                    {translate('resources.commands.name', {
-                        smart_count: 1,
-                    })}{' '}
-                    #{record.reference}
-                </Link>
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-                {translate('resources.commands.nb_items', {
-                    smart_count: record.basket.length,
-                    _: '1 item |||| %{smart_count} items',
-                })}
-                &nbsp;-&nbsp;
-                <NumberField
-                    source="total"
-                    options={{
-                        style: 'currency',
-                        currency: 'USD',
-                    }}
-                    record={record}
-                    basePath={basePath}
-                />
-                &nbsp;-&nbsp;
-                <TextField
-                    source="status"
-                    record={record}
-                    basePath={basePath}
-                />
-            </Typography>
-        </>
-    ) : null;
+    return (
+        record ?
+            <>
+                <Typography variant="body2" gutterBottom>
+                    <Link to={`/commands/${record.id}`} component={RouterLink}>
+                        {translate('resources.commands.name', {
+                            smart_count: 1,
+                        })}{' '}
+                        #{record.reference}
+                    </Link>
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                    {translate('resources.commands.nb_items', {
+                        smart_count: record.basket.length,
+                        _: '1 item |||| %{smart_count} items',
+                    })}
+                    &nbsp;-&nbsp;
+                    <NumberField
+                        source="total"
+                        options={{
+                            style: 'currency',
+                            currency: 'USD',
+                        }}
+                        record={record}
+                        basePath={basePath}
+                    />
+                    &nbsp;-&nbsp;
+                    <TextField
+                        source="status"
+                        record={record}
+                        basePath={basePath}
+                    />
+                </Typography>
+            </>
+        : null
+    );
 };
 
 interface ReviewProps {
@@ -340,36 +341,38 @@ const useReviewStyles = makeStyles({
 const Review: FC<ReviewProps> = ({ record, basePath }) => {
     const classes = useReviewStyles();
     const translate = useTranslate();
-    return record ? (
-        <>
-            <Typography variant="body2" gutterBottom>
-                <Link to={`/reviews/${record.id}`} component={RouterLink}>
-                    {translate('resources.reviews.relative_to_poster')} "
-                    <ReferenceField
-                        source="product_id"
-                        reference="products"
-                        resource="reviews"
-                        record={record}
-                        basePath={basePath}
-                        link={false}
-                    >
-                        <TextField source="reference" component="span" />
-                    </ReferenceField>
-                    "
-                </Link>
-            </Typography>
-            <Typography variant="body2" color="textSecondary" gutterBottom>
-                <StarRatingField record={record} />
-            </Typography>
-            <Typography
-                variant="body2"
-                color="textSecondary"
-                className={classes.clamp}
-            >
-                {record.comment}
-            </Typography>
-        </>
-    ) : null;
+    return (
+        record ?
+            <>
+                <Typography variant="body2" gutterBottom>
+                    <Link to={`/reviews/${record.id}`} component={RouterLink}>
+                        {translate('resources.reviews.relative_to_poster')} "
+                        <ReferenceField
+                            source="product_id"
+                            reference="products"
+                            resource="reviews"
+                            record={record}
+                            basePath={basePath}
+                            link={false}
+                        >
+                            <TextField source="reference" component="span" />
+                        </ReferenceField>
+                        "
+                    </Link>
+                </Typography>
+                <Typography variant="body2" color="textSecondary" gutterBottom>
+                    <StarRatingField record={record} />
+                </Typography>
+                <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    className={classes.clamp}
+                >
+                    {record.comment}
+                </Typography>
+            </>
+        : null
+    );
 };
 
 export default Aside;

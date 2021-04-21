@@ -90,16 +90,18 @@ export const SelectField: FC<SelectFieldProps> = memo<SelectFieldProps>(
         const choice = choices.find(choice => getChoiceValue(choice) === value);
 
         if (!choice) {
-            return emptyText ? (
-                <Typography
-                    component="span"
-                    variant="body2"
-                    className={className}
-                    {...sanitizeFieldRestProps(rest)}
-                >
-                    {emptyText}
-                </Typography>
-            ) : null;
+            return (
+                emptyText ?
+                    <Typography
+                        component="span"
+                        variant="body2"
+                        className={className}
+                        {...sanitizeFieldRestProps(rest)}
+                    >
+                        {emptyText}
+                    </Typography>
+                : null
+            );
         }
 
         let choiceText = getChoiceText(choice);

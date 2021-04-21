@@ -120,11 +120,9 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
     // We need a unique id for each field for a proper enter/exit animation
     // so we keep an internal map between the field position and an auto-increment id
     const nextId = useRef(
-        fields && fields.length
-            ? fields.length
-            : defaultValue
-            ? defaultValue.length
-            : 0
+        fields && fields.length ? fields.length
+        : defaultValue ? defaultValue.length
+        : 0
     );
 
     // We check whether we have a defaultValue (which must be an array) before checking
@@ -174,114 +172,122 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
         };
 
     const records = get(record, source);
-    return fields ? (
-        <ul className={classNames(classes.root, className)}>
-            {submitFailed && typeof error !== 'object' && error && (
-                <FormHelperText error>
-                    <ValidationError error={error as string} />
-                </FormHelperText>
-            )}
-            <TransitionGroup component={null}>
-                {fields.map((member, index) => (
-                    <CSSTransition
-                        nodeRef={nodeRef}
-                        key={ids.current[index]}
-                        timeout={500}
-                        classNames="fade"
-                        {...TransitionProps}
-                    >
-                        <li className={classes.line}>
-                            <Typography
-                                variant="body1"
-                                className={classes.index}
-                            >
-                                {index + 1}
-                            </Typography>
-                            <section className={classes.form}>
-                                {Children.map(
-                                    children,
-                                    (input: ReactElement, index2) => {
-                                        if (!isValidElement<any>(input)) {
-                                            return null;
-                                        }
-                                        const { source, ...inputProps } =
-                                            input.props;
-                                        return (
-                                            <FormInput
-                                                basePath={
-                                                    input.props.basePath ||
-                                                    basePath
-                                                }
-                                                input={cloneElement(input, {
-                                                    source: source
-                                                        ? `${member}.${source}`
-                                                        : member,
-                                                    index: source
-                                                        ? undefined
-                                                        : index2,
-                                                    label:
-                                                        typeof input.props
-                                                            .label ===
-                                                        'undefined'
-                                                            ? source
-                                                                ? `resources.${resource}.fields.${source}`
+    return (
+        fields ?
+            <ul className={classNames(classes.root, className)}>
+                {submitFailed && typeof error !== 'object' && error && (
+                    <FormHelperText error>
+                        <ValidationError error={error as string} />
+                    </FormHelperText>
+                )}
+                <TransitionGroup component={null}>
+                    {fields.map((member, index) => (
+                        <CSSTransition
+                            nodeRef={nodeRef}
+                            key={ids.current[index]}
+                            timeout={500}
+                            classNames="fade"
+                            {...TransitionProps}
+                        >
+                            <li className={classes.line}>
+                                <Typography
+                                    variant="body1"
+                                    className={classes.index}
+                                >
+                                    {index + 1}
+                                </Typography>
+                                <section className={classes.form}>
+                                    {Children.map(
+                                        children,
+                                        (input: ReactElement, index2) => {
+                                            if (!isValidElement<any>(input)) {
+                                                return null;
+                                            }
+                                            const { source, ...inputProps } =
+                                                input.props;
+                                            return (
+                                                <FormInput
+                                                    basePath={
+                                                        input.props.basePath ||
+                                                        basePath
+                                                    }
+                                                    input={cloneElement(input, {
+                                                        source:
+                                                            source ?
+                                                                `${member}.${source}`
+                                                            : member,
+                                                        index:
+                                                            source ? undefined
+                                                            : index2,
+                                                        label:
+                                                            (
+                                                                typeof input
+                                                                    .props
+                                                                    .label ===
+                                                                'undefined'
+                                                            ) ?
+                                                                source ?
+                                                                    `resources.${resource}.fields.${source}`
                                                                 : undefined
                                                             : input.props.label,
-                                                    disabled,
-                                                    ...inputProps,
-                                                })}
-                                                record={
-                                                    (records &&
-                                                        records[index]) ||
-                                                    {}
-                                                }
-                                                resource={resource}
-                                                variant={variant}
-                                                margin={margin}
-                                            />
-                                        );
-                                    }
-                                )}
-                            </section>
-                            {!disabled &&
-                                !disableRemoveField(
-                                    (records && records[index]) || {},
-                                    disableRemove
-                                ) && (
-                                    <span className={classes.action}>
-                                        {cloneElement(removeButton, {
-                                            onClick: handleRemoveButtonClick(
-                                                removeButton.props.onClick,
-                                                index
-                                            ),
-                                            className: classNames(
-                                                'button-remove',
-                                                `button-remove-${source}-${index}`
-                                            ),
-                                        })}
-                                    </span>
-                                )}
-                        </li>
-                    </CSSTransition>
-                ))}
-            </TransitionGroup>
-            {!disabled && !disableAdd && (
-                <li className={classes.line}>
-                    <span className={classes.action}>
-                        {cloneElement(addButton, {
-                            onClick: handleAddButtonClick(
-                                addButton.props.onClick
-                            ),
-                            className: classNames(
-                                'button-add',
-                                `button-add-${source}`
-                            ),
-                        })}
-                    </span>
-                </li>
-            )}
-        </ul>
-    ) : null;
+                                                        disabled,
+                                                        ...inputProps,
+                                                    })}
+                                                    record={
+                                                        (records &&
+                                                            records[index]) ||
+                                                        {}
+                                                    }
+                                                    resource={resource}
+                                                    variant={variant}
+                                                    margin={margin}
+                                                />
+                                            );
+                                        }
+                                    )}
+                                </section>
+                                {!disabled &&
+                                    !disableRemoveField(
+                                        (records && records[index]) || {},
+                                        disableRemove
+                                    ) && (
+                                        <span className={classes.action}>
+                                            {cloneElement(removeButton, {
+                                                onClick:
+                                                    handleRemoveButtonClick(
+                                                        removeButton.props
+                                                            .onClick,
+                                                        index
+                                                    ),
+                                                className: classNames(
+                                                    'button-remove',
+                                                    `button-remove-${source}-${index}`
+                                                ),
+                                            })}
+                                        </span>
+                                    )}
+                            </li>
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
+                {!disabled && !disableAdd && (
+                    <li className={classes.line}>
+                        <span className={classes.action}>
+                            {cloneElement(addButton, {
+                                onClick: handleAddButtonClick(
+                                    addButton.props.onClick
+                                ),
+                                className: classNames(
+                                    'button-add',
+                                    `button-add-${source}`
+                                ),
+                            })}
+                        </span>
+                    </li>
+                )}
+            </ul>
+        : null
+    );
 };
 
 SimpleFormIterator.defaultProps = {

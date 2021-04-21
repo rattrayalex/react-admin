@@ -28,21 +28,25 @@ const getDataAndIds = (
     if (!list) {
         return initialState;
     }
-    return fieldKey
-        ? {
-              data: list.reduce((prev, item) => {
-                  prev[item[fieldKey]] = item;
-                  return prev;
-              }, {}),
-              ids: list.map(item => item[fieldKey]),
-          }
-        : {
-              data: list.reduce((prev, item) => {
-                  prev[JSON.stringify(item)] = item;
-                  return prev;
-              }, {}),
-              ids: list.map(JSON.stringify),
-          };
+    return (
+        fieldKey ?
+            {
+                data: list.reduce((prev, item) => {
+                    prev[item[fieldKey]] = item;
+                    return prev;
+                }, {}),
+                ids: list.map(item => item[fieldKey]),
+            }
+        : (
+            {
+                data: list.reduce((prev, item) => {
+                    prev[JSON.stringify(item)] = item;
+                    return prev;
+                }, {}),
+                ids: list.map(JSON.stringify),
+            }
+        )
+    );
 };
 
 /**

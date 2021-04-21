@@ -30,20 +30,22 @@ const StarRatingField: FC<FieldProps & OwnProps> = ({
     size = 'large',
 }) => {
     const classes = useStyles();
-    return record ? (
-        <span className={classes.root}>
-            {Array(record.rating)
-                .fill(true)
-                .map((_, i) => (
-                    <Icon
-                        key={i}
-                        className={
-                            size === 'large' ? classes.large : classes.small
-                        }
-                    />
-                ))}
-        </span>
-    ) : null;
+    return (
+        record ?
+            <span className={classes.root}>
+                {Array(record.rating)
+                    .fill(true)
+                    .map((_, i) => (
+                        <Icon
+                            key={i}
+                            className={
+                                size === 'large' ? classes.large : classes.small
+                            }
+                        />
+                    ))}
+            </span>
+        : null
+    );
 };
 
 StarRatingField.defaultProps = {

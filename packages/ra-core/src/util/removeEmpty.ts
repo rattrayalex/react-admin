@@ -4,12 +4,8 @@ const isObject = obj =>
     obj && Object.prototype.toString.call(obj) === '[object Object]';
 
 const isEmpty = obj =>
-    obj instanceof Date
-        ? false
-        : obj === '' ||
-          obj === null ||
-          obj === undefined ||
-          shallowEqual(obj, {});
+    obj instanceof Date ? false
+    : obj === '' || obj === null || obj === undefined || shallowEqual(obj, {});
 
 const removeEmpty = object =>
     Object.keys(object).reduce((acc, key) => {

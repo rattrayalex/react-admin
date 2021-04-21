@@ -32,51 +32,53 @@ const Sidebar = (props: SidebarProps) => {
     const toggleSidebar = () => dispatch(setSidebarVisibility(!open));
     const { drawerPaper, ...classes } = useStyles({ ...props, open });
 
-    return isXSmall ? (
-        <Drawer
-            variant="temporary"
-            open={open}
-            PaperProps={{
-                className: drawerPaper,
-            }}
-            onClose={toggleSidebar}
-            classes={classes}
-            {...rest}
-        >
-            {cloneElement(Children.only(children), {
-                onMenuClick: handleClose,
-            })}
-        </Drawer>
-    ) : isSmall ? (
-        <Drawer
-            variant="permanent"
-            open={open}
-            PaperProps={{
-                className: drawerPaper,
-            }}
-            onClose={toggleSidebar}
-            classes={classes}
-            {...rest}
-        >
-            {cloneElement(Children.only(children), {
-                onMenuClick: handleClose,
-            })}
-        </Drawer>
-    ) : (
-        <Drawer
-            variant="permanent"
-            open={open}
-            PaperProps={{
-                className: drawerPaper,
-            }}
-            onClose={toggleSidebar}
-            classes={classes}
-            {...rest}
-        >
-            {cloneElement(Children.only(children), {
-                onMenuClick: defaultOnMenuClick,
-            })}
-        </Drawer>
+    return (
+        isXSmall ?
+            <Drawer
+                variant="temporary"
+                open={open}
+                PaperProps={{
+                    className: drawerPaper,
+                }}
+                onClose={toggleSidebar}
+                classes={classes}
+                {...rest}
+            >
+                {cloneElement(Children.only(children), {
+                    onMenuClick: handleClose,
+                })}
+            </Drawer>
+        : isSmall ?
+            <Drawer
+                variant="permanent"
+                open={open}
+                PaperProps={{
+                    className: drawerPaper,
+                }}
+                onClose={toggleSidebar}
+                classes={classes}
+                {...rest}
+            >
+                {cloneElement(Children.only(children), {
+                    onMenuClick: handleClose,
+                })}
+            </Drawer>
+        : (
+            <Drawer
+                variant="permanent"
+                open={open}
+                PaperProps={{
+                    className: drawerPaper,
+                }}
+                onClose={toggleSidebar}
+                classes={classes}
+                {...rest}
+            >
+                {cloneElement(Children.only(children), {
+                    onMenuClick: defaultOnMenuClick,
+                })}
+            </Drawer>
+        )
     );
 };
 
@@ -105,13 +107,8 @@ const useStyles = makeStyles(
             height: '100%',
             overflowX: 'hidden',
             width: (props: { open?: boolean }) =>
-                props.open
-                    ? lodashGet(theme, 'sidebar.width', DRAWER_WIDTH)
-                    : lodashGet(
-                          theme,
-                          'sidebar.closedWidth',
-                          CLOSED_DRAWER_WIDTH
-                      ),
+                props.open ? lodashGet(theme, 'sidebar.width', DRAWER_WIDTH)
+                : lodashGet(theme, 'sidebar.closedWidth', CLOSED_DRAWER_WIDTH),
             transition: theme.transitions.create('width', {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,

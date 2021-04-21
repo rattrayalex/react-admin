@@ -22,15 +22,15 @@ export const CloneButton: FC<CloneButtonProps> = ({
         <Button
             component={Link}
             to={
-                record
-                    ? {
-                          pathname,
-                          search: stringify({
-                              source: JSON.stringify(omitId(record)),
-                          }),
-                          state: { _scrollToTop: scrollToTop },
-                      }
-                    : pathname
+                record ?
+                    {
+                        pathname,
+                        search: stringify({
+                            source: JSON.stringify(omitId(record)),
+                        }),
+                        state: { _scrollToTop: scrollToTop },
+                    }
+                : pathname
             }
             label={label}
             onClick={stopPropagation}

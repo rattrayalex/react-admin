@@ -498,8 +498,7 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
                                         (
                                             typeof isRequiredOverride !==
                                             'undefined'
-                                        ) ?
-                                            isRequiredOverride
+                                        ) ? isRequiredOverride
                                         : isRequired
                                     }
                                 />

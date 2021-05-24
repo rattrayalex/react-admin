@@ -112,7 +112,8 @@ const SimpleList: FC<SimpleListProps> = props => {
                         <ListItem
                             button={!!linkType as any}
                             style={
-                                rowStyle ? rowStyle(data[id], rowIndex)
+                                rowStyle ?
+                                    rowStyle(data[id], rowIndex)
                                 : undefined
                             }
                         >

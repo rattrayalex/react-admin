@@ -60,7 +60,8 @@ export const DatagridHeaderCell = (
                 <Tooltip
                     title={translate('ra.action.sort')}
                     placement={
-                        field.props.textAlign === 'right' ? 'bottom-end'
+                        field.props.textAlign === 'right' ?
+                            'bottom-end'
                         : 'bottom-start'
                     }
                     enterDelay={300}

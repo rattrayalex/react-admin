@@ -38,13 +38,7 @@ const TestComponent = ({
             .then(() => setAuthenticated(true))
             .catch(error => setAuthenticated(false));
     }, [params, logoutOnFailure, redirectTo, disableNotification, checkAuth]);
-    return (
-        <div>
-            {authenticated ?
-                'authenticated'
-            : 'not authenticated'}
-        </div>
-    );
+    return <div>{authenticated ? 'authenticated' : 'not authenticated'}</div>;
 };
 
 const authProvider: AuthProvider = {

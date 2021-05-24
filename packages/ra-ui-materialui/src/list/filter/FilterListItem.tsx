@@ -184,7 +184,8 @@ const FilterListItem = (props: {
         >
             <ListItemText
                 primary={
-                    isValidElement(label) ? label
+                    isValidElement(label) ?
+                        label
                     : translate(label, { _: label })
                 }
                 className={classes.listItemText}

@@ -435,7 +435,8 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
                                         (
                                             typeof isRequiredOverride !==
                                             'undefined'
-                                        ) ? isRequiredOverride
+                                        ) ?
+                                            isRequiredOverride
                                         : isRequired
                                     }
                                 />

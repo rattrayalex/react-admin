@@ -147,9 +147,7 @@ const Login: React.FunctionComponent<LoginProps> = props => {
                     </div>
                     {children}
                 </Card>
-                {notification ?
-                    createElement(notification)
-                : null}
+                {notification ? createElement(notification) : null}
             </div>
         </ThemeProvider>
     );

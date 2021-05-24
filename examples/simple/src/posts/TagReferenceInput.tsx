@@ -44,11 +44,7 @@ const TagReferenceInput = ({
                 className={classes.button}
                 onClick={handleAddFilter}
             >
-                Filter{' '}
-                {filter ?
-                    'Unpublished'
-                : 'Published'}{' '}
-                Tags
+                Filter {filter ? 'Unpublished' : 'Published'} Tags
             </Button>
         </div>
     );

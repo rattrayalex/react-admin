@@ -19,8 +19,7 @@ const TextField: FC<TextFieldProps> = memo<TextFieldProps>(props => {
             className={className}
             {...sanitizeFieldRestProps(rest)}
         >
-            {value != null && typeof value !== 'string' ?
-                JSON.stringify(value)
+            {value != null && typeof value !== 'string' ? JSON.stringify(value)
             : value || emptyText}
         </Typography>
     );

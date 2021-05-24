@@ -62,9 +62,7 @@ const SubMenu: FC<Props> = ({
 
     return (
         <Fragment>
-            {sidebarIsOpen || isOpen ?
-                header
-            : (
+            {sidebarIsOpen || isOpen ? header : (
                 <Tooltip title={translate(name)} placement="right">
                     {header}
                 </Tooltip>
@@ -75,7 +73,8 @@ const SubMenu: FC<Props> = ({
                     component="div"
                     disablePadding
                     className={
-                        sidebarIsOpen ? classes.sidebarIsOpen
+                        sidebarIsOpen ?
+                            classes.sidebarIsOpen
                         : classes.sidebarIsClosed
                     }
                 >

@@ -9,12 +9,12 @@ export default ({ translate, messages, children }: any) => (
             locale: 'en',
             setLocale: () => Promise.resolve(),
             i18nProvider: {
-                translate:
-                    messages ?
+                translate: messages ?
                         (key: string, options?: any) =>
-                            lodashGet(messages, key) ? lodashGet(messages, key)
-                            : options._
-                    : translate,
+                            lodashGet(messages, key) ?
+                                lodashGet(messages, key)
+                            :   options._
+                    :   translate,
                 changeLocale: () => Promise.resolve(),
                 getLocale: () => 'en',
             },

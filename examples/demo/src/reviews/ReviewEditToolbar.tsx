@@ -34,8 +34,7 @@ const ReviewEditToolbar: FC<ToolbarProps<Review>> = ({
                     <AcceptButton record={record} />
                     <RejectButton record={record} />
                 </Fragment>
-            : (
-                <Fragment>
+            :   <Fragment>
                     <SaveButton
                         handleSubmitWithRedirect={handleSubmitWithRedirect}
                         invalid={invalid}
@@ -49,7 +48,7 @@ const ReviewEditToolbar: FC<ToolbarProps<Review>> = ({
                         resource={resource}
                     />
                 </Fragment>
-            )}
+            }
         </MuiToolbar>
     );
 };

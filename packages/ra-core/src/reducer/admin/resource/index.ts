@@ -54,8 +54,7 @@ export default (previousState = initialState, action: ActionTypes) => {
     const newState = resources.reduce(
         (acc, resource) => ({
             ...acc,
-            [resource]:
-                (
+            [resource]: (
                     action.type === REFRESH_VIEW ||
                     action.meta.resource === resource
                 ) ?
@@ -68,7 +67,7 @@ export default (previousState = initialState, action: ActionTypes) => {
                             action
                         ),
                     }
-                : previousState[resource],
+                :   previousState[resource],
         }),
         {}
     );

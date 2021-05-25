@@ -12,8 +12,7 @@ class InferredElement {
         if (!this.isDefined()) {
             return;
         }
-        return (
-            this.children ?
+        return this.children ?
                 createElement(
                     this.type.component,
                     { ...this.props, ...props },
@@ -21,10 +20,12 @@ class InferredElement {
                         this.children.map((child, index) =>
                             child.getElement({ key: index })
                         )
-                    : this.children.getElement()
+                    :   this.children.getElement()
                 )
-            : createElement(this.type.component, { ...this.props, ...props })
-        );
+            :   createElement(this.type.component, {
+                    ...this.props,
+                    ...props,
+                });
     }
 
     getProps() {

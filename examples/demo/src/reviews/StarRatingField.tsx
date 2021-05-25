@@ -30,8 +30,7 @@ const StarRatingField: FC<FieldProps & OwnProps> = ({
     size = 'large',
 }) => {
     const classes = useStyles();
-    return (
-        record ?
+    return record ?
             <span className={classes.root}>
                 {Array(record.rating)
                     .fill(true)
@@ -44,8 +43,7 @@ const StarRatingField: FC<FieldProps & OwnProps> = ({
                         />
                     ))}
             </span>
-        : null
-    );
+        :   null;
 };
 
 StarRatingField.defaultProps = {

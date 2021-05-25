@@ -63,8 +63,7 @@ const Sidebar = (props: SidebarProps) => {
                     onMenuClick: handleClose,
                 })}
             </Drawer>
-        : (
-            <Drawer
+        :   <Drawer
                 variant="permanent"
                 open={open}
                 PaperProps={{
@@ -78,7 +77,6 @@ const Sidebar = (props: SidebarProps) => {
                     onMenuClick: defaultOnMenuClick,
                 })}
             </Drawer>
-        )
     );
 };
 
@@ -107,8 +105,13 @@ const useStyles = makeStyles(
             height: '100%',
             overflowX: 'hidden',
             width: (props: { open?: boolean }) =>
-                props.open ? lodashGet(theme, 'sidebar.width', DRAWER_WIDTH)
-                : lodashGet(theme, 'sidebar.closedWidth', CLOSED_DRAWER_WIDTH),
+                props.open ?
+                    lodashGet(theme, 'sidebar.width', DRAWER_WIDTH)
+                :   lodashGet(
+                        theme,
+                        'sidebar.closedWidth',
+                        CLOSED_DRAWER_WIDTH
+                    ),
             transition: theme.transitions.create('width', {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,

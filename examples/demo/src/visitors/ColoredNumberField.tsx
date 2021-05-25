@@ -7,8 +7,8 @@ const ColoredNumberField = (props: NumberFieldProps) =>
             <span style={{ color: 'red' }}>
                 <NumberField {...props} />
             </span>
-        : <NumberField {...props} />
-    : null;
+        :   <NumberField {...props} />
+    :   null;
 
 ColoredNumberField.defaultProps = NumberField.defaultProps;
 

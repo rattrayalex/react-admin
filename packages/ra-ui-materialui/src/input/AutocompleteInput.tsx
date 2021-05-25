@@ -229,8 +229,9 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
     const handleFilterChange = useCallback(
         (eventOrValue: React.ChangeEvent<{ value: string }> | string) => {
             const event = eventOrValue as React.ChangeEvent<{ value: string }>;
-            const value =
-                event.target ? event.target.value : (eventOrValue as string);
+            const value = event.target ? event.target.value : (
+                (eventOrValue as string)
+            );
 
             if (setFilter) {
                 setFilter(value);
@@ -321,8 +322,8 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
                 input.value ?
                     inputText ?
                         inputText(getChoiceText(selectedItem).props.record)
-                    : getChoiceText(selectedItem)
-                : ''
+                    :   getChoiceText(selectedItem)
+                :   ''
             );
             input.onBlur(event);
         },
@@ -498,8 +499,9 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
                                         (
                                             typeof isRequiredOverride !==
                                             'undefined'
-                                        ) ? isRequiredOverride
-                                        : isRequired
+                                        ) ?
+                                            isRequiredOverride
+                                        :   isRequired
                                     }
                                 />
                             }

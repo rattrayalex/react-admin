@@ -90,8 +90,7 @@ export const SelectField: FC<SelectFieldProps> = memo<SelectFieldProps>(
         const choice = choices.find(choice => getChoiceValue(choice) === value);
 
         if (!choice) {
-            return (
-                emptyText ?
+            return emptyText ?
                     <Typography
                         component="span"
                         variant="body2"
@@ -100,8 +99,7 @@ export const SelectField: FC<SelectFieldProps> = memo<SelectFieldProps>(
                     >
                         {emptyText}
                     </Typography>
-                : null
-            );
+                :   null;
         }
 
         let choiceText = getChoiceText(choice);

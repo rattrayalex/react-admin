@@ -158,8 +158,7 @@ export const useCreateController = <
                         onSuccess:
                             onSuccessFromSave ? onSuccessFromSave
                             : onSuccessRef.current ? onSuccessRef.current
-                            : (
-                                ({ data: newRecord }) => {
+                            : ({ data: newRecord }) => {
                                     notify(
                                         successMessage ||
                                             'ra.notification.created',
@@ -174,19 +173,16 @@ export const useCreateController = <
                                         newRecord.id,
                                         newRecord
                                     );
-                                }
-                            ),
+                                },
                         onFailure:
                             onFailureFromSave ? onFailureFromSave
                             : onFailureRef.current ? onFailureRef.current
-                            : (
-                                error => {
+                            : error => {
                                     notify(
-                                        typeof error === 'string' ? error
-                                        : (
-                                            error.message ||
-                                                'ra.notification.http_error'
-                                        ),
+                                        typeof error === 'string' ?
+                                            error
+                                        :   error.message ||
+                                                'ra.notification.http_error',
                                         'warning',
                                         {
                                             _:
@@ -194,11 +190,10 @@ export const useCreateController = <
                                                     error
                                                 : error && error.message ?
                                                     error.message
-                                                : undefined,
+                                                :   undefined,
                                         }
                                     );
-                                }
-                            ),
+                                },
                     }
                 )
             ),

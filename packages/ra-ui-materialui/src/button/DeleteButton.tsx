@@ -53,17 +53,13 @@ const DeleteButton: FC<DeleteButtonProps> = ({
     if (!record || record.id == null) {
         return null;
     }
-    return (
-        undoable || mutationMode === 'undoable' ?
+    return undoable || mutationMode === 'undoable' ?
             <DeleteWithUndoButton record={record} {...props} />
-        : (
-            <DeleteWithConfirmButton
+        :   <DeleteWithConfirmButton
                 mutationMode={mutationMode}
                 record={record}
                 {...props}
-            />
-        )
-    );
+            />;
 };
 
 interface Props {

@@ -166,8 +166,9 @@ const useReferenceManyFieldController = (
         {
             onFailure: error =>
                 notify(
-                    typeof error === 'string' ? error
-                    : error.message || 'ra.notification.http_error',
+                    typeof error === 'string' ?
+                        error
+                    :   error.message || 'ra.notification.http_error',
                     'warning',
                     {
                         _:
@@ -180,8 +181,9 @@ const useReferenceManyFieldController = (
     );
 
     return {
-        basePath:
-            basePath ? basePath.replace(resource, reference) : `/${reference}`,
+        basePath: basePath ?
+                basePath.replace(resource, reference)
+            :   `/${reference}`,
         currentSort: sort,
         data,
         defaultTitle: null,

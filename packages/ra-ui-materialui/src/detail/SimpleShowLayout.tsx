@@ -88,15 +88,14 @@ const SimpleShowLayout = ({
                         </Labeled>
                     : typeof field.type === 'string' ?
                         field
-                    : (
-                        cloneElement(field, {
+                    :   cloneElement(field, {
                             record,
                             resource,
                             basePath,
                         })
-                    )}
+                    }
                 </div>
-            : null
+            :   null
         )}
     </CardContentInner>
 );

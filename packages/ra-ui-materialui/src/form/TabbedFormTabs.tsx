@@ -32,9 +32,9 @@ const TabbedFormTabs: FC<TabbedFormTabsProps> = ({
     // available tab. The current location will be applied again on the
     // first render containing the targeted tab. This is almost transparent
     // for the user who may just see a short tab selection animation
-    const tabValue =
-        validTabPaths.includes(location.pathname) ? location.pathname
-        : validTabPaths[0];
+    const tabValue = validTabPaths.includes(location.pathname) ?
+            location.pathname
+        :   validTabPaths[0];
 
     return (
         <Tabs

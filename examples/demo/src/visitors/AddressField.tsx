@@ -8,6 +8,6 @@ const AddressField: FC<FieldProps<Customer>> = ({ record }) =>
         <span>
             {record.address}, {record.city}, {record.stateAbbr} {record.zipcode}
         </span>
-    : null;
+    :   null;
 
 export default AddressField;

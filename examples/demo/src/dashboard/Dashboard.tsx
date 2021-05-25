@@ -203,8 +203,7 @@ const Dashboard: FC = () => {
                     />
                 </div>
             </div>
-        : (
-            <>
+        :   <>
                 <Welcome />
                 <div style={styles.flex}>
                     <div style={styles.leftCol}>
@@ -236,7 +235,6 @@ const Dashboard: FC = () => {
                     </div>
                 </div>
             </>
-        )
     );
 };
 

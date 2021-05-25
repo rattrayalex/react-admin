@@ -27,7 +27,7 @@ const InputHelperText: FunctionComponent<InputHelperTextProps> = ({
             // @see https://github.com/mui-org/material-ui/blob/62e439b7022d519ab638d65201e204b59b77f8da/packages/material-ui/src/FormHelperText/FormHelperText.js#L85-L90
             // eslint-disable-next-line react/no-danger
             <span dangerouslySetInnerHTML={defaultInnerHTML} />
-        : null
+        :   null
     );
 };
 

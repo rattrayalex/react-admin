@@ -80,18 +80,17 @@ const ReviewList: FC<ListProps> = props => {
                             >
                                 {isXSmall ?
                                     <ReviewListMobile />
-                                : (
-                                    <ReviewListDesktop
+                                :   <ReviewListDesktop
                                         selectedRow={
                                             isMatch ?
                                                 parseInt(
                                                     (match as any).params.id,
                                                     10
                                                 )
-                                            : undefined
+                                            :   undefined
                                         }
                                     />
-                                )}
+                                }
                             </List>
                             <Drawer
                                 variant="persistent"
@@ -109,7 +108,7 @@ const ReviewList: FC<ListProps> = props => {
                                         onCancel={handleClose}
                                         {...props}
                                     />
-                                : null}
+                                :   null}
                             </Drawer>
                         </Fragment>
                     );

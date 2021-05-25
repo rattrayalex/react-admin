@@ -108,15 +108,14 @@ export const Tab = ({
                             </Labeled>
                         : typeof field.type === 'string' ?
                             field
-                        : (
-                            React.cloneElement(field, {
+                        :   React.cloneElement(field, {
                                 basePath,
                                 record,
                                 resource,
                             })
-                        )}
+                        }
                     </div>
-                : null
+                :   null
             )}
         </span>
     );

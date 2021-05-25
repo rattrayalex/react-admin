@@ -68,8 +68,9 @@ const BulkDeleteWithConfirmButton: FC<BulkDeleteWithConfirmButtonProps> =
             },
             onFailure: error => {
                 notify(
-                    typeof error === 'string' ? error
-                    : error.message || 'ra.notification.http_error',
+                    typeof error === 'string' ?
+                        error
+                    :   error.message || 'ra.notification.http_error',
                     'warning',
                     {
                         _:

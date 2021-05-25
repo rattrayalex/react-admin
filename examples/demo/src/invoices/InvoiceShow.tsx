@@ -24,7 +24,7 @@ const CustomerField: FC<FieldProps<Customer>> = ({ record }) =>
             <br />
             {record.city}, {record.zipcode}
         </Typography>
-    : null;
+    :   null;
 
 const InvoiceShow = (props: any) => {
     const { record } = useShowController<Invoice>(props);

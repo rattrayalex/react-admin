@@ -84,8 +84,9 @@ export const performUndoableQuery = ({
             dataProvider[type]
                 .apply(
                     dataProvider,
-                    typeof resource !== 'undefined' ? [resource, payload]
-                    : allArguments
+                    typeof resource !== 'undefined' ?
+                        [resource, payload]
+                    :   allArguments
                 )
                 .then(response => {
                     if (process.env.NODE_ENV !== 'production') {

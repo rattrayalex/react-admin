@@ -41,8 +41,9 @@ const OrderFilter: FC<Omit<FilterProps, 'children'>> = props => (
                 optionText={(choice: Customer) =>
                     (
                         choice.id // the empty choice is { id: '' }
-                    ) ? `${choice.first_name} ${choice.last_name}`
-                    : ''
+                    ) ?
+                        `${choice.first_name} ${choice.last_name}`
+                    :   ''
                 }
             />
         </ReferenceInput>
@@ -155,7 +156,7 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                         label={
                             totals[choice.name] ?
                                 `${choice.name} (${totals[choice.name]})`
-                            : choice.name
+                            :   choice.name
                         }
                         value={choice.id}
                     />
@@ -168,8 +169,7 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                 >
                     <MobileGrid {...props} ids={selectedIds} />
                 </ListContextProvider>
-            : (
-                <div>
+            :   <div>
                     {filterValues.status === 'ordered' && (
                         <ListContextProvider
                             value={{ ...listContext, ids: ordered }}
@@ -257,7 +257,7 @@ const TabbedDatagrid: FC<TabbedDatagridProps> = props => {
                         </ListContextProvider>
                     )}
                 </div>
-            )}
+            }
         </Fragment>
     );
 };

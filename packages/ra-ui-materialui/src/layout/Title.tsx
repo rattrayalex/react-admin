@@ -19,10 +19,9 @@ const Title: FC<TitleProps> = ({
     ...rest
 }) => {
     const translate = useTranslate();
-    const container =
-        typeof document !== 'undefined' ?
+    const container = typeof document !== 'undefined' ?
             document.getElementById('react-admin-title')
-        : null;
+        :   null;
     if (!container) return null;
     warning(!defaultTitle && !title, 'Missing title prop in <Title> element');
 
@@ -35,7 +34,7 @@ const Title: FC<TitleProps> = ({
             <span className={className} {...rest}>
                 {translate(title, { _: title })}
             </span>
-        : cloneElement(title, { className, record, ...rest });
+        :   cloneElement(title, { className, record, ...rest });
     return createPortal(titleElement, container);
 };
 

@@ -162,11 +162,10 @@ const SaveButton: FC<SaveButtonProps> = props => {
                     thickness={2}
                     className={classes.leftIcon}
                 />
-            : (
-                cloneElement(icon, {
+            :   cloneElement(icon, {
                     className: classnames(classes.leftIcon, classes.icon),
                 })
-            )}
+            }
             {displayedLabel}
         </Button>
     );

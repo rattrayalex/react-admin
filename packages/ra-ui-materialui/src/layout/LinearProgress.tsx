@@ -37,14 +37,12 @@ const LinearProgress = ({ timeout = 1000, ...props }: LinearProgressProps) => {
     const classes = useStyles(props);
     const oneSecondHasPassed = useTimeout(timeout);
 
-    return (
-        oneSecondHasPassed ?
+    return oneSecondHasPassed ?
             <Progress
                 className={classnames(classes.root, className)}
                 {...rest}
             />
-        : null
-    );
+        :   null;
 };
 
 LinearProgress.propTypes = {

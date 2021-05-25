@@ -52,7 +52,7 @@ const SubMenu: FC<Props> = ({
             <ListItemIcon className={classes.icon}>
                 {isOpen ?
                     <ExpandMore />
-                : icon}
+                :   icon}
             </ListItemIcon>
             <Typography variant="inherit" color="textSecondary">
                 {translate(name)}
@@ -73,8 +73,9 @@ const SubMenu: FC<Props> = ({
                     component="div"
                     disablePadding
                     className={
-                        sidebarIsOpen ? classes.sidebarIsOpen
-                        : classes.sidebarIsClosed
+                        sidebarIsOpen ?
+                            classes.sidebarIsOpen
+                        :   classes.sidebarIsClosed
                     }
                 >
                     {children}

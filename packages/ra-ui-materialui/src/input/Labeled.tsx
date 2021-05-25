@@ -105,7 +105,7 @@ const Labeled: FunctionComponent<LabeledProps> = props => {
                         resource,
                         ...restProps,
                     })
-                : children}
+                :   children}
             </div>
         </FormControl>
     );

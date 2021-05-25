@@ -62,8 +62,9 @@ const getResourceLinkPath = ({
         );
     }
     const sourceId = get(record, source);
-    const rootPath =
-        basePath ? basePath.replace(resource, reference) : `/${reference}`;
+    const rootPath = basePath ?
+            basePath.replace(resource, reference)
+        :   `/${reference}`;
     const linkTo: LinkToType = linkType !== undefined ? linkType : link;
 
     // Backward compatibility: keep linkType but with warning

@@ -81,8 +81,8 @@ export const addRecordsAndRemoveOutdated = (
                 newRecordsById[id] ?
                     isEqual(newRecordsById[id], oldRecords[id]) ?
                         oldRecords[id] // do not change the record to avoid a redraw
-                    : newRecordsById[id]
-                : oldRecords[id])
+                    :   newRecordsById[id]
+                :   oldRecords[id])
     );
 
     return hideFetchedAt(records);
@@ -97,10 +97,9 @@ export const addRecords = (
 ): RecordSetWithDate => {
     const newRecordsById = { ...oldRecords };
     newRecords.forEach(record => {
-        newRecordsById[record.id] =
-            isEqual(record, oldRecords[record.id]) ?
+        newRecordsById[record.id] = isEqual(record, oldRecords[record.id]) ?
                 (oldRecords[record.id] as Record)
-            : record;
+            :   record;
     });
 
     const updatedFetchedAt = getFetchedAt(
@@ -123,10 +122,9 @@ export const addOneRecord = (
 ): RecordSetWithDate => {
     const newRecordsById = {
         ...oldRecords,
-        [newRecord.id]:
-            isEqual(newRecord, oldRecords[newRecord.id]) ?
+        [newRecord.id]: isEqual(newRecord, oldRecords[newRecord.id]) ?
                 oldRecords[newRecord.id] // do not change the record to avoid a redraw
-            : newRecord,
+            :   newRecord,
     };
 
     return Object.defineProperty(newRecordsById, 'fetchedAt', {

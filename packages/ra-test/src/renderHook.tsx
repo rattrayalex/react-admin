@@ -40,13 +40,12 @@ export function renderHook(hook, withRedux = true, reduxState?) {
         return <p>child</p>;
     };
     const childrenMock = jest.fn().mockImplementation(children);
-    const result =
-        withRedux ?
+    const result = withRedux ?
             renderWithRedux(
                 <TestHook children={childrenMock} hook={hook} />,
                 reduxState
             )
-        : render(<TestHook children={childrenMock} hook={hook} />);
+        :   render(<TestHook children={childrenMock} hook={hook} />);
 
     return {
         ...result,

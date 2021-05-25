@@ -225,13 +225,12 @@ export const ReferenceInputView: FunctionComponent<ReferenceInputViewProps> = ({
     // When the useReferenceInputController returns a warning, it means it
     // had an issue trying to load the referenced record
     // We display it by overriding the final-form meta
-    const finalMeta =
-        warning ?
+    const finalMeta = warning ?
             {
                 ...meta,
                 error: warning,
             }
-        : meta;
+        :   meta;
 
     // helperText should never be set on ReferenceInput, only in child component
     // But in a Filter component, the child helperText have to be forced to false

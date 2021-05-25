@@ -30,7 +30,7 @@ export const CloneButton: FC<CloneButtonProps> = ({
                         }),
                         state: { _scrollToTop: scrollToTop },
                     }
-                : pathname
+                :   pathname
             }
             label={label}
             onClick={stopPropagation}

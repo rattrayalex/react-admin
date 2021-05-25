@@ -34,15 +34,13 @@ interface OrderTitleProps {
 
 const OrderTitle: FC<OrderTitleProps> = ({ record }) => {
     const translate = useTranslate();
-    return (
-        record ?
+    return record ?
             <span>
                 {translate('resources.commands.title', {
                     reference: record.reference,
                 })}
             </span>
-        : null
-    );
+        :   null;
 };
 
 const CustomerDetails = ({ record }: { record?: Customer }) => (

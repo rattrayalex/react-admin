@@ -131,8 +131,8 @@ const FileInput: FunctionComponent<
     const files =
         value ?
             Array.isArray(value) ? value
-            : [value]
-        : [];
+            :   [value]
+        :   [];
 
     const onDrop = (newFiles, rejectedFiles, event) => {
         const updatedFiles = multiple ? [...files, ...newFiles] : [...newFiles];
@@ -163,10 +163,11 @@ const FileInput: FunctionComponent<
         }
     };
 
-    const childrenElement =
-        children && isValidElement(Children.only(children)) ?
+    const childrenElement = (
+            children && isValidElement(Children.only(children))
+        ) ?
             (Children.only(children) as ReactElement<any>)
-        : undefined;
+        :   undefined;
 
     const { getRootProps, getInputProps } = useDropzone({
         ...options,
@@ -205,9 +206,7 @@ const FileInput: FunctionComponent<
                         placeholder
                     : multiple ?
                         <p>{translate(labelMultiple)}</p>
-                    : (
-                        <p>{translate(labelSingle)}</p>
-                    )}
+                    :   <p>{translate(labelSingle)}</p>}
                 </div>
                 <FormHelperText>
                     <InputHelperText

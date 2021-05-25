@@ -62,15 +62,14 @@ export const TranslatableFieldsTabContent = (
                             </Labeled>
                         : typeof field === 'string' ?
                             field
-                        : (
-                            cloneElement(field, {
+                        :   cloneElement(field, {
                                 ...field.props,
                                 label: getLabel(field.props.source),
                                 source: getSource(field.props.source, locale),
                             })
-                        )}
+                        }
                     </div>
-                : null
+                :   null
             )}
         </div>
     );

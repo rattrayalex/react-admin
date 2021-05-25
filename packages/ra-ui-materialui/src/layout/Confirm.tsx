@@ -101,7 +101,7 @@ const Confirm: FC<ConfirmProps> = props => {
                             ...translateOptions,
                         })}
                     </DialogContentText>
-                : content}
+                :   content}
             </DialogContent>
             <DialogActions>
                 <Button disabled={loading} onClick={onClose}>

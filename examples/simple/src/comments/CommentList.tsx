@@ -220,9 +220,7 @@ const ListView = () => {
             />
             {isSmall ?
                 <CommentMobileList />
-            : (
-                <CommentGrid />
-            )}
+            :   <CommentGrid />}
             <CommentPagination />
         </>
     );

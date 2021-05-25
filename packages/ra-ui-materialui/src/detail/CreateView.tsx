@@ -61,14 +61,15 @@ export const CreateView = (props: CreateViewProps) => {
                     {cloneElement(Children.only(children), {
                         basePath,
                         record,
-                        redirect:
-                            typeof children.props.redirect === 'undefined' ?
+                        redirect: (
+                                typeof children.props.redirect === 'undefined'
+                            ) ?
                                 redirect
-                            : children.props.redirect,
+                            :   children.props.redirect,
                         resource,
-                        save:
-                            typeof children.props.save === 'undefined' ? save
-                            : children.props.save,
+                        save: typeof children.props.save === 'undefined' ?
+                                save
+                            :   children.props.save,
                         saving,
                         version,
                     })}
@@ -78,9 +79,9 @@ export const CreateView = (props: CreateViewProps) => {
                         basePath,
                         record,
                         resource,
-                        save:
-                            typeof children.props.save === 'undefined' ? save
-                            : children.props.save,
+                        save: typeof children.props.save === 'undefined' ?
+                                save
+                            :   children.props.save,
                         saving,
                         version,
                     })}

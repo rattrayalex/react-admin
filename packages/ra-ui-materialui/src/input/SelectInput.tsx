@@ -202,7 +202,7 @@ const SelectInput: FunctionComponent<SelectInputProps> = props => {
             React.isValidElement(emptyText) ? React.cloneElement(emptyText)
             : emptyText === '' ?
                 ' ' // em space, forces the display of an empty line of normal height
-            : translate(emptyText, { _: emptyText })
+            :   translate(emptyText, { _: emptyText })
         );
     }, [emptyText, translate]);
 
@@ -266,7 +266,7 @@ const SelectInput: FunctionComponent<SelectInputProps> = props => {
                 >
                     {renderEmptyItemOption()}
                 </MenuItem>
-            : null}
+            :   null}
             {choices.map(choice => (
                 <MenuItem
                     key={getChoiceValue(choice)}

@@ -95,7 +95,7 @@ const CoreAdminUI: FunctionComponent<AdminUIProps> = ({
                         })
                     }
                 />
-            : null}
+            :   null}
             <Route
                 path="/"
                 render={props => (

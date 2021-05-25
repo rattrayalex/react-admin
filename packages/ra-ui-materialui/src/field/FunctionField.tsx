@@ -33,7 +33,7 @@ const FunctionField = <RecordType extends Record = Record>(
                 >
                     {render(record, source)}
                 </Typography>
-            : null,
+            :   null,
         [className, record, source, render, rest]
     );
 };

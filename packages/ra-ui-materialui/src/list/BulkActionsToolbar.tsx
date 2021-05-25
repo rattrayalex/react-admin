@@ -18,14 +18,13 @@ const useStyles = makeStyles(
     theme => ({
         toolbar: {
             zIndex: 3,
-            color:
-                theme.palette.type === 'light' ? theme.palette.primary.main
-                : theme.palette.text.primary,
+            color: theme.palette.type === 'light' ?
+                    theme.palette.primary.main
+                :   theme.palette.text.primary,
             justifyContent: 'space-between',
-            backgroundColor:
-                theme.palette.type === 'light' ?
+            backgroundColor: theme.palette.type === 'light' ?
                     lighten(theme.palette.primary.light, 0.85)
-                : theme.palette.primary.dark,
+                :   theme.palette.primary.dark,
             minHeight: theme.spacing(8),
             height: theme.spacing(8),
             transition: `${theme.transitions.create(
@@ -99,7 +98,7 @@ const BulkActionsToolbar: FC<BulkActionsToolbarProps> = props => {
                             resource,
                             selectedIds,
                         })
-                    : null
+                    :   null
                 )}
             </TopToolbar>
         </Toolbar>

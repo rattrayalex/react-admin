@@ -27,7 +27,7 @@ const useRecordSelection = (
         (reduxState: ReduxState) =>
             reduxState.admin.resources[resource] ?
                 reduxState.admin.resources[resource].list.selectedIds
-            : defaultRecords,
+            :   defaultRecords,
         shallowEqual
     );
     const selectionModifiers = {

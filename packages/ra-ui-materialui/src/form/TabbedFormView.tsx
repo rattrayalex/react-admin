@@ -96,15 +96,16 @@ export const TabbedFormView = (props: TabbedFormViewProps): ReactElement => {
                                         resource,
                                         record,
                                         basePath,
-                                        hidden:
-                                            syncWithLocation ? !routeProps.match
-                                            : tabValue !== index,
+                                        hidden: syncWithLocation ?
+                                                !routeProps.match
+                                            :   tabValue !== index,
                                         variant: tab.props.variant || variant,
                                         margin: tab.props.margin || margin,
-                                        value:
-                                            syncWithLocation ? tabPath : index,
+                                        value: syncWithLocation ?
+                                                tabPath
+                                            :   index,
                                     })
-                                : null
+                                :   null
                             }
                         </Route>
                     );

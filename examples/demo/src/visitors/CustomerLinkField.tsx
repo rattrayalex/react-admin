@@ -10,7 +10,7 @@ const CustomerLinkField: FC<FieldProps<Customer>> = props =>
         <Link to={`/customers/${props.record.id}`}>
             <FullNameField {...props} />
         </Link>
-    : null;
+    :   null;
 
 CustomerLinkField.defaultProps = {
     source: 'customer_id',

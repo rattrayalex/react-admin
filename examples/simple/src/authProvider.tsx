@@ -46,16 +46,14 @@ export default {
         return Promise.resolve();
     },
     checkError: ({ status }) => {
-        return (
-            status === 401 || status === 403 ? Promise.reject()
-            : Promise.resolve()
-        );
+        return status === 401 || status === 403 ?
+                Promise.reject()
+            :   Promise.resolve();
     },
     checkAuth: () => {
-        return (
-            localStorage.getItem('not_authenticated') ? Promise.reject()
-            : Promise.resolve()
-        );
+        return localStorage.getItem('not_authenticated') ?
+                Promise.reject()
+            :   Promise.resolve();
     },
     getPermissions: () => {
         const role = localStorage.getItem('role');

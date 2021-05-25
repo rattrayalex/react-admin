@@ -42,8 +42,7 @@ const FileField: FC<FileFieldProps> = props => {
     const classes = useStyles(props);
 
     if (!sourceValue) {
-        return (
-            emptyText ?
+        return emptyText ?
                 <Typography
                     component="span"
                     variant="body2"
@@ -52,13 +51,10 @@ const FileField: FC<FileFieldProps> = props => {
                 >
                     {emptyText}
                 </Typography>
-            : (
-                <div
+            :   <div
                     className={classnames(classes.root, className)}
                     {...sanitizeFieldRestProps(rest)}
-                />
-            )
-        );
+                />;
     }
 
     if (Array.isArray(sourceValue)) {

@@ -80,10 +80,9 @@ const useLogoutIfAccessDenied = (): LogoutIfAccessDenied => {
                 }),
         [authProvider, logout, notify]
     );
-    return (
-        authProvider ? logoutIfAccessDenied
-        : logoutIfAccessDeniedWithoutProvider
-    );
+    return authProvider ?
+            logoutIfAccessDenied
+        :   logoutIfAccessDeniedWithoutProvider;
 };
 
 const logoutIfAccessDeniedWithoutProvider = () => Promise.resolve(false);

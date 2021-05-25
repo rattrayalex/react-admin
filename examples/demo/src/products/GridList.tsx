@@ -117,10 +117,9 @@ interface GridProps extends DatagridProps, WithWidth {}
 
 const GridList: FC<WithWidth> = ({ width }) => {
     const { loaded } = useListContext();
-    return (
-        loaded ? <LoadedGridList width={width} />
-        : <LoadingGridList width={width} />
-    );
+    return loaded ?
+            <LoadedGridList width={width} />
+        :   <LoadingGridList width={width} />;
 };
 
 export default withWidth()(GridList);

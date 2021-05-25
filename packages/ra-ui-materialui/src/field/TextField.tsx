@@ -20,7 +20,7 @@ const TextField: FC<TextFieldProps> = memo<TextFieldProps>(props => {
             {...sanitizeFieldRestProps(rest)}
         >
             {value != null && typeof value !== 'string' ? JSON.stringify(value)
-            : value || emptyText}
+            :   value || emptyText}
         </Typography>
     );
 });

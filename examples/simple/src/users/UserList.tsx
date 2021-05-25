@@ -24,7 +24,7 @@ const UserFilter = ({ permissions, ...props }) => (
         <TextInput source="name" />
         {permissions === 'admin' ?
             <TextInput source="role" />
-        : null}
+        :   null}
     </Filter>
 );
 
@@ -33,10 +33,9 @@ const UserBulkActionButtons = props => (
 );
 
 const rowClick = memoize(permissions => (id, basePath, record) => {
-    return (
-        permissions === 'admin' ? Promise.resolve('edit')
-        : Promise.resolve('show')
-    );
+    return permissions === 'admin' ?
+            Promise.resolve('edit')
+        :   Promise.resolve('show');
 });
 
 const UserList = ({ permissions, ...props }) => (
@@ -55,8 +54,7 @@ const UserList = ({ permissions, ...props }) => (
                     permissions === 'admin' ? record.role : null
                 }
             />
-        : (
-            <Datagrid
+        :   <Datagrid
                 rowClick={rowClick(permissions)}
                 expand={<UserEditEmbedded />}
                 optimized
@@ -65,7 +63,7 @@ const UserList = ({ permissions, ...props }) => (
                 <TextField source="name" />
                 {permissions === 'admin' && <TextField source="role" />}
             </Datagrid>
-        )}
+        }
     </List>
 );
 

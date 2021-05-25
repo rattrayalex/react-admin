@@ -91,7 +91,7 @@ export const ListView = (props: ListViewProps) => {
             <Title title={title} defaultTitle={defaultTitle} />
             {shouldRenderEmptyPage && empty !== false ?
                 cloneElement(empty, listContext)
-            : renderList()}
+            :   renderList()}
         </div>
     );
 };

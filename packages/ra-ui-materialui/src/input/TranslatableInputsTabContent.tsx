@@ -62,7 +62,7 @@ export const TranslatableInputsTabContent = (
                             variant={child.props.variant || variant}
                             margin={child.props.margin || margin}
                         />
-                    : null
+                    :   null
                 )}
             </div>
         </FormGroupContextProvider>

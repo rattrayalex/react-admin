@@ -56,8 +56,9 @@ const Button = ({ img, label, href }) => {
             <a
                 href={href}
                 style={
-                    hovered ? { ...styles.link, ...styles.linkHovered }
-                    : styles.link
+                    hovered ?
+                        { ...styles.link, ...styles.linkHovered }
+                    :   styles.link
                 }
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
@@ -71,9 +72,9 @@ const Button = ({ img, label, href }) => {
 };
 
 export default () =>
-    process.env.NODE_ENV === 'production' ? <span />
-    : (
-        <div style={styles.root}>
+    process.env.NODE_ENV === 'production' ?
+        <span />
+    :   <div style={styles.root}>
             <div style={styles.main}>
                 <img
                     style={styles.logo}
@@ -105,5 +106,4 @@ export default () =>
                     label="Community"
                 />
             </div>
-        </div>
-    );
+        </div>;

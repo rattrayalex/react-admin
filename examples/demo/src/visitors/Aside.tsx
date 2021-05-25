@@ -201,9 +201,9 @@ const EventList: FC<EventListProps> = ({ record, basePath }) => {
                     >
                         <StepLabel
                             StepIconComponent={() => {
-                                const Component =
-                                    event.type === 'order' ? order.icon
-                                    : review.icon;
+                                const Component = event.type === 'order' ?
+                                        order.icon
+                                    :   review.icon;
                                 return (
                                     <Component
                                         fontSize="small"
@@ -229,13 +229,12 @@ const EventList: FC<EventListProps> = ({ record, basePath }) => {
                                     key={`event_${event.data.id}`}
                                     basePath={basePath}
                                 />
-                            : (
-                                <Review
+                            :   <Review
                                     record={event.data as ReviewRecord}
                                     key={`review_${event.data.id}`}
                                     basePath={basePath}
                                 />
-                            )}
+                            }
                         </StepContent>
                     </Step>
                 ))}
@@ -256,22 +255,20 @@ const mixOrdersAndReviews = (
     reviews?: RecordMap<ReviewRecord>,
     reviewIds?: Identifier[]
 ): AsideEvent[] => {
-    const eventsFromOrders =
-        orderIds && orders ?
+    const eventsFromOrders = orderIds && orders ?
             orderIds.map<AsideEvent>(id => ({
                 type: 'order',
                 date: orders[id].date,
                 data: orders[id],
             }))
-        : [];
-    const eventsFromReviews =
-        reviewIds && reviews ?
+        :   [];
+    const eventsFromReviews = reviewIds && reviews ?
             reviewIds.map<AsideEvent>(id => ({
                 type: 'review',
                 date: reviews[id].date,
                 data: reviews[id],
             }))
-        : [];
+        :   [];
     const events = eventsFromOrders.concat(eventsFromReviews);
     events.sort(
         (e1, e2) => new Date(e2.date).getTime() - new Date(e1.date).getTime()
@@ -286,8 +283,7 @@ interface OrderProps {
 
 const Order: FC<OrderProps> = ({ record, basePath }) => {
     const translate = useTranslate();
-    return (
-        record ?
+    return record ?
             <>
                 <Typography variant="body2" gutterBottom>
                     <Link to={`/commands/${record.id}`} component={RouterLink}>
@@ -320,8 +316,7 @@ const Order: FC<OrderProps> = ({ record, basePath }) => {
                     />
                 </Typography>
             </>
-        : null
-    );
+        :   null;
 };
 
 interface ReviewProps {
@@ -341,8 +336,7 @@ const useReviewStyles = makeStyles({
 const Review: FC<ReviewProps> = ({ record, basePath }) => {
     const classes = useReviewStyles();
     const translate = useTranslate();
-    return (
-        record ?
+    return record ?
             <>
                 <Typography variant="body2" gutterBottom>
                     <Link to={`/reviews/${record.id}`} component={RouterLink}>
@@ -371,8 +365,7 @@ const Review: FC<ReviewProps> = ({ record, basePath }) => {
                     {record.comment}
                 </Typography>
             </>
-        : null
-    );
+        :   null;
 };
 
 export default Aside;

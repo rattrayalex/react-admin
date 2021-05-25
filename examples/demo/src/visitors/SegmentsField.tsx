@@ -20,27 +20,23 @@ const SegmentsField: FC<FieldProps<Customer>> = ({ record }) => {
     const translate = useTranslate();
     const classes = useStyles();
 
-    return (
-        record ?
+    return record ?
             <span className={classes.main}>
                 {record.groups &&
                     record.groups.map(segmentId => {
                         const segment = segments.find(s => s.id === segmentId);
 
-                        return (
-                            segment ?
+                        return segment ?
                                 <Chip
                                     size="small"
                                     key={segment.id}
                                     className={classes.chip}
                                     label={translate(segment.name)}
                                 />
-                            : null
-                        );
+                            :   null;
                     })}
             </span>
-        : null
-    );
+        :   null;
 };
 
 SegmentsField.defaultProps = {

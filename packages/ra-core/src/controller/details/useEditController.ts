@@ -186,8 +186,7 @@ export const useEditController = <RecordType extends Record = Record>(
                         onSuccess:
                             onSuccessFromSave ? onSuccessFromSave
                             : onSuccessRef.current ? onSuccessRef.current
-                            : (
-                                () => {
+                            : () => {
                                     notify(
                                         successMessage ||
                                             'ra.notification.updated',
@@ -203,19 +202,16 @@ export const useEditController = <RecordType extends Record = Record>(
                                         data.id,
                                         data
                                     );
-                                }
-                            ),
+                                },
                         onFailure:
                             onFailureFromSave ? onFailureFromSave
                             : onFailureRef.current ? onFailureRef.current
-                            : (
-                                error => {
+                            : error => {
                                     notify(
-                                        typeof error === 'string' ? error
-                                        : (
-                                            error.message ||
-                                                'ra.notification.http_error'
-                                        ),
+                                        typeof error === 'string' ?
+                                            error
+                                        :   error.message ||
+                                                'ra.notification.http_error',
                                         'warning',
                                         {
                                             _:
@@ -223,7 +219,7 @@ export const useEditController = <RecordType extends Record = Record>(
                                                     error
                                                 : error && error.message ?
                                                     error.message
-                                                : undefined,
+                                                :   undefined,
                                         }
                                     );
                                     if (
@@ -232,8 +228,7 @@ export const useEditController = <RecordType extends Record = Record>(
                                     ) {
                                         refresh();
                                     }
-                                }
-                            ),
+                                },
                         mutationMode,
                     }
                 )

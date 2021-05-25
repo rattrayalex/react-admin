@@ -31,16 +31,15 @@ const PasswordInput: FC<PasswordInputProps> = ({
                     <InputAdornment position="end">
                         <IconButton
                             aria-label={translate(
-                                visible ? 'ra.input.password.toggle_visible'
-                                : 'ra.input.password.toggle_hidden'
+                                visible ?
+                                    'ra.input.password.toggle_visible'
+                                :   'ra.input.password.toggle_hidden'
                             )}
                             onClick={handleClick}
                         >
                             {visible ?
                                 <Visibility />
-                            : (
-                                <VisibilityOff />
-                            )}
+                            :   <VisibilityOff />}
                         </IconButton>
                     </InputAdornment>
                 ),

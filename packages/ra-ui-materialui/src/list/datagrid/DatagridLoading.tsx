@@ -32,8 +32,7 @@ const DatagridLoading = ({
 }: DatagridLoadingProps): JSX.Element => {
     const oneSecondHasPassed = useTimeout(1000);
 
-    return (
-        oneSecondHasPassed ?
+    return oneSecondHasPassed ?
             <Table className={classnames(classes.table, className)} size={size}>
                 <TableHead>
                     <TableRow className={classes.row}>
@@ -110,8 +109,7 @@ const DatagridLoading = ({
                     ))}
                 </TableBody>
             </Table>
-        : null
-    );
+        :   null;
 };
 
 DatagridLoading.propTypes = {

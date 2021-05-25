@@ -62,7 +62,7 @@ const getMessage = (
             message,
             args: messageArgs,
         }
-    : message;
+    :   message;
 
 type Memoize = <T extends (...args: any[]) => any>(
     func: T,
@@ -82,8 +82,9 @@ export const composeValidators =
     (...validators) =>
     async (value, values, meta) => {
         const allValidators = (
-            Array.isArray(validators[0]) ? validators[0]
-            : validators).filter(isFunction) as Validator[];
+            Array.isArray(validators[0]) ?
+                validators[0]
+            :   validators).filter(isFunction) as Validator[];
 
         for (const validator of allValidators) {
             const errorPromise = validator(value, values, meta);
@@ -110,8 +111,9 @@ export const composeSyncValidators =
     (...validators) =>
     (value, values, meta) => {
         const allValidators = (
-            Array.isArray(validators[0]) ? validators[0]
-            : validators).filter(isFunction) as Validator[];
+            Array.isArray(validators[0]) ?
+                validators[0]
+            :   validators).filter(isFunction) as Validator[];
 
         for (const validator of allValidators) {
             const error = validator(value, values, meta);
@@ -137,8 +139,9 @@ export const composeSyncValidators =
 export const required = memoize((message = 'ra.validation.required') =>
     Object.assign(
         (value, values) =>
-            isEmpty(value) ? getMessage(message, undefined, value, values)
-            : undefined,
+            isEmpty(value) ?
+                getMessage(message, undefined, value, values)
+            :   undefined,
         { isRequired: true }
     )
 );
@@ -161,7 +164,7 @@ export const minLength = memoize(
         (value, values) =>
             !isEmpty(value) && value.length < min ?
                 getMessage(message, { min }, value, values)
-            : undefined
+            :   undefined
 );
 
 /**
@@ -182,7 +185,7 @@ export const maxLength = memoize(
         (value, values) =>
             !isEmpty(value) && value.length > max ?
                 getMessage(message, { max }, value, values)
-            : undefined
+            :   undefined
 );
 
 /**
@@ -203,7 +206,7 @@ export const minValue = memoize(
         (value, values) =>
             !isEmpty(value) && value < min ?
                 getMessage(message, { min }, value, values)
-            : undefined
+            :   undefined
 );
 
 /**
@@ -224,7 +227,7 @@ export const maxValue = memoize(
         (value, values) =>
             !isEmpty(value) && value > max ?
                 getMessage(message, { max }, value, values)
-            : undefined
+            :   undefined
 );
 
 /**
@@ -244,7 +247,7 @@ export const number = memoize(
         (value, values) =>
             !isEmpty(value) && isNaN(Number(value)) ?
                 getMessage(message, undefined, value, values)
-            : undefined
+            :   undefined
 );
 
 /**
@@ -267,8 +270,9 @@ export const regex = lodashMemoize(
                 !isEmpty(value) &&
                 typeof value === 'string' &&
                 !pattern.test(value)
-            ) ? getMessage(message, { pattern }, value, values)
-            : undefined,
+            ) ?
+                getMessage(message, { pattern }, value, values)
+            :   undefined,
     (pattern, message) => {
         return pattern.toString() + message;
     }
@@ -313,5 +317,5 @@ export const choices = memoize(
         (value, values) =>
             !isEmpty(value) && list.indexOf(value) === -1 ?
                 getMessage(message, { list }, value, values)
-            : undefined
+            :   undefined
 );

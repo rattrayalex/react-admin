@@ -76,8 +76,8 @@ const ReferenceField: FC<ReferenceFieldProps> = props => {
                 <Typography component="span" variant="body2">
                     {emptyText}
                 </Typography>
-            : null
-        : <NonEmptyReferenceField {...rest} record={record} source={source} />
+            :   null
+        :   <NonEmptyReferenceField {...rest} record={record} source={source} />
     );
 };
 

@@ -57,15 +57,13 @@ const CoreAdminContext: FunctionComponent<AdminContextProps> = ({
 React-admin requires a valid dataProvider function to work.`);
     }
 
-    const finalAuthProvider =
-        authProvider instanceof Function ?
+    const finalAuthProvider = authProvider instanceof Function ?
             convertLegacyAuthProvider(authProvider)
-        : authProvider;
+        :   authProvider;
 
-    const finalDataProvider =
-        dataProvider instanceof Function ?
+    const finalDataProvider = dataProvider instanceof Function ?
             convertLegacyDataProvider(dataProvider)
-        : dataProvider;
+        :   dataProvider;
 
     const finalHistory = history || createHashHistory();
 
@@ -78,7 +76,7 @@ React-admin requires a valid dataProvider function to work.`);
                             <ConnectedRouter history={finalHistory}>
                                 {children}
                             </ConnectedRouter>
-                        : children}
+                        :   children}
                     </TranslationProvider>
                 </DataProviderContext.Provider>
             </AuthContext.Provider>
@@ -95,7 +93,7 @@ React-admin requires a valid dataProvider function to work.`);
                 initialState,
                 history: finalHistory,
             })
-        : undefined
+        :   undefined
     );
 
     if (reduxIsAlreadyInitialized) {

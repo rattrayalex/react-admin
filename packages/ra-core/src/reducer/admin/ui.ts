@@ -40,8 +40,9 @@ const isDesktop = (): boolean =>
         typeof window !== 'undefined' &&
         window.matchMedia &&
         typeof window.matchMedia === 'function'
-    ) ? window.matchMedia('(min-width:960px)').matches
-    : false;
+    ) ?
+        window.matchMedia('(min-width:960px)').matches
+    :   false;
 
 const defaultState: UIState = {
     automaticRefreshEnabled: true,

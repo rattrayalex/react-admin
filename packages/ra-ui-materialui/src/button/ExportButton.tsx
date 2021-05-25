@@ -40,8 +40,9 @@ const ExportButton: FunctionComponent<ExportButtonProps> = props => {
             dataProvider
                 .getList(resource, {
                     sort: currentSort || sort,
-                    filter:
-                        filter ? { ...filterValues, ...filter } : filterValues,
+                    filter: filter ?
+                            { ...filterValues, ...filter }
+                        :   filterValues,
                     pagination: { page: 1, perPage: maxResults },
                 })
                 .then(

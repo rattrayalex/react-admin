@@ -27,11 +27,11 @@ const useExpanded = (
         (reduxState: ReduxState) =>
             reduxState.admin.resources[resource] ?
                 reduxState.admin.resources[resource].list.expanded
-            : undefined
+            :   undefined
     );
-    const expanded =
-        expandedList === undefined ? false
-        : expandedList.map(el => el == id).indexOf(true) !== -1; // eslint-disable-line eqeqeq
+    const expanded = expandedList === undefined ? false : (
+        expandedList.map(el => el == id).indexOf(true) !== -1
+    ); // eslint-disable-line eqeqeq
     const toggleExpanded = useCallback(() => {
         dispatch(toggleListItemExpand(resource, id));
     }, [dispatch, resource, id]);

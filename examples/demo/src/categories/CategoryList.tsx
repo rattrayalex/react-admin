@@ -34,8 +34,7 @@ const useStyles = makeStyles({
 const CategoryGrid: FC = props => {
     const classes = useStyles(props);
     const { data, ids } = useListContext<Category>();
-    return (
-        ids ?
+    return ids ?
             <Grid container spacing={2} className={classes.root}>
                 {ids.map(id => (
                     <Grid key={id} xs={12} sm={6} md={4} lg={3} xl={2} item>
@@ -66,8 +65,7 @@ const CategoryGrid: FC = props => {
                     </Grid>
                 ))}
             </Grid>
-        : null
-    );
+        :   null;
 };
 
 const CategoryList: FC<ListProps> = props => (

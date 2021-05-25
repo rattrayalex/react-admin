@@ -118,7 +118,7 @@ const PostReferenceInput = props => {
                                 </DialogActions>
                             </Dialog>
                         </Fragment>
-                    : null
+                    :   null
                 }
             />
             <Dialog

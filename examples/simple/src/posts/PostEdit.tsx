@@ -124,7 +124,7 @@ const PostEdit = ({ permissions, ...props }) => (
                                             ]}
                                             {...rest}
                                         />
-                                    : null
+                                    :   null
                                 }
                             </FormDataConsumer>
                         </SimpleFormIterator>

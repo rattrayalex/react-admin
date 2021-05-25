@@ -64,7 +64,7 @@ const useDataProviderWithDeclarativeSideEffects = (): DataProviderProxy => {
                                         onFailure,
                                     },
                                 ]
-                            : finalAllArguments
+                            :   finalAllArguments
                         );
                     } catch (e) {
                         // turn synchronous exceptions (e.g. in parameter preparation)

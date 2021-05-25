@@ -68,7 +68,7 @@ const NewCustomers = () => {
                             />
                         </ListItem>
                     ))
-                : null}
+                :   null}
             </List>
             <Box flexGrow="1">&nbsp;</Box>
             <Button

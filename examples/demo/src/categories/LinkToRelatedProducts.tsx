@@ -20,8 +20,7 @@ const useStyles = makeStyles({
 const LinkToRelatedProducts: FC<FieldProps<Category>> = ({ record }) => {
     const translate = useTranslate();
     const classes = useStyles();
-    return (
-        record ?
+    return record ?
             <Button
                 size="small"
                 color="primary"
@@ -37,8 +36,7 @@ const LinkToRelatedProducts: FC<FieldProps<Category>> = ({ record }) => {
                 <products.icon className={classes.icon} />
                 {translate('resources.categories.fields.products')}
             </Button>
-        : null
-    );
+        :   null;
 };
 
 export default LinkToRelatedProducts;

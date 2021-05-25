@@ -240,10 +240,9 @@ export const useReferenceArrayInputController = (
         idsToFetch || []
     );
 
-    const referenceRecords =
-        referenceRecordsFetched ?
+    const referenceRecords = referenceRecordsFetched ?
             referenceRecordsFetched.concat(referenceRecordsFromStore)
-        : referenceRecordsFromStore;
+        :   referenceRecordsFromStore;
 
     // filter out not found references - happens when the dataProvider doesn't guarantee referential integrity
     const finalReferenceRecords = referenceRecords.filter(Boolean);
@@ -283,10 +282,9 @@ export const useReferenceArrayInputController = (
         currentSort: sort,
         // For the ListContext, we don't want to always display the selected items first.
         // Indeed it wouldn't work well regarding sorting and pagination
-        data:
-            matchingReferences && matchingReferences.length > 0 ?
+        data: matchingReferences && matchingReferences.length > 0 ?
                 indexById(matchingReferences)
-            : {},
+            :   {},
         displayedFilters,
         error: dataStatus.error,
         filterValues,

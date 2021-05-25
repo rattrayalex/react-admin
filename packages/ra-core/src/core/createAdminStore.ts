@@ -41,9 +41,9 @@ export default ({
 
     const resettableAppReducer = (state, action) =>
         appReducer(
-            action.type !== CLEAR_STATE ? state
-            : (
-                // Erase data from the store but keep location, notifications, ui prefs, etc.
+            action.type !== CLEAR_STATE ?
+                state
+            :   // Erase data from the store but keep location, notifications, ui prefs, etc.
                 // This allows e.g. to display a notification on logout
                 {
                     ...state,
@@ -54,8 +54,7 @@ export default ({
                         customQueries: {},
                         references: { oneToMany: {}, possibleValues: {} },
                     },
-                }
-            ),
+                },
             action
         );
     const saga = function* rootSaga() {

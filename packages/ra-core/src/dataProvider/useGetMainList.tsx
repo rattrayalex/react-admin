@@ -145,16 +145,15 @@ export const useGetMainList = <RecordType extends Record = Record>(
 
     const data = useMemo(
         () =>
-            typeof finalIds === 'undefined' ? defaultData
-            : (
-                finalIds
+            typeof finalIds === 'undefined' ?
+                defaultData
+            :   finalIds
                     .map(id => allRecords[id])
                     .reduce((acc, record) => {
                         if (!record) return acc;
                         acc[record.id] = record;
                         return acc;
-                    }, {})
-            ),
+                    }, {}),
         [finalIds, allRecords]
     );
 

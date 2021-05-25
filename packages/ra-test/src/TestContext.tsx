@@ -71,8 +71,7 @@ export class TestContext extends Component<TestContextProps> {
         this.history = props.history || createMemoryHistory();
         const { initialState = {}, enableReducers = false } = props;
 
-        this.storeWithDefault =
-            enableReducers ?
+        this.storeWithDefault = enableReducers ?
                 createAdminStore({
                     initialState: merge({}, defaultStore, initialState),
                     dataProvider: convertLegacyDataProvider(() =>
@@ -80,19 +79,17 @@ export class TestContext extends Component<TestContextProps> {
                     ),
                     history: createMemoryHistory(),
                 })
-            : createStore(() => merge({}, defaultStore, initialState));
+            :   createStore(() => merge({}, defaultStore, initialState));
     }
 
     renderChildren = () => {
         const { children } = this.props;
-        return (
-            typeof children === 'function' ?
+        return typeof children === 'function' ?
                 (children as TextContextChildrenFunction)({
                     store: this.storeWithDefault,
                     history: this.history,
                 })
-            : children
-        );
+            :   children;
     };
 
     render() {

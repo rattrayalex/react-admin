@@ -17,8 +17,7 @@ const EmailField: FC<EmailFieldProps> = memo<EmailFieldProps>(props => {
     const value = get(record, source);
 
     if (value == null) {
-        return (
-            emptyText ?
+        return emptyText ?
                 <Typography
                     component="span"
                     variant="body2"
@@ -27,8 +26,7 @@ const EmailField: FC<EmailFieldProps> = memo<EmailFieldProps>(props => {
                 >
                     {emptyText}
                 </Typography>
-            : null
-        );
+            :   null;
     }
 
     return (

@@ -58,8 +58,7 @@ export const DateField: FC<DateFieldProps> = memo<DateFieldProps>(props => {
     }
     const value = get(record, source);
     if (value == null) {
-        return (
-            emptyText ?
+        return emptyText ?
                 <Typography
                     component="span"
                     variant="body2"
@@ -68,8 +67,7 @@ export const DateField: FC<DateFieldProps> = memo<DateFieldProps>(props => {
                 >
                     {emptyText}
                 </Typography>
-            : null
-        );
+            :   null;
     }
 
     const date = value instanceof Date ? value : new Date(value);
@@ -77,10 +75,10 @@ export const DateField: FC<DateFieldProps> = memo<DateFieldProps>(props => {
         showTime ?
             toLocaleStringSupportsLocales ?
                 date.toLocaleString(locales, options)
-            : date.toLocaleString()
+            :   date.toLocaleString()
         : toLocaleStringSupportsLocales ?
             date.toLocaleDateString(locales, options)
-        : date.toLocaleDateString();
+        :   date.toLocaleDateString();
 
     return (
         <Typography

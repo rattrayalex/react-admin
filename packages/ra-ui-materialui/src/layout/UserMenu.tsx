@@ -64,14 +64,13 @@ const UserMenu = props => {
                                 src={identity.avatar}
                                 alt={identity.fullName}
                             />
-                        : icon
+                        :   icon
                     }
                     onClick={handleMenu}
                 >
                     {identity.fullName}
                 </Button>
-            : (
-                <Tooltip title={label && translate(label, { _: label })}>
+            :   <Tooltip title={label && translate(label, { _: label })}>
                     <IconButton
                         aria-label={label && translate(label, { _: label })}
                         aria-owns={open ? 'menu-appbar' : null}
@@ -82,7 +81,7 @@ const UserMenu = props => {
                         {icon}
                     </IconButton>
                 </Tooltip>
-            )}
+            }
             <Menu
                 id="menu-appbar"
                 disableScrollLock
@@ -100,7 +99,7 @@ const UserMenu = props => {
                         cloneElement<any>(menuItem, {
                             onClick: handleClose,
                         })
-                    : null
+                    :   null
                 )}
                 {logout}
             </Menu>

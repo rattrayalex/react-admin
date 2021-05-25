@@ -56,8 +56,9 @@ const useCheckAuth = (): CheckAuth => {
                 if (logoutOnFailure) {
                     logout(
                         {},
-                        error && error.redirectTo ? error.redirectTo
-                        : redirectTo
+                        error && error.redirectTo ?
+                            error.redirectTo
+                        :   redirectTo
                     );
                     const shouldSkipNotify =
                         disableNotification ||

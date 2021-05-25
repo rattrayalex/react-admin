@@ -118,16 +118,15 @@ const useGetManyReference = (
 
     const data = useMemo(
         () =>
-            ids == null ? defaultData
-            : (
-                ids
+            ids == null ?
+                defaultData
+            :   ids
                     .map(id => allRecords[id])
                     .reduce((acc, record) => {
                         if (!record) return acc;
                         acc[record.id] = record;
                         return acc;
-                    }, {})
-            ),
+                    }, {}),
         [ids, allRecords]
     );
 

@@ -109,7 +109,7 @@ const Notification: React.FunctionComponent<
                     >
                         {translate('ra.action.undo')}
                     </Button>
-                : null
+                :   null
             }
             {...rest}
         />

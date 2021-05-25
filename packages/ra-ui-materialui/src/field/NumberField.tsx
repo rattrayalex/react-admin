@@ -59,8 +59,7 @@ export const NumberField: FC<NumberFieldProps> = memo<NumberFieldProps>(
         }
         const value = get(record, source);
         if (value == null) {
-            return (
-                emptyText ?
+            return emptyText ?
                     <Typography
                         component="span"
                         variant="body2"
@@ -69,8 +68,7 @@ export const NumberField: FC<NumberFieldProps> = memo<NumberFieldProps>(
                     >
                         {emptyText}
                     </Typography>
-                : null
-            );
+                :   null;
         }
 
         return (

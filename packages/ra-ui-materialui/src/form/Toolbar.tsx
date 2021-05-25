@@ -23,9 +23,9 @@ import { ClassesOverride } from '../types';
 const useStyles = makeStyles(
     theme => ({
         toolbar: {
-            backgroundColor:
-                theme.palette.type === 'light' ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+            backgroundColor: theme.palette.type === 'light' ?
+                    theme.palette.grey[100]
+                :   theme.palette.grey[900],
         },
         desktopToolbar: {
             marginTop: theme.spacing(2),
@@ -158,8 +158,7 @@ const Toolbar: FC<ToolbarProps> = props => {
                             />
                         )}
                     </div>
-                : (
-                    Children.map(children, (button: ReactElement) =>
+                :   Children.map(children, (button: ReactElement) =>
                         button && isValidElement<any>(button) ?
                             React.cloneElement(button, {
                                 basePath: valueOrDefault(
@@ -195,9 +194,9 @@ const Toolbar: FC<ToolbarProps> = props => {
                                     undoable
                                 ),
                             })
-                        : null
+                        :   null
                     )
-                )}
+                }
             </MuiToolbar>
             <div className={classes.spacer} />
         </Fragment>

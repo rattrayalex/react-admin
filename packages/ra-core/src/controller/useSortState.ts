@@ -31,8 +31,8 @@ const sortReducer = (state: SortPayload, action: Action): SortPayload => {
             const order =
                 state.field === field ?
                     state.order === SORT_ASC ? SORT_DESC
-                    : SORT_ASC
-                : SORT_ASC;
+                    :   SORT_ASC
+                :   SORT_ASC;
             return { field, order };
         }
         case 'SET_SORT_ORDER': {

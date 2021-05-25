@@ -18,8 +18,7 @@ const CustomRouteLayout = () => {
         currentSort
     );
 
-    return (
-        loaded ?
+    return loaded ?
             <div>
                 <Title title="Example Admin" />
                 <h1>Posts</h1>
@@ -39,8 +38,7 @@ const CustomRouteLayout = () => {
                     <TextField source="title" sortable={false} />
                 </Datagrid>
             </div>
-        : null
-    );
+        :   null;
 };
 
 export default CustomRouteLayout;

@@ -89,8 +89,9 @@ const FormWithRedirect = ({
      */
     const setOnSave = useCallback(
         newOnSave => {
-            typeof newOnSave === 'function' ? (onSave.current = newOnSave)
-            : (onSave.current = save);
+            typeof newOnSave === 'function' ?
+                (onSave.current = newOnSave)
+            :   (onSave.current = save);
         },
         [save]
     );
@@ -134,9 +135,9 @@ const FormWithRedirect = ({
     );
 
     const submit = values => {
-        const finalRedirect =
-            typeof redirect.current === undefined ? props.redirect
-            : redirect.current;
+        const finalRedirect = typeof redirect.current === undefined ?
+                props.redirect
+            :   redirect.current;
 
         if (shouldSanitizeEmptyValues) {
             const sanitizedValues = sanitizeEmptyValues(

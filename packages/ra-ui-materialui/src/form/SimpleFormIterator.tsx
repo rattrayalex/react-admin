@@ -172,8 +172,7 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
         };
 
     const records = get(record, source);
-    return (
-        fields ?
+    return fields ?
             <ul className={classNames(classes.root, className)}>
                 {submitFailed && typeof error !== 'object' && error && (
                     <FormHelperText error>
@@ -212,13 +211,12 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
                                                         basePath
                                                     }
                                                     input={cloneElement(input, {
-                                                        source:
-                                                            source ?
+                                                        source: source ?
                                                                 `${member}.${source}`
-                                                            : member,
-                                                        index:
-                                                            source ? undefined
-                                                            : index2,
+                                                            :   member,
+                                                        index: source ?
+                                                                undefined
+                                                            :   index2,
                                                         label:
                                                             (
                                                                 typeof input
@@ -228,8 +226,9 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
                                                             ) ?
                                                                 source ?
                                                                     `resources.${resource}.fields.${source}`
-                                                                : undefined
-                                                            : input.props.label,
+                                                                :   undefined
+                                                            :   input.props
+                                                                    .label,
                                                         disabled,
                                                         ...inputProps,
                                                     })}
@@ -286,8 +285,7 @@ const SimpleFormIterator: FC<SimpleFormIteratorProps> = props => {
                     </li>
                 )}
             </ul>
-        : null
-    );
+        :   null;
 };
 
 SimpleFormIterator.defaultProps = {

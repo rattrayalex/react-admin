@@ -13,14 +13,13 @@ export const UserList = props => {
                     secondaryText={record => record.username}
                     tertiaryText={record => record.email}
                 />
-            : (
-                <Datagrid>
+            :   <Datagrid>
                     <TextField source="id" />
                     <TextField source="name" />
                     <TextField source="username" />
                     <EmailField source="email" />
                 </Datagrid>
-            )}
+            }
         </List>
     );
 };

@@ -28,9 +28,7 @@ const RichTextField: FC<RichTextFieldProps> = memo<RichTextFieldProps>(
                     emptyText
                 : stripTags ?
                     removeTags(value)
-                : (
-                    <span dangerouslySetInnerHTML={{ __html: value }} />
-                )}
+                :   <span dangerouslySetInnerHTML={{ __html: value }} />}
             </Typography>
         );
     }

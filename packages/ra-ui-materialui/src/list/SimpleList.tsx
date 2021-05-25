@@ -112,8 +112,9 @@ const SimpleList: FC<SimpleListProps> = props => {
                         <ListItem
                             button={!!linkType as any}
                             style={
-                                rowStyle ? rowStyle(data[id], rowIndex)
-                                : undefined
+                                rowStyle ?
+                                    rowStyle(data[id], rowIndex)
+                                :   undefined
                             }
                         >
                             {leftIcon && (
@@ -227,8 +228,9 @@ const LinkOrNot: FC<LinkOrNotProps> = ({
     record,
 }) => {
     const classes = useLinkOrNotStyles({ classes: classesOverride });
-    const link =
-        typeof linkType === 'function' ? linkType(record, id) : linkType;
+    const link = typeof linkType === 'function' ?
+            linkType(record, id)
+        :   linkType;
 
     return (
         link === 'edit' || link === true ?
@@ -242,7 +244,7 @@ const LinkOrNot: FC<LinkOrNotProps> = ({
             >
                 {children}
             </Link>
-        : <span>{children}</span>
+        :   <span>{children}</span>
     );
 };
 

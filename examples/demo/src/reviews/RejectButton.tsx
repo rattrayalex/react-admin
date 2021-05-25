@@ -39,8 +39,7 @@ const RejectButton: FC<{ record: Review }> = ({ record }) => {
         }
     );
 
-    return (
-        record && record.status === 'pending' ?
+    return record && record.status === 'pending' ?
             <Button
                 variant="outlined"
                 color="primary"
@@ -54,8 +53,7 @@ const RejectButton: FC<{ record: Review }> = ({ record }) => {
                 />
                 {translate('resources.reviews.action.reject')}
             </Button>
-        : <span />
-    );
+        :   <span />;
 };
 
 RejectButton.propTypes = {

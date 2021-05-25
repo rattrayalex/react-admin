@@ -47,8 +47,7 @@ const CreateButton: FC<CreateButtonProps> = props => {
         }),
         [basePath, resource, scrollToTop]
     );
-    return (
-        isSmall ?
+    return isSmall ?
             <Fab
                 component={Link}
                 color="primary"
@@ -59,8 +58,7 @@ const CreateButton: FC<CreateButtonProps> = props => {
             >
                 {icon}
             </Fab>
-        : (
-            <Button
+        :   <Button
                 component={Link}
                 to={location}
                 className={className}
@@ -69,9 +67,7 @@ const CreateButton: FC<CreateButtonProps> = props => {
                 {...(rest as any)}
             >
                 {icon}
-            </Button>
-        )
-    );
+            </Button>;
 };
 
 const defaultIcon = <ContentAdd />;

@@ -147,7 +147,7 @@ class LayoutWithoutTheme extends Component<
                                         errorInfo,
                                         title,
                                     })
-                                : children}
+                                :   children}
                             </div>
                         </main>
                     </div>

@@ -147,8 +147,8 @@ export const TabbedShowLayout = (props: TabbedShowLayoutProps) => {
                                 record,
                                 basePath,
                             })
-                        : null
-                    : null
+                        :   null
+                    :   null
                 )}
             </div>
         </div>

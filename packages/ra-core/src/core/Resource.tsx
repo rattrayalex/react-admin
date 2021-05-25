@@ -145,7 +145,8 @@ const Resource: FunctionComponent<ResourceProps> = ({
     intent = 'route',
     ...props
 }) =>
-    intent === 'registration' ? <ResourceRegister {...props} />
-    : <ResourceRoutes {...props} />;
+    intent === 'registration' ?
+        <ResourceRegister {...props} />
+    :   <ResourceRoutes {...props} />;
 
 export default Resource;

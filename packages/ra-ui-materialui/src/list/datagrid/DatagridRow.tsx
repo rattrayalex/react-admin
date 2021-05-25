@@ -38,7 +38,7 @@ const computeNbColumns = (expand, children, hasBulkActions) =>
         1 + // show expand button
         (hasBulkActions ? 1 : 0) + // checkbox column
         React.Children.toArray(children).filter(child => !!child).length // non-null children
-    : 0; // we don't need to compute columns if there is no expand panel;
+    :   0; // we don't need to compute columns if there is no expand panel;
 
 const defaultClasses = { expandIconCell: '', checkbox: '', rowCell: '' };
 
@@ -108,10 +108,9 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
             if (!rowClick) return;
             event.persist();
 
-            const effect =
-                typeof rowClick === 'function' ?
+            const effect = typeof rowClick === 'function' ?
                     await rowClick(id, basePath || `/${resource}`, record)
-                : rowClick;
+                :   rowClick;
             switch (effect) {
                 case 'edit':
                     history.push(linkToRecord(basePath || `/${resource}`, id));
@@ -195,7 +194,7 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
                             record={record}
                             {...{ field, basePath, resource }}
                         />
-                    : null
+                    :   null
                 )}
             </TableRow>
             {expandable && expanded && (
@@ -209,14 +208,13 @@ const DatagridRow: FC<DatagridRowProps> = React.forwardRef((props, ref) => {
                                 resource,
                                 id: String(id),
                             })
-                        : (
-                            createElement(expand, {
+                        :   createElement(expand, {
                                 record,
                                 basePath,
                                 resource,
                                 id: String(id),
                             })
-                        )}
+                        }
                     </TableCell>
                 </TableRow>
             )}

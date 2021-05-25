@@ -59,14 +59,13 @@ const useChoices = ({
                     record: choice,
                 });
             }
-            const choiceName =
-                typeof optionText === 'function' ? optionText(choice)
-                : get(choice, optionText);
+            const choiceName = typeof optionText === 'function' ?
+                    optionText(choice)
+                :   get(choice, optionText);
 
-            return (
-                translateChoice ? translate(choiceName, { _: choiceName })
-                : choiceName
-            );
+            return translateChoice ?
+                    translate(choiceName, { _: choiceName })
+                :   choiceName;
         },
         [optionText, translate, translateChoice]
     );

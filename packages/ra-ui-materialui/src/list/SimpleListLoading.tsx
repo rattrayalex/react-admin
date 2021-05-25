@@ -50,8 +50,7 @@ const SimpleListLoading: FC<Props & ListProps> = props => {
     const classes = useStyles(props);
     const oneSecondHasPassed = useTimeout(1000);
 
-    return (
-        oneSecondHasPassed ?
+    return oneSecondHasPassed ?
             <List className={className} {...rest}>
                 {times(nbFakeLines, key => (
                     <ListItem key={key}>
@@ -83,8 +82,7 @@ const SimpleListLoading: FC<Props & ListProps> = props => {
                     </ListItem>
                 ))}
             </List>
-        : null
-    );
+        :   null;
 };
 
 SimpleListLoading.propTypes = {

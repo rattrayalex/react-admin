@@ -33,6 +33,6 @@ export default (options?: Args): TranslationArguments => {
                     _: inflection.transform(source, ['underscore', 'humanize']),
                 },
             ]
-        : ['']
+        :   ['']
     );
 };

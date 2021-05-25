@@ -100,10 +100,9 @@ const useQuery = (
          *
          * @deprecated to be removed in 4.0
          */
-        const finalDataProvider =
-            withDeclarativeSideEffectsSupport ?
+        const finalDataProvider = withDeclarativeSideEffectsSupport ?
                 dataProviderWithDeclarativeSideEffects
-            : dataProvider;
+            :   dataProvider;
 
         setState(prevState => ({ ...prevState, loading: true }));
 
@@ -112,7 +111,7 @@ const useQuery = (
                 finalDataProvider,
                 typeof resource !== 'undefined' ?
                     [resource, payload, otherOptions]
-                : [payload, otherOptions]
+                :   [payload, otherOptions]
             )
             .then(({ data, total }) => {
                 setState({

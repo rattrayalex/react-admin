@@ -49,9 +49,7 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
                                 />
-                            : (
-                                <Avatar />
-                            )}
+                            :   <Avatar />}
                         </ListItemAvatar>
                         <ListItemText
                             primary={new Date(record.date).toLocaleString(
@@ -60,8 +58,7 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                             secondary={translate('pos.dashboard.order.items', {
                                 smart_count: record.basket.length,
                                 nb_items: record.basket.length,
-                                customer_name:
-                                    customers[record.customer_id] ?
+                                customer_name: customers[record.customer_id] ?
                                         `${
                                             customers[record.customer_id]
                                                 .first_name
@@ -69,7 +66,7 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                                             customers[record.customer_id]
                                                 .last_name
                                         }`
-                                    : '',
+                                    :   '',
                             })}
                         />
                         <ListItemSecondaryAction>

@@ -21,18 +21,18 @@ export const getStatusForInput = ({
     referenceRecord,
     translate = x => x,
 }: GetStatusForInputParams) => {
-    const matchingReferencesError =
-        isMatchingReferencesError(matchingReferences) ?
+    const matchingReferencesError = (
+            isMatchingReferencesError(matchingReferences)
+        ) ?
             translate(matchingReferences.error, {
                 _: matchingReferences.error,
             })
-        : null;
-    const selectedReferenceError =
-        input.value && !referenceRecord ?
+        :   null;
+    const selectedReferenceError = input.value && !referenceRecord ?
             translate('ra.input.references.single_missing', {
                 _: 'ra.input.references.single_missing',
             })
-        : null;
+        :   null;
 
     return {
         waiting:
@@ -46,12 +46,12 @@ export const getStatusForInput = ({
                 (!input.value && matchingReferencesError)
             ) ?
                 input.value ? selectedReferenceError
-                : matchingReferencesError
-            : null,
+                :   matchingReferencesError
+            :   null,
         warning: selectedReferenceError || matchingReferencesError,
-        choices:
-            Array.isArray(matchingReferences) ? matchingReferences
-            : [referenceRecord].filter(choice => choice),
+        choices: Array.isArray(matchingReferences) ? matchingReferences : (
+            [referenceRecord].filter(choice => choice)
+        ),
     };
 };
 
@@ -93,12 +93,13 @@ export const getStatusForArrayInput = ({
         referenceRecords
     );
 
-    const matchingReferencesError =
-        isMatchingReferencesError(matchingReferences) ?
+    const matchingReferencesError = (
+            isMatchingReferencesError(matchingReferences)
+        ) ?
             translate(matchingReferences.error, {
                 _: matchingReferences.error,
             })
-        : null;
+        :   null;
 
     return {
         waiting:
@@ -106,8 +107,7 @@ export const getStatusForArrayInput = ({
                 input.value &&
                 selectedReferencesDataStatus === REFERENCES_STATUS_EMPTY) ||
             (!matchingReferences && !input.value),
-        error:
-            (
+        error: (
                 matchingReferencesError &&
                 (!input.value ||
                     (input.value &&
@@ -117,9 +117,8 @@ export const getStatusForArrayInput = ({
                 translate('ra.input.references.all_missing', {
                     _: 'ra.input.references.all_missing',
                 })
-            : null,
-        warning:
-            (
+            :   null,
+        warning: (
                 matchingReferencesError ||
                 (input.value &&
                     selectedReferencesDataStatus !== REFERENCES_STATUS_READY)
@@ -128,9 +127,9 @@ export const getStatusForArrayInput = ({
                 translate('ra.input.references.many_missing', {
                     _: 'ra.input.references.many_missing',
                 })
-            : null,
-        choices:
-            Array.isArray(matchingReferences) ? matchingReferences
-            : referenceRecords,
+            :   null,
+        choices: Array.isArray(matchingReferences) ?
+                matchingReferences
+            :   referenceRecords,
     };
 };

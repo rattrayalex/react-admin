@@ -23,18 +23,15 @@ export default (db, { serializeDate }) => {
                     .filter(() => weightedBoolean(40)) // reviewers review 40% of their products
                     .map(product => {
                         const date = randomDate(command.date);
-                        const status =
-                            isAfter(aMonthAgo, date) ?
+                        const status = isAfter(aMonthAgo, date) ?
                                 weightedArrayElement(
                                     ['accepted', 'rejected'],
                                     [3, 1]
                                 )
-                            : (
-                                weightedArrayElement(
+                            :   weightedArrayElement(
                                     ['pending', 'accepted', 'rejected'],
                                     [5, 3, 1]
-                                )
-                            );
+                                );
 
                         return {
                             id: id++,

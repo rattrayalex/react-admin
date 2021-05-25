@@ -16,6 +16,6 @@ const AvatarField: FC<Props> = ({ record, size = '25', className }) =>
             style={{ width: parseInt(size, 10), height: parseInt(size, 10) }}
             className={className}
         />
-    : null;
+    :   null;
 
 export default AvatarField;

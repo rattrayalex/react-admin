@@ -49,7 +49,7 @@ const CheckboxGroupInputItem = props => {
                         value ?
                             value.find(v => v == getChoiceValue(choice)) !== // eslint-disable-line eqeqeq
                             undefined
-                        : false
+                        :   false
                     }
                     value={String(getChoiceValue(choice))}
                     {...options}

@@ -99,8 +99,7 @@ function PaginationActions(props) {
                 <span key={`hyphen_${index}`} className={classes.hellip}>
                     &hellip;
                 </span>
-            : (
-                <Button
+            :   <Button
                     size={size}
                     className={classnames('page-number', classes.button, {
                         [classes.currentPageButton]: pageNum === page + 1,
@@ -112,7 +111,6 @@ function PaginationActions(props) {
                 >
                     {pageNum}
                 </Button>
-            )
         );
     };
 
@@ -134,9 +132,7 @@ function PaginationActions(props) {
                 >
                     {theme.direction === 'rtl' ?
                         <ChevronRight />
-                    : (
-                        <ChevronLeft />
-                    )}
+                    :   <ChevronLeft />}
                     {translate('ra.navigation.prev')}
                 </Button>
             )}
@@ -152,9 +148,7 @@ function PaginationActions(props) {
                     {translate('ra.navigation.next')}
                     {theme.direction === 'rtl' ?
                         <ChevronLeft />
-                    : (
-                        <ChevronRight />
-                    )}
+                    :   <ChevronRight />}
                 </Button>
             )}
         </div>

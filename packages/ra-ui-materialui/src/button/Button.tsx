@@ -60,8 +60,7 @@ const Button: FC<ButtonProps> = props => {
                         {children}
                     </IconButton>
                 </Tooltip>
-            : (
-                <IconButton
+            :   <IconButton
                     className={className}
                     color={color}
                     disabled={disabled}
@@ -69,9 +68,7 @@ const Button: FC<ButtonProps> = props => {
                 >
                     {children}
                 </IconButton>
-            )
-        : (
-            <MuiButton
+        :   <MuiButton
                 className={classnames(classes.button, className)}
                 color={color}
                 size={size}
@@ -100,7 +97,6 @@ const Button: FC<ButtonProps> = props => {
                         className: classes[`${size}Icon`],
                     })}
             </MuiButton>
-        )
     );
 };
 

@@ -20,7 +20,7 @@ const PostPreview = ({
     const record = useSelector<ReduxState, Record>(state =>
         state.admin.resources[resource] ?
             state.admin.resources[resource].data[id]
-        : null
+        :   null
     );
     const version = useSelector<ReduxState, number>(
         state => state.admin.ui.viewVersion

@@ -99,8 +99,9 @@ const PostCreate = ({ permissions, ...props }) => {
                 <RichTextInput source="body" validate={required()} />
                 <FormSpy subscription={{ values: true }}>
                     {({ values }) =>
-                        values.title ? <NumberInput source="average_note" />
-                        : null
+                        values.title ?
+                            <NumberInput source="average_note" />
+                        :   null
                     }
                 </FormSpy>
 
@@ -156,7 +157,7 @@ const PostCreate = ({ permissions, ...props }) => {
                                             ]}
                                             {...rest}
                                         />
-                                    : null
+                                    :   null
                                 }
                             </FormDataConsumer>
                         </SimpleFormIterator>

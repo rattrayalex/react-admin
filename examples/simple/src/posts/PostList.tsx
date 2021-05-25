@@ -138,8 +138,7 @@ const PostList = props => {
                         new Date(record.published_at).toLocaleDateString()
                     }
                 />
-            : (
-                <Datagrid rowClick={rowClick} expand={PostPanel} optimized>
+            :   <Datagrid rowClick={rowClick} expand={PostPanel} optimized>
                     <TextField source="id" />
                     <TextField source="title" cellClassName={classes.title} />
                     <DateField
@@ -172,7 +171,7 @@ const PostList = props => {
                         <ShowButton />
                     </PostListActionToolbar>
                 </Datagrid>
-            )}
+            }
         </List>
     );
 };

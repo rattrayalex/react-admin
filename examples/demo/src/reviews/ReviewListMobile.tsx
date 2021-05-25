@@ -36,8 +36,7 @@ const ReviewListMobile = () => {
     const classes = useStyles();
     const { basePath, data, ids, loaded, total } = useListContext<Review>();
 
-    return (
-        loaded || Number(total) > 0 ?
+    return loaded || Number(total) > 0 ?
             <List className={classes.root}>
                 {(ids as Exclude<typeof ids, undefined>).map(id => {
                     const item = (data as Exclude<typeof data, undefined>)[id];
@@ -83,7 +82,7 @@ const ReviewListMobile = () => {
                                                                     record as Customer
                                                                 ).last_name
                                                             }`
-                                                        : ''
+                                                        :   ''
                                                     }
                                                     variant="subtitle1"
                                                     className={classes.inline}
@@ -106,15 +105,16 @@ const ReviewListMobile = () => {
                                         </Fragment>
                                     }
                                     secondary={item.comment}
-                                    secondaryTypographyProps={{ noWrap: true }}
+                                    secondaryTypographyProps={{
+                                        noWrap: true,
+                                    }}
                                 />
                             </ListItem>
                         </Link>
                     );
                 })}
             </List>
-        : null
-    );
+        :   null;
 };
 
 ReviewListMobile.propTypes = {

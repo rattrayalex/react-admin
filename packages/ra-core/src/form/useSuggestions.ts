@@ -112,14 +112,13 @@ const defaultMatchSuggestion = getChoiceText => (filter, suggestion) => {
 
     const isReactElement = isValidElement(suggestionText);
 
-    return isReactElement ? false : (
-        suggestionText &&
-            suggestionText.match(
-                // We must escape any RegExp reserved characters to avoid errors
-                // For example, the filter might contains * which must be escaped as \*
-                new RegExp(escapeRegExp(filter), 'i')
-            )
-    );
+    return isReactElement ? false
+        :   suggestionText &&
+                suggestionText.match(
+                    // We must escape any RegExp reserved characters to avoid errors
+                    // For example, the filter might contains * which must be escaped as \*
+                    new RegExp(escapeRegExp(filter), 'i')
+                );
 };
 
 /**

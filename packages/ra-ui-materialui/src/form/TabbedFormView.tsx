@@ -101,8 +101,7 @@ export const TabbedFormView = (props: TabbedFormViewProps): ReactElement => {
                                             :   tabValue !== index,
                                         variant: tab.props.variant || variant,
                                         margin: tab.props.margin || margin,
-                                        value: syncWithLocation ?
-                                                tabPath
+                                        value: syncWithLocation ? tabPath
                                             :   index,
                                     })
                                 :   null

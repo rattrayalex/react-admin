@@ -49,9 +49,9 @@ export const getStatusForInput = ({
                 :   matchingReferencesError
             :   null,
         warning: selectedReferenceError || matchingReferencesError,
-        choices: Array.isArray(matchingReferences) ? matchingReferences : (
-            [referenceRecord].filter(choice => choice)
-        ),
+        choices: Array.isArray(matchingReferences) ?
+                matchingReferences
+            :   [referenceRecord].filter(choice => choice),
     };
 };
 

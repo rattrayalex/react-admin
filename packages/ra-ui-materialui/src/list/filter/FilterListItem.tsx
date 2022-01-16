@@ -165,8 +165,7 @@ const FilterListItem = (props: {
         const keysToRemove = Object.keys(value);
         const filters = Object.keys(filterValues).reduce(
             (acc, key) =>
-                keysToRemove.includes(key) ?
-                    acc
+                keysToRemove.includes(key) ? acc
                 :   { ...acc, [key]: filterValues[key] },
             {}
         );
@@ -185,8 +184,7 @@ const FilterListItem = (props: {
         >
             <ListItemText
                 primary={
-                    isValidElement(label) ?
-                        label
+                    isValidElement(label) ? label
                     :   translate(label, { _: label })
                 }
                 className={classes.listItemText}

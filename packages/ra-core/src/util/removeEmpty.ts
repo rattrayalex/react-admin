@@ -4,8 +4,7 @@ const isObject = obj =>
     obj && Object.prototype.toString.call(obj) === '[object Object]';
 
 const isEmpty = obj =>
-    obj instanceof Date ?
-        false
+    obj instanceof Date ? false
     :   obj === '' ||
         obj === null ||
         obj === undefined ||

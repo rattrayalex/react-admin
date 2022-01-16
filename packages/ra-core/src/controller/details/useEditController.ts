@@ -208,8 +208,7 @@ export const useEditController = <RecordType extends Record = Record>(
                             : onFailureRef.current ? onFailureRef.current
                             : error => {
                                     notify(
-                                        typeof error === 'string' ?
-                                            error
+                                        typeof error === 'string' ? error
                                         :   error.message ||
                                                 'ra.notification.http_error',
                                         'warning',

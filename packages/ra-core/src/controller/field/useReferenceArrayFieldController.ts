@@ -73,8 +73,7 @@ const useReferenceArrayFieldController = (
     const { data, error, loading, loaded } = useGetMany(reference, ids, {
         onFailure: error =>
             notify(
-                typeof error === 'string' ?
-                    error
+                typeof error === 'string' ? error
                 :   error.message || 'ra.notification.http_error',
                 'warning',
                 {

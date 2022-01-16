@@ -65,35 +65,32 @@ const useDeleteWithUndoController = (
 
     const [deleteOne, { loading }] = useDelete(resource, null, null, {
         action: CRUD_DELETE,
-        onSuccess: onSuccess !== undefined ? onSuccess : (
-            () => {
-                notify(
-                    'ra.notification.deleted',
-                    'info',
-                    { smart_count: 1 },
-                    true
-                );
-                redirect(redirectTo, basePath || `/${resource}`);
-                refresh();
-            }
-        ),
-        onFailure: onFailure !== undefined ? onFailure : (
-            error => {
-                notify(
-                    typeof error === 'string' ?
-                        error
-                    :   error.message || 'ra.notification.http_error',
-                    'warning',
-                    {
-                        _:
-                            typeof error === 'string' ? error
-                            : error && error.message ? error.message
-                            : undefined,
-                    }
-                );
-                refresh();
-            }
-        ),
+        onSuccess: onSuccess !== undefined ? onSuccess
+            :   () => {
+                    notify(
+                        'ra.notification.deleted',
+                        'info',
+                        { smart_count: 1 },
+                        true
+                    );
+                    redirect(redirectTo, basePath || `/${resource}`);
+                    refresh();
+                },
+        onFailure: onFailure !== undefined ? onFailure
+            :   error => {
+                    notify(
+                        typeof error === 'string' ? error
+                        :   error.message || 'ra.notification.http_error',
+                        'warning',
+                        {
+                            _:
+                                typeof error === 'string' ? error
+                                : error && error.message ? error.message
+                                : undefined,
+                        }
+                    );
+                    refresh();
+                },
         mutationMode: 'undoable',
     });
     const handleDelete = useCallback(

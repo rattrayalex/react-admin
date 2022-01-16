@@ -29,9 +29,9 @@ const FormInput = <RecordType extends Record | Omit<Record, 'id'> = Record>(
 ) => {
     const { input, classes: classesOverride, ...rest } = props;
     const classes = useStyles(props);
-    const { id, className, ...inputProps } = input ? input.props : (
-        { id: undefined, className: undefined }
-    );
+    const { id, className, ...inputProps } = input ?
+            input.props
+        :   { id: undefined, className: undefined };
     return input ?
             <div
                 className={classnames(

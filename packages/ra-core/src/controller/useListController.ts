@@ -160,8 +160,7 @@ const useListController = <RecordType extends Record = Record>(
                 action: CRUD_GET_LIST,
                 onFailure: error =>
                     notify(
-                        typeof error === 'string' ?
-                            error
+                        typeof error === 'string' ? error
                         :   error.message || 'ra.notification.http_error',
                         'warning',
                         {

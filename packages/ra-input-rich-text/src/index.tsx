@@ -77,8 +77,7 @@ const RichTextInput: FunctionComponent<Props> = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const onTextChange = useCallback(
         debounce(() => {
-            const value = editor.current.innerHTML === '<p><br></p>' ?
-                    ''
+            const value = editor.current.innerHTML === '<p><br></p>' ? ''
                 :   editor.current.innerHTML;
 
             if (lastValueChange.current !== value) {

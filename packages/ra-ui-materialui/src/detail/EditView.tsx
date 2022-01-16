@@ -103,8 +103,7 @@ export const EditView = (props: EditViewProps) => {
                         record,
                         resource,
                         version,
-                        save: typeof children.props.save === 'undefined' ?
-                                save
+                        save: typeof children.props.save === 'undefined' ? save
                             :   children.props.save,
                         saving,
                     })}

@@ -229,9 +229,9 @@ const AutocompleteInput: FunctionComponent<AutocompleteInputProps> = props => {
     const handleFilterChange = useCallback(
         (eventOrValue: React.ChangeEvent<{ value: string }> | string) => {
             const event = eventOrValue as React.ChangeEvent<{ value: string }>;
-            const value = event.target ? event.target.value : (
-                (eventOrValue as string)
-            );
+            const value = event.target ?
+                    event.target.value
+                :   (eventOrValue as string);
 
             if (setFilter) {
                 setFilter(value);

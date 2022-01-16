@@ -214,9 +214,9 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
     const handleFilterChange = useCallback(
         (eventOrValue: React.ChangeEvent<{ value: string }> | string) => {
             const event = eventOrValue as React.ChangeEvent<{ value: string }>;
-            const value = event.target ? event.target.value : (
-                (eventOrValue as string)
-            );
+            const value = event.target ?
+                    event.target.value
+                :   (eventOrValue as string);
 
             setFilterValue(value);
             if (setFilter) {

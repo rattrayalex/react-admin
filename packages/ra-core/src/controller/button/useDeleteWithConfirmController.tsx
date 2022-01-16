@@ -100,8 +100,7 @@ const useDeleteWithConfirmController = (
             setOpen(false);
             if (onFailure === undefined) {
                 notify(
-                    typeof error === 'string' ?
-                        error
+                    typeof error === 'string' ? error
                     :   error.message || 'ra.notification.http_error',
                     'warning',
                     {

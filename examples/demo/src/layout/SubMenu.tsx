@@ -62,11 +62,11 @@ const SubMenu: FC<Props> = ({
 
     return (
         <Fragment>
-            {sidebarIsOpen || isOpen ? header : (
-                <Tooltip title={translate(name)} placement="right">
+            {sidebarIsOpen || isOpen ? header
+            :   <Tooltip title={translate(name)} placement="right">
                     {header}
                 </Tooltip>
-            )}
+            }
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
                 <List
                     dense={dense}

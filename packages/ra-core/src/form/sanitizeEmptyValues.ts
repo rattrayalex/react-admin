@@ -33,8 +33,7 @@ const sanitizeEmptyValues = (initialValues: object, values: object) => {
             ) {
                 acc[key] = sanitizeEmptyValues(initialValues[key], values[key]);
             } else {
-                acc[key] = typeof values[key] === 'undefined' ?
-                        null
+                acc[key] = typeof values[key] === 'undefined' ? null
                     :   values[key];
             }
             return acc;

@@ -72,8 +72,7 @@ const Button = ({ img, label, href }) => {
 };
 
 export default () =>
-    process.env.NODE_ENV === 'production' ?
-        <span />
+    process.env.NODE_ENV === 'production' ? <span />
     :   <div style={styles.root}>
             <div style={styles.main}>
                 <img

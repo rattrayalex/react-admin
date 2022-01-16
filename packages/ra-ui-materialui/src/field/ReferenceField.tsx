@@ -70,14 +70,14 @@ import { ClassesOverride } from '../types';
 const ReferenceField: FC<ReferenceFieldProps> = props => {
     const { source, emptyText, ...rest } = props;
     const record = useRecordContext(props);
-    return get(record, source) == null ? (
-        emptyText ? (
-            <Typography component="span" variant="body2">
-                {emptyText}
-            </Typography>
-        ) : null
-    ) : (
-        <NonEmptyReferenceField {...rest} record={record} source={source} />
+    return (
+        get(record, source) == null ?
+            emptyText ?
+                <Typography component="span" variant="body2">
+                    {emptyText}
+                </Typography>
+            :   null
+        :   <NonEmptyReferenceField {...rest} record={record} source={source} />
     );
 };
 

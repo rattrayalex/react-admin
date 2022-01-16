@@ -100,7 +100,7 @@ const Notification: React.FunctionComponent<
                 ),
             }}
             action={
-                notification && notification.undoable ? (
+                notification && notification.undoable ?
                     <Button
                         color="primary"
                         className={styles.undo}
@@ -109,7 +109,7 @@ const Notification: React.FunctionComponent<
                     >
                         {translate('ra.action.undo')}
                     </Button>
-                ) : null
+                :   null
             }
             {...rest}
         />

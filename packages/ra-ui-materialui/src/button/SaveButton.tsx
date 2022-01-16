@@ -156,17 +156,16 @@ const SaveButton: FC<SaveButtonProps> = props => {
             disabled={disabled}
             {...sanitizeButtonRestProps(rest)}
         >
-            {saving ? (
+            {saving ?
                 <CircularProgress
                     size={18}
                     thickness={2}
                     className={classes.leftIcon}
                 />
-            ) : (
-                cloneElement(icon, {
+            :   cloneElement(icon, {
                     className: classnames(classes.leftIcon, classes.icon),
                 })
-            )}
+            }
             {displayedLabel}
         </Button>
     );

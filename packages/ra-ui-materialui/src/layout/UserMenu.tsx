@@ -52,28 +52,25 @@ const UserMenu = props => {
 
     return (
         <div className={classes.user}>
-            {loaded && identity?.fullName ? (
+            {loaded && identity?.fullName ?
                 <Button
                     aria-label={label && translate(label, { _: label })}
                     className={classes.userButton}
                     color="inherit"
                     startIcon={
-                        identity.avatar ? (
+                        identity.avatar ?
                             <Avatar
                                 className={classes.avatar}
                                 src={identity.avatar}
                                 alt={identity.fullName}
                             />
-                        ) : (
-                            icon
-                        )
+                        :   icon
                     }
                     onClick={handleMenu}
                 >
                     {identity.fullName}
                 </Button>
-            ) : (
-                <Tooltip title={label && translate(label, { _: label })}>
+            :   <Tooltip title={label && translate(label, { _: label })}>
                     <IconButton
                         aria-label={label && translate(label, { _: label })}
                         aria-owns={open ? 'menu-appbar' : null}
@@ -84,7 +81,7 @@ const UserMenu = props => {
                         {icon}
                     </IconButton>
                 </Tooltip>
-            )}
+            }
             <Menu
                 id="menu-appbar"
                 disableScrollLock
@@ -98,11 +95,11 @@ const UserMenu = props => {
                 onClose={handleClose}
             >
                 {Children.map(children, menuItem =>
-                    isValidElement(menuItem)
-                        ? cloneElement<any>(menuItem, {
-                              onClick: handleClose,
-                          })
-                        : null
+                    isValidElement(menuItem) ?
+                        cloneElement<any>(menuItem, {
+                            onClick: handleClose,
+                        })
+                    :   null
                 )}
                 {logout}
             </Menu>

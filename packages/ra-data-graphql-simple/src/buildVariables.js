@@ -181,11 +181,11 @@ const buildGetListVariables =
                     if (isAList) {
                         return {
                             ...acc,
-                            [key]: Array.isArray(params.filter[key])
-                                ? params.filter[key].map(value =>
-                                      sanitizeValue(type, value)
-                                  )
-                                : sanitizeValue(type, [params.filter[key]]),
+                            [key]: Array.isArray(params.filter[key]) ?
+                                    params.filter[key].map(value =>
+                                        sanitizeValue(type, value)
+                                    )
+                                :   sanitizeValue(type, [params.filter[key]]),
                         };
                     }
 

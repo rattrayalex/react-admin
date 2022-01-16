@@ -44,12 +44,9 @@ export const EditView = (props: EditViewProps) => {
         version,
     } = useEditContext(props);
 
-    const finalActions =
-        typeof actions === 'undefined' && hasShow ? (
+    const finalActions = typeof actions === 'undefined' && hasShow ?
             <DefaultActions />
-        ) : (
-            actions
-        );
+        :   actions;
     if (!children) {
         return null;
     }
@@ -79,27 +76,26 @@ export const EditView = (props: EditViewProps) => {
                 })}
             >
                 <Content className={classes.card}>
-                    {record ? (
+                    {record ?
                         cloneElement(Children.only(children), {
                             basePath,
                             record,
-                            redirect:
-                                typeof children.props.redirect === 'undefined'
-                                    ? redirect
-                                    : children.props.redirect,
+                            redirect: (
+                                    typeof children.props.redirect ===
+                                    'undefined'
+                                ) ?
+                                    redirect
+                                :   children.props.redirect,
                             resource,
-                            save:
-                                typeof children.props.save === 'undefined'
-                                    ? save
-                                    : children.props.save,
+                            save: typeof children.props.save === 'undefined' ?
+                                    save
+                                :   children.props.save,
                             saving,
                             undoable,
                             mutationMode,
                             version,
                         })
-                    ) : (
-                        <CardContent>&nbsp;</CardContent>
-                    )}
+                    :   <CardContent>&nbsp;</CardContent>}
                 </Content>
                 {aside &&
                     React.cloneElement(aside, {
@@ -107,10 +103,8 @@ export const EditView = (props: EditViewProps) => {
                         record,
                         resource,
                         version,
-                        save:
-                            typeof children.props.save === 'undefined'
-                                ? save
-                                : children.props.save,
+                        save: typeof children.props.save === 'undefined' ? save
+                            :   children.props.save,
                         saving,
                     })}
             </div>

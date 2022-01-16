@@ -124,8 +124,8 @@ export const TabbedShowLayout = (props: TabbedShowLayoutProps) => {
             <Divider />
             <div className={classes.content}>
                 {Children.map(nonNullChildren, (tab, index) =>
-                    tab && isValidElement(tab) ? (
-                        syncWithLocation ? (
+                    tab && isValidElement(tab) ?
+                        syncWithLocation ?
                             <Route
                                 exact
                                 path={escapePath(
@@ -140,15 +140,15 @@ export const TabbedShowLayout = (props: TabbedShowLayoutProps) => {
                                     })
                                 }
                             />
-                        ) : tabValue === index ? (
+                        : tabValue === index ?
                             cloneElement(tab, {
                                 context: 'content',
                                 resource,
                                 record,
                                 basePath,
                             })
-                        ) : null
-                    ) : null
+                        :   null
+                    :   null
                 )}
             </div>
         </div>

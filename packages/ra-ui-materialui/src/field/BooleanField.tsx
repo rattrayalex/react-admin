@@ -45,8 +45,9 @@ export const BooleanField: FC<BooleanFieldProps> = memo<BooleanFieldProps>(
         let ariaLabel = value ? valueLabelTrue : valueLabelFalse;
 
         if (!ariaLabel) {
-            ariaLabel =
-                value === false ? 'ra.boolean.false' : 'ra.boolean.true';
+            ariaLabel = value === false ?
+                    'ra.boolean.false'
+                :   'ra.boolean.true';
         }
 
         if (value === false || value === true) {
@@ -58,18 +59,17 @@ export const BooleanField: FC<BooleanFieldProps> = memo<BooleanFieldProps>(
                     {...sanitizeFieldRestProps(rest)}
                 >
                     <Tooltip title={translate(ariaLabel, { _: ariaLabel })}>
-                        {value === true ? (
+                        {value === true ?
                             <span>
                                 <TrueIcon data-testid="true" fontSize="small" />
                             </span>
-                        ) : (
-                            <span>
+                        :   <span>
                                 <FalseIcon
                                     data-testid="false"
                                     fontSize="small"
                                 />
                             </span>
-                        )}
+                        }
                     </Tooltip>
                 </Typography>
             );

@@ -62,17 +62,17 @@ const getResourceLinkPath = ({
         );
     }
     const sourceId = get(record, source);
-    const rootPath = basePath
-        ? basePath.replace(resource, reference)
-        : `/${reference}`;
+    const rootPath = basePath ?
+            basePath.replace(resource, reference)
+        :   `/${reference}`;
     const linkTo: LinkToType = linkType !== undefined ? linkType : link;
 
     // Backward compatibility: keep linkType but with warning
-    return !linkTo
-        ? false
-        : typeof linkTo === 'function'
-        ? linkTo(record, reference)
-        : linkToRecord(rootPath, sourceId, linkTo as string);
+    return (
+        !linkTo ? false
+        : typeof linkTo === 'function' ? linkTo(record, reference)
+        : linkToRecord(rootPath, sourceId, linkTo as string)
+    );
 };
 
 export default getResourceLinkPath;

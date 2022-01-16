@@ -64,14 +64,12 @@ export const Create = (
             <CreateView {...props} {...controllerProps} />
         </CreateContextProvider>
     );
-    return props.resource ? (
-        // support resource override via props
-        <ResourceContextProvider value={props.resource}>
-            {body}
-        </ResourceContextProvider>
-    ) : (
-        body
-    );
+    return props.resource ?
+            // support resource override via props
+            <ResourceContextProvider value={props.resource}>
+                {body}
+            </ResourceContextProvider>
+        :   body;
 };
 
 Create.propTypes = {

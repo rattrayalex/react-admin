@@ -166,26 +166,23 @@ const useReferenceManyFieldController = (
         {
             onFailure: error =>
                 notify(
-                    typeof error === 'string'
-                        ? error
-                        : error.message || 'ra.notification.http_error',
+                    typeof error === 'string' ? error
+                    :   error.message || 'ra.notification.http_error',
                     'warning',
                     {
                         _:
-                            typeof error === 'string'
-                                ? error
-                                : error && error.message
-                                ? error.message
-                                : undefined,
+                            typeof error === 'string' ? error
+                            : error && error.message ? error.message
+                            : undefined,
                     }
                 ),
         }
     );
 
     return {
-        basePath: basePath
-            ? basePath.replace(resource, reference)
-            : `/${reference}`,
+        basePath: basePath ?
+                basePath.replace(resource, reference)
+            :   `/${reference}`,
         currentSort: sort,
         data,
         defaultTitle: null,

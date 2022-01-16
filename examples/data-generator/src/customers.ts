@@ -16,11 +16,11 @@ export default (db, { serializeDate }) => {
         const last_name = name.lastName();
         const email = internet.email(first_name, last_name);
         const birthday = has_ordered ? date.past(60) : null;
-        const avatar = has_ordered
-            ? 'https://marmelab.com/posters/avatar-' +
-              numberOfCustomers +
-              '.jpeg'
-            : undefined;
+        const avatar = has_ordered ?
+                'https://marmelab.com/posters/avatar-' +
+                numberOfCustomers +
+                '.jpeg'
+            :   undefined;
 
         if (has_ordered) {
             numberOfCustomers++;
@@ -36,8 +36,9 @@ export default (db, { serializeDate }) => {
             city: has_ordered ? address.city() : null,
             stateAbbr: has_ordered ? address.stateAbbr() : null,
             avatar,
-            birthday:
-                serializeDate && birthday ? birthday.toISOString() : birthday,
+            birthday: serializeDate && birthday ?
+                    birthday.toISOString()
+                :   birthday,
             first_seen: serializeDate ? first_seen.toISOString() : first_seen,
             last_seen: serializeDate ? last_seen.toISOString() : last_seen,
             has_ordered: has_ordered,

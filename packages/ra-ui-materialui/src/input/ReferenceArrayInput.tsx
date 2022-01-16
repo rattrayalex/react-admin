@@ -285,9 +285,9 @@ export const ReferenceArrayInputView = ({
 
     return React.cloneElement(children, {
         allowEmpty,
-        basePath: basePath
-            ? basePath.replace(resource, reference)
-            : `/${reference}`,
+        basePath: basePath ?
+                basePath.replace(resource, reference)
+            :   `/${reference}`,
         choices,
         className,
         error,

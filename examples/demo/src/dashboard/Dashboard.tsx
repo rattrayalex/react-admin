@@ -168,73 +168,73 @@ const Dashboard: FC = () => {
         revenue,
         recentOrders,
     } = state;
-    return isXSmall ? (
-        <div>
+    return (
+        isXSmall ?
+            <div>
+                <div style={styles.flexColumn as CSSProperties}>
+                    <Welcome />
+                    <MonthlyRevenue value={revenue} />
+                    <VerticalSpacer />
+                    <NbNewOrders value={nbNewOrders} />
+                    <VerticalSpacer />
+                    <PendingOrders
+                        orders={pendingOrders}
+                        customers={pendingOrdersCustomers}
+                    />
+                </div>
+            </div>
+        : isSmall ?
             <div style={styles.flexColumn as CSSProperties}>
-                <Welcome />
-                <MonthlyRevenue value={revenue} />
-                <VerticalSpacer />
-                <NbNewOrders value={nbNewOrders} />
-                <VerticalSpacer />
-                <PendingOrders
-                    orders={pendingOrders}
-                    customers={pendingOrdersCustomers}
-                />
-            </div>
-        </div>
-    ) : isSmall ? (
-        <div style={styles.flexColumn as CSSProperties}>
-            <div style={styles.singleCol}>
-                <Welcome />
-            </div>
-            <div style={styles.flex}>
-                <MonthlyRevenue value={revenue} />
-                <Spacer />
-                <NbNewOrders value={nbNewOrders} />
-            </div>
-            <div style={styles.singleCol}>
-                <OrderChart orders={recentOrders} />
-            </div>
-            <div style={styles.singleCol}>
-                <PendingOrders
-                    orders={pendingOrders}
-                    customers={pendingOrdersCustomers}
-                />
-            </div>
-        </div>
-    ) : (
-        <>
-            <Welcome />
-            <div style={styles.flex}>
-                <div style={styles.leftCol}>
-                    <div style={styles.flex}>
-                        <MonthlyRevenue value={revenue} />
-                        <Spacer />
-                        <NbNewOrders value={nbNewOrders} />
-                    </div>
-                    <div style={styles.singleCol}>
-                        <OrderChart orders={recentOrders} />
-                    </div>
-                    <div style={styles.singleCol}>
-                        <PendingOrders
-                            orders={pendingOrders}
-                            customers={pendingOrdersCustomers}
-                        />
-                    </div>
+                <div style={styles.singleCol}>
+                    <Welcome />
                 </div>
-                <div style={styles.rightCol}>
-                    <div style={styles.flex}>
-                        <PendingReviews
-                            nb={nbPendingReviews}
-                            reviews={pendingReviews}
-                            customers={pendingReviewsCustomers}
-                        />
-                        <Spacer />
-                        <NewCustomers />
-                    </div>
+                <div style={styles.flex}>
+                    <MonthlyRevenue value={revenue} />
+                    <Spacer />
+                    <NbNewOrders value={nbNewOrders} />
+                </div>
+                <div style={styles.singleCol}>
+                    <OrderChart orders={recentOrders} />
+                </div>
+                <div style={styles.singleCol}>
+                    <PendingOrders
+                        orders={pendingOrders}
+                        customers={pendingOrdersCustomers}
+                    />
                 </div>
             </div>
-        </>
+        :   <>
+                <Welcome />
+                <div style={styles.flex}>
+                    <div style={styles.leftCol}>
+                        <div style={styles.flex}>
+                            <MonthlyRevenue value={revenue} />
+                            <Spacer />
+                            <NbNewOrders value={nbNewOrders} />
+                        </div>
+                        <div style={styles.singleCol}>
+                            <OrderChart orders={recentOrders} />
+                        </div>
+                        <div style={styles.singleCol}>
+                            <PendingOrders
+                                orders={pendingOrders}
+                                customers={pendingOrdersCustomers}
+                            />
+                        </div>
+                    </div>
+                    <div style={styles.rightCol}>
+                        <div style={styles.flex}>
+                            <PendingReviews
+                                nb={nbPendingReviews}
+                                reviews={pendingReviews}
+                                customers={pendingReviewsCustomers}
+                            />
+                            <Spacer />
+                            <NewCustomers />
+                        </div>
+                    </div>
+                </div>
+            </>
     );
 };
 

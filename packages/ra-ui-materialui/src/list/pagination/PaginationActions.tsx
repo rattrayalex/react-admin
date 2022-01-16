@@ -95,12 +95,11 @@ function PaginationActions(props) {
 
     const renderPageNums = () => {
         return range().map((pageNum, index) =>
-            pageNum === '.' ? (
+            pageNum === '.' ?
                 <span key={`hyphen_${index}`} className={classes.hellip}>
                     &hellip;
                 </span>
-            ) : (
-                <Button
+            :   <Button
                     size={size}
                     className={classnames('page-number', classes.button, {
                         [classes.currentPageButton]: pageNum === page + 1,
@@ -112,7 +111,6 @@ function PaginationActions(props) {
                 >
                     {pageNum}
                 </Button>
-            )
         );
     };
 
@@ -132,11 +130,9 @@ function PaginationActions(props) {
                     onClick={prevPage}
                     className="previous-page"
                 >
-                    {theme.direction === 'rtl' ? (
+                    {theme.direction === 'rtl' ?
                         <ChevronRight />
-                    ) : (
-                        <ChevronLeft />
-                    )}
+                    :   <ChevronLeft />}
                     {translate('ra.navigation.prev')}
                 </Button>
             )}
@@ -150,11 +146,9 @@ function PaginationActions(props) {
                     className="next-page"
                 >
                     {translate('ra.navigation.next')}
-                    {theme.direction === 'rtl' ? (
+                    {theme.direction === 'rtl' ?
                         <ChevronLeft />
-                    ) : (
-                        <ChevronRight />
-                    )}
+                    :   <ChevronRight />}
                 </Button>
             )}
         </div>

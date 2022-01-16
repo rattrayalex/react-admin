@@ -17,16 +17,16 @@ const EmailField: FC<EmailFieldProps> = memo<EmailFieldProps>(props => {
     const value = get(record, source);
 
     if (value == null) {
-        return emptyText ? (
-            <Typography
-                component="span"
-                variant="body2"
-                className={className}
-                {...sanitizeFieldRestProps(rest)}
-            >
-                {emptyText}
-            </Typography>
-        ) : null;
+        return emptyText ?
+                <Typography
+                    component="span"
+                    variant="body2"
+                    className={className}
+                    {...sanitizeFieldRestProps(rest)}
+                >
+                    {emptyText}
+                </Typography>
+            :   null;
     }
 
     return (

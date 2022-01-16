@@ -16,7 +16,7 @@ import Basket from '../orders/Basket';
 import { Customer, Invoice } from '../types';
 
 const CustomerField: FC<FieldProps<Customer>> = ({ record }) =>
-    record ? (
+    record ?
         <Typography>
             {record.first_name} {record.last_name}
             <br />
@@ -24,7 +24,7 @@ const CustomerField: FC<FieldProps<Customer>> = ({ record }) =>
             <br />
             {record.city}, {record.zipcode}
         </Typography>
-    ) : null;
+    :   null;
 
 const InvoiceShow = (props: any) => {
     const { record } = useShowController<Invoice>(props);

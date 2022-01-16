@@ -39,23 +39,21 @@ const RejectButton: FC<{ record: Review }> = ({ record }) => {
         }
     );
 
-    return record && record.status === 'pending' ? (
-        <Button
-            variant="outlined"
-            color="primary"
-            size="small"
-            onClick={reject}
-            disabled={loading}
-        >
-            <ThumbDown
+    return record && record.status === 'pending' ?
+            <Button
+                variant="outlined"
                 color="primary"
-                style={{ paddingRight: '0.5em', color: 'red' }}
-            />
-            {translate('resources.reviews.action.reject')}
-        </Button>
-    ) : (
-        <span />
-    );
+                size="small"
+                onClick={reject}
+                disabled={loading}
+            >
+                <ThumbDown
+                    color="primary"
+                    style={{ paddingRight: '0.5em', color: 'red' }}
+                />
+                {translate('resources.reviews.action.reject')}
+            </Button>
+        :   <span />;
 };
 
 RejectButton.propTypes = {

@@ -214,9 +214,9 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
     const handleFilterChange = useCallback(
         (eventOrValue: React.ChangeEvent<{ value: string }> | string) => {
             const event = eventOrValue as React.ChangeEvent<{ value: string }>;
-            const value = event.target
-                ? event.target.value
-                : (eventOrValue as string);
+            const value = event.target ?
+                    event.target.value
+                :   (eventOrValue as string);
 
             setFilterValue(value);
             if (setFilter) {
@@ -254,10 +254,11 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
 
     const handleChange = useCallback(
         (item: any) => {
-            let newSelectedItems =
-                !allowDuplicates && selectedItems.includes(item)
-                    ? [...selectedItems]
-                    : [...selectedItems, item];
+            let newSelectedItems = (
+                    !allowDuplicates && selectedItems.includes(item)
+                ) ?
+                    [...selectedItems]
+                :   [...selectedItems, item];
             setFilterValue('');
             input.onChange(newSelectedItems.map(getChoiceValue));
         },
@@ -433,10 +434,12 @@ const AutocompleteArrayInput = (props: AutocompleteArrayInputProps) => {
                                     source={source}
                                     resource={resource}
                                     isRequired={
-                                        typeof isRequiredOverride !==
-                                        'undefined'
-                                            ? isRequiredOverride
-                                            : isRequired
+                                        (
+                                            typeof isRequiredOverride !==
+                                            'undefined'
+                                        ) ?
+                                            isRequiredOverride
+                                        :   isRequired
                                     }
                                 />
                             }
@@ -525,10 +528,9 @@ const useStyles = makeStyles(
         inputRootFilled: {
             flexWrap: 'wrap',
             '& $chip': {
-                backgroundColor:
-                    theme.palette.type === 'light'
-                        ? 'rgba(0, 0, 0, 0.09)'
-                        : 'rgba(255, 255, 255, 0.09)',
+                backgroundColor: theme.palette.type === 'light' ?
+                        'rgba(0, 0, 0, 0.09)'
+                    :   'rgba(255, 255, 255, 0.09)',
             },
         },
         inputInput: {

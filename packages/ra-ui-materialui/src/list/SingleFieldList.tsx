@@ -103,9 +103,8 @@ const SingleFieldList: FC<SingleFieldListProps> = props => {
             {...sanitizeListRestProps(rest)}
         >
             {ids.map(id => {
-                const resourceLinkPath = !linkType
-                    ? false
-                    : linkToRecord(basePath, id, linkType);
+                const resourceLinkPath = !linkType ? false
+                    :   linkToRecord(basePath, id, linkType);
 
                 if (resourceLinkPath) {
                     return (

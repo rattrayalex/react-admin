@@ -48,16 +48,16 @@ const queriesThisTick: { [key: string]: Promise<PartialQueryState> } = {};
  */
 const defaultDataSelector = query => (state: ReduxState) => {
     const key = JSON.stringify({ ...query, type: getFetchType(query.type) });
-    return state.admin.customQueries[key]
-        ? state.admin.customQueries[key].data
-        : undefined;
+    return state.admin.customQueries[key] ?
+            state.admin.customQueries[key].data
+        :   undefined;
 };
 
 const defaultTotalSelector = query => (state: ReduxState) => {
     const key = JSON.stringify({ ...query, type: getFetchType(query.type) });
-    return state.admin.customQueries[key]
-        ? state.admin.customQueries[key].total
-        : null;
+    return state.admin.customQueries[key] ?
+            state.admin.customQueries[key].total
+        :   null;
 };
 
 const defaultIsDataLoaded = (data: any): boolean => data !== undefined;

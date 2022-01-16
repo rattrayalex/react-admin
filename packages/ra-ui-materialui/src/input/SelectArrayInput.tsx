@@ -204,15 +204,15 @@ const SelectArrayInput: FunctionComponent<SelectArrayInputProps> = props => {
 
     const renderMenuItem = useCallback(
         choice => {
-            return choice ? (
-                <MenuItem
-                    key={getChoiceValue(choice)}
-                    value={getChoiceValue(choice)}
-                    disabled={getDisableValue(choice)}
-                >
-                    {renderMenuItemOption(choice)}
-                </MenuItem>
-            ) : null;
+            return choice ?
+                    <MenuItem
+                        key={getChoiceValue(choice)}
+                        value={getChoiceValue(choice)}
+                        disabled={getDisableValue(choice)}
+                    >
+                        {renderMenuItemOption(choice)}
+                    </MenuItem>
+                :   null;
         },
         [getChoiceValue, getDisableValue, renderMenuItemOption]
     );

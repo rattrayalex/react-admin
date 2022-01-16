@@ -47,29 +47,27 @@ const CreateButton: FC<CreateButtonProps> = props => {
         }),
         [basePath, resource, scrollToTop]
     );
-    return isSmall ? (
-        <Fab
-            component={Link}
-            color="primary"
-            className={classnames(classes.floating, className)}
-            to={location}
-            aria-label={label && translate(label)}
-            {...sanitizeButtonRestProps(rest)}
-        >
-            {icon}
-        </Fab>
-    ) : (
-        <Button
-            component={Link}
-            to={location}
-            className={className}
-            label={label}
-            variant={variant}
-            {...(rest as any)}
-        >
-            {icon}
-        </Button>
-    );
+    return isSmall ?
+            <Fab
+                component={Link}
+                color="primary"
+                className={classnames(classes.floating, className)}
+                to={location}
+                aria-label={label && translate(label)}
+                {...sanitizeButtonRestProps(rest)}
+            >
+                {icon}
+            </Fab>
+        :   <Button
+                component={Link}
+                to={location}
+                className={className}
+                label={label}
+                variant={variant}
+                {...(rest as any)}
+            >
+                {icon}
+            </Button>;
 };
 
 const defaultIcon = <ContentAdd />;

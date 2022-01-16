@@ -56,9 +56,9 @@ const useCheckAuth = (): CheckAuth => {
                 if (logoutOnFailure) {
                     logout(
                         {},
-                        error && error.redirectTo
-                            ? error.redirectTo
-                            : redirectTo
+                        error && error.redirectTo ?
+                            error.redirectTo
+                        :   redirectTo
                     );
                     const shouldSkipNotify =
                         disableNotification ||
@@ -99,10 +99,8 @@ type CheckAuth = (
 ) => Promise<any>;
 
 const getErrorMessage = (error, defaultMessage) =>
-    typeof error === 'string'
-        ? error
-        : typeof error === 'undefined' || !error.message
-        ? defaultMessage
-        : error.message;
+    typeof error === 'string' ? error
+    : typeof error === 'undefined' || !error.message ? defaultMessage
+    : error.message;
 
 export default useCheckAuth;

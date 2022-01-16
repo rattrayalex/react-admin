@@ -44,16 +44,14 @@ const PendingReviews: FC<Props> = ({ reviews = [], customers = {}, nb }) => {
                         alignItems="flex-start"
                     >
                         <ListItemAvatar>
-                            {customers[record.customer_id] ? (
+                            {customers[record.customer_id] ?
                                 <Avatar
                                     src={`${
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
                                     className={classes.avatar}
                                 />
-                            ) : (
-                                <Avatar />
-                            )}
+                            :   <Avatar />}
                         </ListItemAvatar>
 
                         <ListItemText

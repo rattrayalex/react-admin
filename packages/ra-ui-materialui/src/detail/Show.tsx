@@ -64,14 +64,12 @@ export const Show = (
             <ShowView {...props} {...controllerProps} />
         </ShowContextProvider>
     );
-    return props.resource ? (
-        // support resource override via props
-        <ResourceContextProvider value={props.resource}>
-            {body}
-        </ResourceContextProvider>
-    ) : (
-        body
-    );
+    return props.resource ?
+            // support resource override via props
+            <ResourceContextProvider value={props.resource}>
+                {body}
+            </ResourceContextProvider>
+        :   body;
 };
 
 Show.propTypes = {

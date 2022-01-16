@@ -33,10 +33,11 @@ const RoutesWithLayout: FunctionComponent<Props> = ({
     title,
 }) => {
     const childrenAsArray = React.Children.toArray(children);
-    const firstChild: React.ReactElement<any> | null =
-        childrenAsArray.length > 0
-            ? (childrenAsArray[0] as React.ReactElement<any>)
-            : null;
+    const firstChild: React.ReactElement<any> | null = (
+            childrenAsArray.length > 0
+        ) ?
+            (childrenAsArray[0] as React.ReactElement<any>)
+        :   null;
 
     return (
         <Switch>
@@ -56,7 +57,7 @@ const RoutesWithLayout: FunctionComponent<Props> = ({
                     }
                 />
             ))}
-            {dashboard ? (
+            {dashboard ?
                 <Route
                     exact
                     path="/"
@@ -68,13 +69,13 @@ const RoutesWithLayout: FunctionComponent<Props> = ({
                         />
                     )}
                 />
-            ) : firstChild ? (
+            : firstChild ?
                 <Route
                     exact
                     path="/"
                     render={() => <Redirect to={`/${firstChild.props.name}`} />}
                 />
-            ) : null}
+            :   null}
             <Route
                 render={routeProps =>
                     createElement(catchAll, {

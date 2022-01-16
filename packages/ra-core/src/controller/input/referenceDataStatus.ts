@@ -21,37 +21,37 @@ export const getStatusForInput = ({
     referenceRecord,
     translate = x => x,
 }: GetStatusForInputParams) => {
-    const matchingReferencesError = isMatchingReferencesError(
-        matchingReferences
-    )
-        ? translate(matchingReferences.error, {
-              _: matchingReferences.error,
-          })
-        : null;
-    const selectedReferenceError =
-        input.value && !referenceRecord
-            ? translate('ra.input.references.single_missing', {
-                  _: 'ra.input.references.single_missing',
-              })
-            : null;
+    const matchingReferencesError = (
+            isMatchingReferencesError(matchingReferences)
+        ) ?
+            translate(matchingReferences.error, {
+                _: matchingReferences.error,
+            })
+        :   null;
+    const selectedReferenceError = input.value && !referenceRecord ?
+            translate('ra.input.references.single_missing', {
+                _: 'ra.input.references.single_missing',
+            })
+        :   null;
 
     return {
         waiting:
             (input.value && selectedReferenceError && !matchingReferences) ||
             (!input.value && !matchingReferences),
         error:
-            (input.value &&
-                selectedReferenceError &&
-                matchingReferencesError) ||
-            (!input.value && matchingReferencesError)
-                ? input.value
-                    ? selectedReferenceError
-                    : matchingReferencesError
-                : null,
+            (
+                (input.value &&
+                    selectedReferenceError &&
+                    matchingReferencesError) ||
+                (!input.value && matchingReferencesError)
+            ) ?
+                input.value ? selectedReferenceError
+                :   matchingReferencesError
+            :   null,
         warning: selectedReferenceError || matchingReferencesError,
-        choices: Array.isArray(matchingReferences)
-            ? matchingReferences
-            : [referenceRecord].filter(choice => choice),
+        choices: Array.isArray(matchingReferences) ?
+                matchingReferences
+            :   [referenceRecord].filter(choice => choice),
     };
 };
 
@@ -65,11 +65,10 @@ export const getSelectedReferencesStatus = (
     },
     referenceRecords: Record[]
 ) =>
-    !input.value || input.value.length === referenceRecords.length
-        ? REFERENCES_STATUS_READY
-        : referenceRecords.length > 0
-        ? REFERENCES_STATUS_INCOMPLETE
-        : REFERENCES_STATUS_EMPTY;
+    !input.value || input.value.length === referenceRecords.length ?
+        REFERENCES_STATUS_READY
+    : referenceRecords.length > 0 ? REFERENCES_STATUS_INCOMPLETE
+    : REFERENCES_STATUS_EMPTY;
 
 interface GetStatusForArrayInputParams {
     input: {
@@ -94,13 +93,13 @@ export const getStatusForArrayInput = ({
         referenceRecords
     );
 
-    const matchingReferencesError = isMatchingReferencesError(
-        matchingReferences
-    )
-        ? translate(matchingReferences.error, {
-              _: matchingReferences.error,
-          })
-        : null;
+    const matchingReferencesError = (
+            isMatchingReferencesError(matchingReferences)
+        ) ?
+            translate(matchingReferences.error, {
+                _: matchingReferences.error,
+            })
+        :   null;
 
     return {
         waiting:
@@ -108,26 +107,29 @@ export const getStatusForArrayInput = ({
                 input.value &&
                 selectedReferencesDataStatus === REFERENCES_STATUS_EMPTY) ||
             (!matchingReferences && !input.value),
-        error:
-            matchingReferencesError &&
-            (!input.value ||
+        error: (
+                matchingReferencesError &&
+                (!input.value ||
+                    (input.value &&
+                        selectedReferencesDataStatus ===
+                            REFERENCES_STATUS_EMPTY))
+            ) ?
+                translate('ra.input.references.all_missing', {
+                    _: 'ra.input.references.all_missing',
+                })
+            :   null,
+        warning: (
+                matchingReferencesError ||
                 (input.value &&
-                    selectedReferencesDataStatus === REFERENCES_STATUS_EMPTY))
-                ? translate('ra.input.references.all_missing', {
-                      _: 'ra.input.references.all_missing',
-                  })
-                : null,
-        warning:
-            matchingReferencesError ||
-            (input.value &&
-                selectedReferencesDataStatus !== REFERENCES_STATUS_READY)
-                ? matchingReferencesError ||
-                  translate('ra.input.references.many_missing', {
-                      _: 'ra.input.references.many_missing',
-                  })
-                : null,
-        choices: Array.isArray(matchingReferences)
-            ? matchingReferences
-            : referenceRecords,
+                    selectedReferencesDataStatus !== REFERENCES_STATUS_READY)
+            ) ?
+                matchingReferencesError ||
+                translate('ra.input.references.many_missing', {
+                    _: 'ra.input.references.many_missing',
+                })
+            :   null,
+        choices: Array.isArray(matchingReferences) ?
+                matchingReferences
+            :   referenceRecords,
     };
 };

@@ -99,9 +99,9 @@ const PostCreate = ({ permissions, ...props }) => {
                 <RichTextInput source="body" validate={required()} />
                 <FormSpy subscription={{ values: true }}>
                     {({ values }) =>
-                        values.title ? (
+                        values.title ?
                             <NumberInput source="average_note" />
-                        ) : null
+                        :   null
                     }
                 </FormSpy>
 
@@ -137,7 +137,7 @@ const PostCreate = ({ permissions, ...props }) => {
                                     getSource,
                                     ...rest
                                 }) =>
-                                    scopedFormData && scopedFormData.user_id ? (
+                                    scopedFormData && scopedFormData.user_id ?
                                         <SelectInput
                                             label="Role"
                                             source={getSource('role')}
@@ -157,7 +157,7 @@ const PostCreate = ({ permissions, ...props }) => {
                                             ]}
                                             {...rest}
                                         />
-                                    ) : null
+                                    :   null
                                 }
                             </FormDataConsumer>
                         </SimpleFormIterator>

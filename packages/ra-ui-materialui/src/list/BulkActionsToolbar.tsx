@@ -18,15 +18,13 @@ const useStyles = makeStyles(
     theme => ({
         toolbar: {
             zIndex: 3,
-            color:
-                theme.palette.type === 'light'
-                    ? theme.palette.primary.main
-                    : theme.palette.text.primary,
+            color: theme.palette.type === 'light' ?
+                    theme.palette.primary.main
+                :   theme.palette.text.primary,
             justifyContent: 'space-between',
-            backgroundColor:
-                theme.palette.type === 'light'
-                    ? lighten(theme.palette.primary.light, 0.85)
-                    : theme.palette.primary.dark,
+            backgroundColor: theme.palette.type === 'light' ?
+                    lighten(theme.palette.primary.light, 0.85)
+                :   theme.palette.primary.dark,
             minHeight: theme.spacing(8),
             height: theme.spacing(8),
             transition: `${theme.transitions.create(
@@ -93,14 +91,14 @@ const BulkActionsToolbar: FC<BulkActionsToolbarProps> = props => {
             </div>
             <TopToolbar className={classes.topToolbar}>
                 {Children.map(children, child =>
-                    isValidElement(child)
-                        ? cloneElement(child, {
-                              basePath,
-                              filterValues,
-                              resource,
-                              selectedIds,
-                          })
-                        : null
+                    isValidElement(child) ?
+                        cloneElement(child, {
+                            basePath,
+                            filterValues,
+                            resource,
+                            selectedIds,
+                        })
+                    :   null
                 )}
             </TopToolbar>
         </Toolbar>

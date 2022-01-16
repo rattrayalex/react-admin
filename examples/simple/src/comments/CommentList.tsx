@@ -218,7 +218,9 @@ const ListView = () => {
                 filters={<CommentFilter />}
                 actions={<ListActions />}
             />
-            {isSmall ? <CommentMobileList /> : <CommentGrid />}
+            {isSmall ?
+                <CommentMobileList />
+            :   <CommentGrid />}
             <CommentPagination />
         </>
     );

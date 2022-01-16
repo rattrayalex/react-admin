@@ -94,16 +94,14 @@ const Confirm: FC<ConfirmProps> = props => {
                 {translate(title, { _: title, ...translateOptions })}
             </DialogTitle>
             <DialogContent>
-                {typeof content === 'string' ? (
+                {typeof content === 'string' ?
                     <DialogContentText>
                         {translate(content, {
                             _: content,
                             ...translateOptions,
                         })}
                     </DialogContentText>
-                ) : (
-                    content
-                )}
+                :   content}
             </DialogContent>
             <DialogActions>
                 <Button disabled={loading} onClick={onClose}>

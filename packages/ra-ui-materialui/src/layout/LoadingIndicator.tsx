@@ -15,17 +15,15 @@ const LoadingIndicator = (props: LoadingIndicatorProps) => {
     const loading = useSelector<ReduxState>(state => state.admin.loading > 0);
     const classes = useStyles(props);
     const theme = useTheme();
-    return loading ? (
-        <CircularProgress
-            className={classNames('app-loader', classes.loader, className)}
-            color="inherit"
-            size={theme.spacing(2)}
-            thickness={6}
-            {...rest}
-        />
-    ) : (
-        <RefreshIconButton className={classes.loadedIcon} />
-    );
+    return loading ?
+            <CircularProgress
+                className={classNames('app-loader', classes.loader, className)}
+                color="inherit"
+                size={theme.spacing(2)}
+                thickness={6}
+                {...rest}
+            />
+        :   <RefreshIconButton className={classes.loadedIcon} />;
 };
 
 const useStyles = makeStyles(

@@ -43,15 +43,13 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                         to={`/commands/${record.id}`}
                     >
                         <ListItemAvatar>
-                            {customers[record.customer_id] ? (
+                            {customers[record.customer_id] ?
                                 <Avatar
                                     src={`${
                                         customers[record.customer_id].avatar
                                     }?size=32x32`}
                                 />
-                            ) : (
-                                <Avatar />
-                            )}
+                            :   <Avatar />}
                         </ListItemAvatar>
                         <ListItemText
                             primary={new Date(record.date).toLocaleString(
@@ -60,15 +58,15 @@ const PendingOrders: FC<Props> = ({ orders = [], customers = {} }) => {
                             secondary={translate('pos.dashboard.order.items', {
                                 smart_count: record.basket.length,
                                 nb_items: record.basket.length,
-                                customer_name: customers[record.customer_id]
-                                    ? `${
-                                          customers[record.customer_id]
-                                              .first_name
-                                      } ${
-                                          customers[record.customer_id]
-                                              .last_name
-                                      }`
-                                    : '',
+                                customer_name: customers[record.customer_id] ?
+                                        `${
+                                            customers[record.customer_id]
+                                                .first_name
+                                        } ${
+                                            customers[record.customer_id]
+                                                .last_name
+                                        }`
+                                    :   '',
                             })}
                         />
                         <ListItemSecondaryAction>

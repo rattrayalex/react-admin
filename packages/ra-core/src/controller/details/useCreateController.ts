@@ -147,57 +147,52 @@ export const useCreateController = <
             } = {}
         ) =>
             Promise.resolve(
-                transformFromSave
-                    ? transformFromSave(data)
-                    : transformRef.current
-                    ? transformRef.current(data)
-                    : data
+                transformFromSave ? transformFromSave(data)
+                : transformRef.current ? transformRef.current(data)
+                : data
             ).then(data =>
                 create(
                     { payload: { data } },
                     {
                         action: CRUD_CREATE,
-                        onSuccess: onSuccessFromSave
-                            ? onSuccessFromSave
-                            : onSuccessRef.current
-                            ? onSuccessRef.current
+                        onSuccess:
+                            onSuccessFromSave ? onSuccessFromSave
+                            : onSuccessRef.current ? onSuccessRef.current
                             : ({ data: newRecord }) => {
-                                  notify(
-                                      successMessage ||
-                                          'ra.notification.created',
-                                      'info',
-                                      {
-                                          smart_count: 1,
-                                      }
-                                  );
-                                  redirect(
-                                      redirectTo,
-                                      basePath,
-                                      newRecord.id,
-                                      newRecord
-                                  );
-                              },
-                        onFailure: onFailureFromSave
-                            ? onFailureFromSave
-                            : onFailureRef.current
-                            ? onFailureRef.current
+                                    notify(
+                                        successMessage ||
+                                            'ra.notification.created',
+                                        'info',
+                                        {
+                                            smart_count: 1,
+                                        }
+                                    );
+                                    redirect(
+                                        redirectTo,
+                                        basePath,
+                                        newRecord.id,
+                                        newRecord
+                                    );
+                                },
+                        onFailure:
+                            onFailureFromSave ? onFailureFromSave
+                            : onFailureRef.current ? onFailureRef.current
                             : error => {
-                                  notify(
-                                      typeof error === 'string'
-                                          ? error
-                                          : error.message ||
+                                    notify(
+                                        typeof error === 'string' ? error
+                                        :   error.message ||
                                                 'ra.notification.http_error',
-                                      'warning',
-                                      {
-                                          _:
-                                              typeof error === 'string'
-                                                  ? error
-                                                  : error && error.message
-                                                  ? error.message
-                                                  : undefined,
-                                      }
-                                  );
-                              },
+                                        'warning',
+                                        {
+                                            _:
+                                                typeof error === 'string' ?
+                                                    error
+                                                : error && error.message ?
+                                                    error.message
+                                                :   undefined,
+                                        }
+                                    );
+                                },
                     }
                 )
             ),

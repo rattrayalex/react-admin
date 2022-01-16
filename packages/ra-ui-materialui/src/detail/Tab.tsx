@@ -87,7 +87,7 @@ export const Tab = ({
     const renderContent = () => (
         <span className={contentClassName}>
             {React.Children.map(children, field =>
-                field && isValidElement<any>(field) ? (
+                field && isValidElement<any>(field) ?
                     <div
                         key={field.props.source}
                         className={classnames(
@@ -96,7 +96,7 @@ export const Tab = ({
                             field.props.className
                         )}
                     >
-                        {field.props.addLabel ? (
+                        {field.props.addLabel ?
                             <Labeled
                                 label={field.props.label}
                                 source={field.props.source}
@@ -106,17 +106,16 @@ export const Tab = ({
                             >
                                 {field}
                             </Labeled>
-                        ) : typeof field.type === 'string' ? (
+                        : typeof field.type === 'string' ?
                             field
-                        ) : (
-                            React.cloneElement(field, {
+                        :   React.cloneElement(field, {
                                 basePath,
                                 record,
                                 resource,
                             })
-                        )}
+                        }
                     </div>
-                ) : null
+                :   null
             )}
         </span>
     );

@@ -27,9 +27,8 @@ const totalReducer: Reducer<State> = (
             return previousState === null ? null : previousState - 1;
         }
         if (action.meta.fetch === DELETE_MANY) {
-            return previousState === null
-                ? null
-                : previousState - action.payload.ids.length;
+            return previousState === null ? null
+                :   previousState - action.payload.ids.length;
         }
     }
     return previousState;

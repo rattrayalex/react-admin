@@ -29,24 +29,36 @@ const FormInput = <RecordType extends Record | Omit<Record, 'id'> = Record>(
 ) => {
     const { input, classes: classesOverride, ...rest } = props;
     const classes = useStyles(props);
-    const { id, className, ...inputProps } = input
-        ? input.props
-        : { id: undefined, className: undefined };
-    return input ? (
-        <div
-            className={classnames(
-                'ra-input',
-                `ra-input-${input.props.source}`,
-                input.props.formClassName
-            )}
-        >
-            {input.props.addLabel ? (
-                <Labeled
-                    id={id || input.props.source}
-                    {...inputProps}
-                    {...sanitizeRestProps(rest)}
-                >
-                    {React.cloneElement(input, {
+    const { id, className, ...inputProps } = input ?
+            input.props
+        :   { id: undefined, className: undefined };
+    return input ?
+            <div
+                className={classnames(
+                    'ra-input',
+                    `ra-input-${input.props.source}`,
+                    input.props.formClassName
+                )}
+            >
+                {input.props.addLabel ?
+                    <Labeled
+                        id={id || input.props.source}
+                        {...inputProps}
+                        {...sanitizeRestProps(rest)}
+                    >
+                        {React.cloneElement(input, {
+                            className: classnames(
+                                {
+                                    [classes.input]: !input.props.fullWidth,
+                                },
+                                className
+                            ),
+                            id: input.props.id || input.props.source,
+                            ...rest,
+                            ...inputProps,
+                        })}
+                    </Labeled>
+                :   React.cloneElement(input, {
                         className: classnames(
                             {
                                 [classes.input]: !input.props.fullWidth,
@@ -56,23 +68,10 @@ const FormInput = <RecordType extends Record | Omit<Record, 'id'> = Record>(
                         id: input.props.id || input.props.source,
                         ...rest,
                         ...inputProps,
-                    })}
-                </Labeled>
-            ) : (
-                React.cloneElement(input, {
-                    className: classnames(
-                        {
-                            [classes.input]: !input.props.fullWidth,
-                        },
-                        className
-                    ),
-                    id: input.props.id || input.props.source,
-                    ...rest,
-                    ...inputProps,
-                })
-            )}
-        </div>
-    ) : null;
+                    })
+                }
+            </div>
+        :   null;
 };
 
 FormInput.propTypes = {

@@ -5,9 +5,9 @@ import { FieldProps } from 'react-admin';
 import { Product } from '../types';
 
 const ProductRefField: FC<FieldProps<Product>> = ({ record }) =>
-    record ? (
+    record ?
         <Link to={`products/${record.id}`}>{record.reference}</Link>
-    ) : null;
+    :   null;
 
 ProductRefField.defaultProps = {
     source: 'id',

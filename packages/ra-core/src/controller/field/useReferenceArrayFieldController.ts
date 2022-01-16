@@ -73,17 +73,14 @@ const useReferenceArrayFieldController = (
     const { data, error, loading, loaded } = useGetMany(reference, ids, {
         onFailure: error =>
             notify(
-                typeof error === 'string'
-                    ? error
-                    : error.message || 'ra.notification.http_error',
+                typeof error === 'string' ? error
+                :   error.message || 'ra.notification.http_error',
                 'warning',
                 {
                     _:
-                        typeof error === 'string'
-                            ? error
-                            : error && error.message
-                            ? error.message
-                            : undefined,
+                        typeof error === 'string' ? error
+                        : error && error.message ? error.message
+                        : undefined,
                 }
             ),
     });
@@ -173,10 +170,10 @@ const useReferenceArrayFieldController = (
         // 1. filter
         let tempData = data.filter(record =>
             Object.entries(filterValues).every(([filterName, filterValue]) =>
-                Array.isArray(get(record, filterName))
-                    ? get(record, filterName).includes(filterValue)
-                    : // eslint-disable-next-line eqeqeq
-                      filterValue == get(record, filterName)
+                Array.isArray(get(record, filterName)) ?
+                    get(record, filterName).includes(filterValue)
+                :   // eslint-disable-next-line eqeqeq
+                    filterValue == get(record, filterName)
             )
         );
         // 2. sort
@@ -224,9 +221,9 @@ const useReferenceArrayFieldController = (
     }, [loading, loadingState, setLoadingState]);
 
     return {
-        basePath: basePath
-            ? basePath.replace(resource, reference)
-            : `/${reference}`,
+        basePath: basePath ?
+                basePath.replace(resource, reference)
+            :   `/${reference}`,
         currentSort: sort,
         data: finalData,
         defaultTitle: null,

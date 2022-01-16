@@ -24,14 +24,15 @@ export default (options?: Args): TranslationArguments => {
 
     const { label, resource, source } = options;
 
-    return typeof label !== 'undefined'
-        ? [label, { _: label }]
-        : typeof source !== 'undefined'
-        ? [
-              `resources.${resource}.fields.${source}`,
-              {
-                  _: inflection.transform(source, ['underscore', 'humanize']),
-              },
-          ]
-        : [''];
+    return (
+        typeof label !== 'undefined' ? [label, { _: label }]
+        : typeof source !== 'undefined' ?
+            [
+                `resources.${resource}.fields.${source}`,
+                {
+                    _: inflection.transform(source, ['underscore', 'humanize']),
+                },
+            ]
+        :   ['']
+    );
 };

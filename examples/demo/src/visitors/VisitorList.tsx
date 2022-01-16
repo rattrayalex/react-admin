@@ -57,10 +57,9 @@ const VisitorList = (props: ListProps): ReactElement => {
             perPage={25}
             aside={<VisitorListAside />}
         >
-            {isXsmall ? (
+            {isXsmall ?
                 <MobileGrid />
-            ) : (
-                <Datagrid optimized rowClick="edit">
+            :   <Datagrid optimized rowClick="edit">
                     <CustomerLinkField />
                     <DateField source="last_seen" />
                     <NumberField
@@ -79,7 +78,7 @@ const VisitorList = (props: ListProps): ReactElement => {
                         headerClassName={classes.hiddenOnSmallScreens}
                     />
                 </Datagrid>
-            )}
+            }
         </List>
     );
 };
